@@ -1,0 +1,2 @@
+# Fedora
+setup fedora 
