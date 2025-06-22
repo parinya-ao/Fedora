@@ -44,12 +44,10 @@
     "editor.suggest.showReferences": true,
     "editor.suggest.showCustomcolors": true,
     "editor.suggest.showFolders": true,
-    "editor.suggest.showTypeParameters": true,
     "editor.suggest.showSnippets": true,
     "editor.suggest.showUsers": false, // Disable user suggestions
     "editor.suggest.showIssues": true,
     "editor.suggest.filterGraceful": true, // Smart filtering
-    "editor.suggest.matchOnWordStartOnly": false, // Better matching
     "editor.suggest.insertMode": "insert", // Insert mode for suggestions
     "editor.quickSuggestions": {
         "other": "on", // Keep intelligent suggestions
@@ -58,7 +56,6 @@
     },
     "editor.wordBasedSuggestions": "allDocuments", // Use all open documents
     "editor.wordBasedSuggestionsMode": "allDocuments",
-    "editor.acceptSuggestionOnCommitCharacter": true,
     "editor.suggestSelection": "first", // Always select first suggestion
     "editor.tabCompletion": "on", // Tab completion
     "editor.emptySelectionClipboard": false, // Performance optimization
@@ -99,13 +96,12 @@
         80,
         120
     ],
-    "editor.fontSize": 14,
+    "editor.fontSize": 16,
     "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Ubuntu Mono', monospace",
     "editor.fontLigatures": true,
     "editor.lineHeight": 1.5,
     "editor.cursorBlinking": "solid", // Optimized for performance
     "editor.cursorSmoothCaretAnimation": "off", // Disabled for performance
-    "editor.multiCursorModifier": "ctrlCmd",
     "editor.insertSpaces": true,
     "editor.detectIndentation": true,
     "editor.tabSize": 4,
@@ -208,7 +204,6 @@
     // TERMINAL SETTINGS
     // ================================================
     "terminal.integrated.shell.linux": "/usr/bin/fish",
-    "terminal.integrated.defaultProfile.linux": "fish",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.fontSize": 14,
@@ -269,7 +264,7 @@
     "git.enableSmartCommit": true,
     "git.smartCommitChanges": "all", // Include all changes in smart commits
     "git.suggestSmartCommit": true,
-    "git.enableCommitSigning": true, // GPG signing for security
+    "git.enableCommitSigning": false, // GPG signing for security
     "git.alwaysSignOff": true, // Add Signed-off-by line
     "git.allowForcePush": false, // Prevent accidental force push
     "git.allowNoVerifyCommit": false, // Always run pre-commit hooks
@@ -295,7 +290,6 @@
     ],
     "git.closeDiffOnOperation": true,
     "git.defaultBranchName": "main",
-    "git.defaultCloneDirectory": "~/workspace",
     "git.mergeEditor": true, // Use VS Code's 3-way merge editor
     "git.openDiffOnClick": true,
     "git.showActionButton": {
@@ -355,7 +349,6 @@
     "scm.countBadge": "all", // Show count of all changes
     "scm.defaultViewMode": "tree", // Tree view for better organization
     "scm.defaultViewSortKey": "status", // Sort by change status
-    "scm.diffDecorations": "all",
     "scm.diffDecorationsGutterAction": "diff",
     "scm.diffDecorationsGutterPattern": {
         "added": true,
@@ -390,7 +383,6 @@
     "git.graph.showTags": true,
     "git.graph.showUncommittedChanges": true,
     // ==== MERGE CONFLICTS INTELLIGENCE ====
-    "merge-conflict.autoNavigateNextConflict.enabled": true,
     "merge-conflict.codeLens.enabled": true,
     "merge-conflict.decorators.enabled": true,
     "merge-conflict.diffViewPosition": "Below",
@@ -549,8 +541,6 @@
     "typescript.suggest.completeFunctionCalls": true,
     "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
     "typescript.suggest.includeCompletionsForImportStatements": true,
-    "typescript.preferences.includePackageJsonAutoImports": "auto",
-    "typescript.preferences.quoteStyle": "single",
     "typescript.format.enable": true,
     "typescript.format.semicolons": "insert",
     "typescript.inlayHints.parameterNames.enabled": "all",
@@ -684,7 +674,8 @@
         "-Dclippy::pedantic",
         "-Dclippy::nursery",
         "-Aclippy::missing_docs_in_private_items",
-        "-Aclippy::module_name_repetitions"
+        "-Aclippy::module_name_repetitions",
+        "-Aclippy::missing_errors_doc"
     ],
     "rust-analyzer.cargo.allFeatures": true,
     "rust-analyzer.cargo.features": "all",
@@ -695,8 +686,6 @@
     "rust-analyzer.cargo.buildScripts.useRustcWrapper": true,
     "rust-analyzer.cargo.autoreload": true,
     "rust-analyzer.cargo.noDefaultFeatures": false,
-    "rust-analyzer.completion.autoimport.enable": true,
-    "rust-analyzer.completion.autoself.enable": true,
     "rust-analyzer.completion.callable.snippets": "fill_arguments",
     "rust-analyzer.completion.postfix.enable": true,
     "rust-analyzer.completion.privateEditable.enable": false,
@@ -718,10 +707,8 @@
     "rust-analyzer.hover.documentation": true,
     "rust-analyzer.hover.links": true,
     "rust-analyzer.imports.granularity.enforce": false,
-    "rust-analyzer.imports.granularity.group": "crate",
     "rust-analyzer.imports.group.enable": true,
     "rust-analyzer.imports.merge.glob": true,
-    "rust-analyzer.imports.prefix": "plain",
     "rust-analyzer.inlayHints.bindingModeHints.enable": true,
     "rust-analyzer.inlayHints.chainingHints.enable": true,
     "rust-analyzer.inlayHints.closingBraceHints.enable": true,
@@ -767,10 +754,6 @@
     "rust-analyzer.semanticHighlighting.operator.specialization.enable": false,
     "rust-analyzer.signatureInfo.detail": "full",
     "rust-analyzer.signatureInfo.documentation.enable": true,
-    "rust-analyzer.typing.autoClosingAngleBrackets.enable": false,
-    "rust-analyzer.workspace.symbol.search.kind": "all_symbols",
-    "rust-analyzer.workspace.symbol.search.scope": "workspace",
-    "rust-analyzer.workspace.symbol.search.limit": 128,
     // C/C++ Settings
     "C_Cpp.default.cppStandard": "c++20",
     "C_Cpp.default.cStandard": "c17",
@@ -853,16 +836,12 @@
         "editor.autoIndent": "full"
     },
     // Python Language Server Settings
-    "python.analysis.autoImportCompletions": true,
     "python.analysis.autoSearchPaths": true,
     "python.analysis.diagnosticMode": "workspace",
     "python.analysis.extraPaths": [],
     "python.analysis.stubPath": "typings",
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.useLibraryCodeForTypes": true,
-    "python.analysis.autoFormatStrings": true,
-    "python.analysis.completeFunctionParens": true,
-    "python.analysis.diagnosticSeverityOverrides": {},
     "python.analysis.fixAll": [
         "source.unusedImports"
     ],
@@ -925,7 +904,6 @@
     "python.terminal.activateEnvironment": true,
     "python.terminal.activateEnvInCurrentTerminal": false,
     "python.terminal.executeInFileDir": false,
-    "python.terminal.launchArgs": [],
     "python.testing.autoTestDiscoverOnSaveEnabled": true,
     "python.testing.cwd": null,
     "python.testing.debugPort": 3000,
@@ -1084,12 +1062,8 @@
     "security.workspace.trust.banner": "never",
     "security.workspace.trust.startupPrompt": "never",
     "security.workspace.trust.emptyWindow": true,
-    "extensions.autoCheckUpdates": true,
-    "extensions.autoUpdate": true,
-    "extensions.ignoreRecommendations": false,
-    "update.mode": "start",
+    "extensions.ignoreRecommendations": true,
     "update.showReleaseNotes": true,
-    "telemetry.telemetryLevel": "off",
     "crash.reporter.enabled": false,
     // ================================================
     // WINDOW & LAYOUT SETTINGS
@@ -1110,7 +1084,6 @@
     "window.restoreWindows": "folders",
     "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
     "window.titleBarStyle": "custom",
-    "window.zoomLevel": 0,
     // ================================================
     // BREADCRUMBS & NAVIGATION
     // ================================================
@@ -1144,7 +1117,6 @@
     "breadcrumbs.showTypeParameters": true,
     "breadcrumbs.showVariables": true,
     "breadcrumbs.symbolPath": "on",
-    "breadcrumbs.symbolSortOrder": "position",
     // ================================================
     // PROBLEMS & DIAGNOSTICS
     // ================================================
@@ -1188,8 +1160,7 @@
     "outline.showTypeParameters": true,
     "outline.showVariables": true,
     // ================================================
-    // EMMET SETTINGS
-    // ================================================
+    // EMMET SETTINGS // ================================================
     "emmet.includeLanguages": {
         "javascript": "javascriptreact",
         "typescript": "typescriptreact",
@@ -1205,7 +1176,6 @@
     "emmet.preferences": {},
     "emmet.syntaxProfiles": {},
     "emmet.excludeLanguages": [],
-    "emmet.extensionsPath": [],
     // ================================================
     // GO (GOLANG) PROFESSIONAL DEVELOPMENT SETTINGS
     // ================================================
@@ -1359,13 +1329,9 @@
     },
     // Go Extension - Core Settings
     "go.autocompleteUnimportedPackages": true,
-    "go.gocodePackageLookupMode": "go",
     "go.gotoSymbol.includeImports": true,
     "go.gotoSymbol.includeGoroot": true,
     "go.useCodeSnippetsOnFunctionSuggest": true,
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.inferGopath": true,
-    "go.gopath": "",
     "go.goroot": "",
     // Go Extension - Testing Configuration
     "go.testFlags": [
@@ -1671,7 +1637,6 @@
     "workbench.tree.expandMode": "singleClick",
     "workbench.hover.delay": 1500,
     // Memory & Performance Optimizations
-    "typescript.tsserver.maxTsServerMemory": 4096,
     "typescript.tsserver.watchOptions": {
         "watchFile": "useFsEventsOnParentDirectory"
     },
@@ -1684,9 +1649,6 @@
     "search.quickOpen.includeSymbols": false,
     "search.quickOpen.includeHistory": true,
     // Editor Performance
-    "editor.experimental.asyncTokenization": true,
-    "editor.experimental.asyncTokenizationLogging": false,
-    "editor.experimental.asyncTokenizationVerification": false,
     "editor.lightbulb.enabled": "onCode",
     "editor.codeLens": true,
     "editor.colorDecorators": true,
@@ -1714,10 +1676,8 @@
     // ================================================
     // Visual Enhancements that are Performance-Friendly
     "workbench.tokenColorCustomizations": {},
-    "editor.tokenColorCustomizations": {},
     // Smart Code Navigation
     "editor.find.addExtraSpaceOnTop": true,
-    "editor.find.autoFindInSelection": "never",
     "editor.find.cursorMoveOnType": true,
     "editor.find.globalFindClipboard": false,
     "editor.find.loop": true,
@@ -1728,14 +1688,9 @@
     "zenMode.hideActivityBar": true,
     "zenMode.hideLineNumbers": false,
     "zenMode.hideStatusBar": true,
-    "zenMode.hideTabs": true,
     "zenMode.restore": true,
     "zenMode.silentNotifications": true,
     // Multi-Cursor Enhancement
-    "editor.multiCursorLimit": 10000,
-    "editor.multiCursorMergeOverlapping": true,
-    "editor.multiCursorPaste": "spread",
-    // Bracket Matching Fun
     "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
     // Smart Indentation
     "editor.indentSize": "tabSize",
@@ -1802,15 +1757,11 @@
     "workbench.quickOpen.closeOnFocusLost": false,
     "workbench.quickOpen.preserveInput": false,
     // Editor Tab Management
-    "workbench.editor.closeOnFileDelete": true,
-    "workbench.editor.decorations.badges": true,
-    "workbench.editor.decorations.colors": true,
     "workbench.editor.labelFormat": "default",
     // Integrated Terminal Enhancement
     "terminal.integrated.allowChords": true,
     "terminal.integrated.allowMnemonics": false,
     "terminal.integrated.altClickMovesCursor": true,
-    "terminal.integrated.automationProfile.linux": null,
     "terminal.integrated.bellDuration": 1000,
     "terminal.integrated.commandsToSkipShell": [],
     "terminal.integrated.cwd": "",
@@ -1822,24 +1773,6 @@
     "terminal.integrated.macOptionClickForcesSelection": false,
     "terminal.integrated.mouseWheelScrollSensitivity": 1,
     "terminal.integrated.persistentSessionReviveProcess": "onExit",
-    "terminal.integrated.profiles.linux": {
-        "bash": {
-            "path": "bash",
-            "icon": "terminal-bash"
-        },
-        "zsh": {
-            "path": "zsh",
-            "icon": "terminal-bash"
-        },
-        "fish": {
-            "path": "fish",
-            "icon": "terminal-bash"
-        },
-        "tmux": {
-            "path": "tmux",
-            "icon": "terminal-tmux"
-        }
-    },
     "terminal.integrated.shellIntegration.enabled": true,
     "terminal.integrated.shellIntegration.decorationsEnabled": "both",
     "terminal.integrated.shellIntegration.history": 100,
@@ -2044,11 +1977,9 @@
     "settingsSync.ignoredSettings": [],
     "settingsSync.keybindingsPerPlatform": true,
     // ==== EDITOR COLLABORATION FEATURES ====
-    "editor.selectionClipboard": false,
     "editor.find.seedSearchStringFromNearestWord": false,
     // ==== SCM ADVANCED COLLABORATION ====
     "scm.alwaysShowActions": false,
-    "scm.alwaysShowRepositories": false,
     "scm.repositories.sortOrder": "discovery time",
     "scm.repositories.visible": 10,
     // ==== NOTIFICATION & COMMUNICATION ====
@@ -2178,14 +2109,6 @@
     "search.sortOrder": "default",
     // ==== DEPRECATED SETTINGS REMOVED ====
     "multiDiffEditor.experimental.enabled": false,
-    "workbench.editor.closeEmptyGroups": true,
-    "workbench.editor.enablePreviewFromCodeNavigation": false,
-    "workbench.editor.focusRecentEditorAfterClose": true,
-    "workbench.editor.highlightModifiedTabs": false,
-    "workbench.editor.limit.enabled": false,
-    "workbench.editor.limit.excludeDirty": false,
-    "workbench.editor.limit.perEditorGroup": false,
-    "workbench.editor.limit.value": 10,
     "workbench.editor.mouseBackForwardToNavigate": true,
     "workbench.editor.openPositioning": "right",
     "workbench.editor.openSideBySideDirection": "right",
@@ -2200,7 +2123,6 @@
     "workbench.editor.tabCloseButton": "right",
     "workbench.editor.tabSizingFixedMinWidth": 50,
     "workbench.editor.tabSizingFixedMaxWidth": 160,
-    "workbench.editor.wrapTabs": false,
     // ==== TEAM EXTENSION MANAGEMENT ====
     "extensions.confirmUninstall": true,
     "extensions.supportUntrustedWorkspaces": {},
@@ -2226,15 +2148,6 @@
         "en": true
     },
     // ==== IMPROVED ERROR VISIBILITY ====
-    "workbench.colorCustomizations": {
-        "editorError.foreground": "#ff6b6b",
-        "editorWarning.foreground": "#feca57",
-        "editorInfo.foreground": "#48cae4",
-        "editorHint.foreground": "#a8e6cf",
-        "problemsErrorIcon.foreground": "#ff6b6b",
-        "problemsWarningIcon.foreground": "#feca57",
-        "problemsInfoIcon.foreground": "#48cae4"
-    },
     // ==== IMPROVED PROBLEM PANEL ====
     "problems.visibility": true,
     // ==== ENHANCED TERMINAL FOR ERROR TRACKING ====
@@ -2407,7 +2320,7 @@
     "editor.gotoLocation.alternativeImplementationCommand": "editor.action.peekImplementation",
     "editor.gotoLocation.alternativeReferenceCommand": "editor.action.referenceSearch.trigger",
     "editor.gotoLocation.alternativeTypeDefinitionCommand": "editor.action.peekTypeDefinition",
-    "workbench.editor.doubleClickTabToToggleEditorGroupSizes": true,
+    "workbench.editor.doubleClickTabToToggleEditorGroupSizes": "expand",
     "workbench.editor.closeEmptyGroups": true,
     "workbench.editor.enablePreviewFromCodeNavigation": false,
     "workbench.editor.focusRecentEditorAfterClose": true,
@@ -2518,7 +2431,7 @@
     "rust-analyzer.completion.autoimport.enable": true,
     "rust-analyzer.completion.autoself.enable": true,
     "rust-analyzer.imports.granularity.group": "module",
-    "rust-analyzer.imports.prefix": "by_crate",
+    "rust-analyzer.imports.prefix": "crate",
     "rust-analyzer.workspace.symbol.search.kind": "all_symbols",
     "rust-analyzer.workspace.symbol.search.limit": 256,
     "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
@@ -2537,26 +2450,14 @@
     "editor.experimental.dropIntoEditor.enabled": true,
     "workbench.experimental.enableNewProfilesUI": true,
     "workbench.experimental.cloudChanges.enabled": false,
-    "workbench.experimental.settingsProfiles.enabled": true,
     "workbench.trustedDomains.promptInTrustedWorkspace": false,
     "security.promptForLocalFileProtocolHandling": false,
     // command
-    "editor.experimental.pasteActions.enabled": true,
-    "editor.experimental.stickyTabStops": true,
-    "editor.stickyTabStops": true,
-    "editor.unfoldOnClickAfterEndOfLine": true,
-    "editor.experimental.asyncTokenization": true,
-    // custom
-    "editor.experimental.pasteActions.enabled": true,
-    "editor.experimental.stickyTabStops": true,
-    "editor.stickyTabStops": true,
-    "editor.unfoldOnClickAfterEndOfLine": true,
-    "editor.experimental.asyncTokenization": true,
-    // context
-    "editor.experimental.asyncTokenization": true,
-    "editor.experimental.asyncTokenizationLogging": false,
     "workbench.editor.limit.enabled": true,
     "workbench.editor.limit.value": 20,
     "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.limit.excludeDirty": true
+    "workbench.editor.limit.excludeDirty": true,
+    "workbench.editor.tabActionLocation": "right",
+    "zenMode.showTabs": "single",
+    "code-runner.runInTerminal": true
 }
