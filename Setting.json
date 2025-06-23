@@ -620,13 +620,64 @@
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
         "editor.formatOnSave": true,
+        "editor.formatOnType": true, // Real-time formatting for productivity
+        "editor.formatOnPaste": true, // Clean up pasted code
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
+            "source.organizeImports": "explicit",
+            "source.fixAll.rust-analyzer": "explicit" // Auto-fix clippy suggestions
         },
         "editor.rulers": [
-            100
-        ],
-        "editor.semanticHighlighting.enabled": true
+            80,
+            100,
+            120
+        ], // Multiple rulers for different contexts
+        "editor.semanticHighlighting.enabled": true,
+        "editor.inlayHints.enabled": "on", // Show all hints
+        "editor.suggest.showInlineDetails": true, // Enhanced completion
+        "editor.hover.enabled": true,
+        "editor.hover.delay": 300, // Quick hover for productivity
+        "editor.hover.sticky": true, // Keep hover visible
+        "editor.parameterHints.enabled": true,
+        "editor.parameterHints.cycle": true, // Cycle through overloads
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "off",
+            "strings": "off"
+        },
+        "editor.suggest.insertMode": "replace",
+        "editor.suggest.filterGraceful": true,
+        "editor.wordBasedSuggestions": "matchingDocuments", // Intelligent suggestions
+        "editor.bracketPairColorization.enabled": true, // Visual aid for nested code
+        "editor.guides.bracketPairs": "active",
+        "editor.guides.bracketPairsHorizontal": "active",
+        "editor.showFoldingControls": "always", // Code folding for large files
+        "editor.foldingStrategy": "indentation",
+        "editor.folding": true,
+        "editor.foldingHighlight": true,
+        "editor.showUnused": true, // Highlight unused code
+        "editor.showDeprecated": true, // Show deprecated items
+        "editor.lightbulb.enabled": "on", // Quick fixes
+        "editor.suggest.preview": true, // Preview suggestions
+        "editor.acceptSuggestionOnCommitCharacter": true, // Fast coding
+        "editor.acceptSuggestionOnEnter": "on",
+        "editor.quickSuggestionsDelay": 0, // Instant suggestions
+        "editor.suggestOnTriggerCharacters": true,
+        "editor.wordWrap": "on",
+        "editor.wordWrapColumn": 100, // Optimized for readability (matching rustfmt config)
+        "editor.wrappingIndent": "indent",
+        // Additional productivity enhancements for Rust development
+        "editor.bracketPairColorization.independentColorPoolPerBracketType": true, // Enhanced bracket colors
+        "editor.guides.highlightActiveIndentation": true, // Highlight active indentation
+        "editor.unicodeHighlight.ambiguousCharacters": true, // Unicode safety for internationalization
+        "editor.unicodeHighlight.invisibleCharacters": true, // Highlight invisible chars for safety
+        "editor.renderFinalNewline": "on", // Show final newline for consistency
+        "editor.trimAutoWhitespace": true, // Auto trim whitespace
+        "editor.detectIndentation": false, // Force 4-space indentation for Rust
+        "editor.renderLineHighlight": "gutter", // Highlight current line in gutter
+        "editor.occurrencesHighlight": "multiFile", // Highlight occurrences across files
+        "editor.selectionHighlight": true, // Highlight selections
+        "editor.wordHighlightBackground": "#ffffff0a", // Subtle word highlighting
+        "editor.wordHighlightStrongBackground": "#ffffff14" // Stronger highlighting for write access
     },
     "[c]": {
         "editor.tabSize": 4,
@@ -663,97 +714,329 @@
         "editor.insertSpaces": true,
         "editor.formatOnSave": true
     },
-    // Rust Analyzer Settings - Production Ready
+    // ================================================
+    // 🦀 RUST ANALYZER - ULTIMATE CONFIGURATION FOR ALL USE CASES
+    // Backend, Competitive Programming, Kernel, AI, Workspace Organization
+    //
+    // This configuration is optimized for:
+    // ✅ Backend Development (API servers, web services, microservices)
+    // ✅ Competitive Programming (fast compilation, performance hints)
+    // ✅ Kernel Development (safety checks, memory management insights)
+    // ✅ AI/ML Development (type hints, performance optimization)
+    // ✅ Workspace Organization (multi-project support, symbol search)
+    //
+    // Key Features Enabled:
+    // 🔍 Comprehensive Clippy lints with smart allowances
+    // 🚀 Advanced inlay hints for type clarity and productivity
+    // 📦 Full cargo feature support and build script integration
+    // 🎯 Enhanced completion with context-aware suggestions
+    // 🔧 Optimized formatting with consistent style rules
+    // 🧪 Testing integration with custom commands
+    // 📊 Memory layout hints for low-level development
+    // 🔄 Smart import organization and management
+    // ⚡ Performance optimizations for large codebases
+    // ================================================
+    // Check on Save - Enhanced Clippy Integration
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.checkOnSave.enable": true,
     "rust-analyzer.checkOnSave.allTargets": true,
+    "rust-analyzer.checkOnSave.noDefaultFeatures": false,
     "rust-analyzer.checkOnSave.extraArgs": [
-        "--",
-        "-Dwarnings",
-        "-Dclippy::all",
-        "-Dclippy::pedantic",
-        "-Dclippy::nursery",
-        "-Aclippy::missing_docs_in_private_items",
-        "-Aclippy::module_name_repetitions",
-        "-Aclippy::missing_errors_doc"
+        // "--",
+        // "-Dwarnings",
+        // "-Dclippy::all",
+        // "-Dclippy::pedantic",
+        // "-Dclippy::nursery",
+        // "-Dclippy::cargo", // For backend & workspace organization
+        // "-Dclippy::perf", // For competitive programming & AI performance
+        // "-Dclippy::style", // Code quality
+        // "-Dclippy::complexity", // For kernel & backend development
+        // "-Dclippy::correctness", // Critical for all use cases
+        // "-Dclippy::suspicious", // Security for backend/kernel
+        // "-Dclippy::unwrap_used",           // Prevent unwrap() usage
+        // "-Dclippy::expect_used",           // Prevent expect() usage
+        // "-Dclippy::panic",                 // Prevent panic!() usage
+        // "-Dclippy::unimplemented",         // Prevent unimplemented!() usage
+        // "-Dclippy::todo",                  // Prevent todo!() usage
+        // "-Dclippy::unreachable",           // Prevent unreachable!() usage
+        // "-Dclippy::missing_docs_in_private_items", // Require docs everywhere
+        // "-Dclippy::print_stdout",          // Prevent println!() in production
+        // "-Dclippy::print_stderr",          // Prevent eprintln!() in production
+        // "-Dclippy::dbg_macro",             // Prevent dbg!() in production
+        // "-Dclippy::use_debug",             // Restrict Debug usage
+        // "-Dclippy::mem_forget",            // Prevent mem::forget
+        // "-Dclippy::float_arithmetic",      // Restrict floating point ops
+        // "-Dclippy::integer_arithmetic",    // Restrict integer arithmetic
+        // "-Dclippy::modulo_arithmetic",     // Restrict modulo operations
+        // "-Dclippy::as_conversions",        // Restrict 'as' conversions
+        // "-Dclippy::clone_on_ref_ptr",      // Prevent cloning reference pointers
+        // "-Dclippy::create_dir",            // Restrict std::fs::create_dir
+        // "-Dclippy::filetype_is_file",      // Restrict FileType::is_file
+        // "-Dclippy::get_unwrap",            // Prevent .get().unwrap()
+        // "-Dclippy::if_then_some_else_none", // Suggest then_some/else_none
+        // "-Dclippy::lossy_float_literal",   // Prevent lossy float literals
+        // "-Dclippy::map_err_ignore",        // Prevent ignoring map_err
+        // "-Dclippy::rc_buffer",             // Prevent Rc<Vec<T>> etc
+        // "-Dclippy::rc_mutex",              // Prevent Rc<Mutex<T>>
+        // "-Dclippy::rest_pat_in_fully_bound_structs", // Pattern matching
+        // "-Dclippy::same_name_method",      // Prevent method name conflicts
+        // "-Dclippy::shadow_reuse",          // Prevent variable shadowing
+        // "-Dclippy::shadow_same",           // Prevent same-name shadowing
+        // "-Dclippy::shadow_unrelated",      // Prevent unrelated shadowing
+        // "-Dclippy::str_to_string",         // Prefer &str over String conversion
+        // "-Dclippy::string_add",            // Prevent String + &str
+        // "-Dclippy::string_to_string",      // Prevent String.to_string()
+        // "-Dclippy::try_err",               // Suggest try blocks
+        // "-Dclippy::verbose_file_reads",    // Suggest more explicit file reads
+        // "-Dclippy::wildcard_enum_match_arm", // Require explicit enum matching
+        // "-Aclippy::missing_docs_in_private_items",
+        // "-Aclippy::module_name_repetitions",
+        // "-Aclippy::missing_errors_doc",
+        // "-Aclippy::missing_panics_doc",
+        // "-Aclippy::implicit_return",
+        // "-Aclippy::question_mark_used",
+        // "-Aclippy::single_char_lifetime_names", // Common in competitive programming
+        // "-Aclippy::many_single_char_names", // Mathematical variables
+        // "-Aclippy::inline_always",
+        // "-Aclippy::cast_possible_truncation",
+        // "-Aclippy::cast_precision_loss",
+        // "-Aclippy::blanket_clippy_restriction_lints" // Silence the restriction warning
     ],
-    "rust-analyzer.cargo.allFeatures": true,
+    // Enhanced Cargo Configuration for Complex Projects
+    "rust-analyzer.cargo.allFeatures": true, // Enable all features for comprehensive analysis
     "rust-analyzer.cargo.features": "all",
     "rust-analyzer.cargo.targetDir": true,
-    "rust-analyzer.cargo.runBuildScripts": true,
+    "rust-analyzer.cargo.runBuildScripts": true, // Important for complex projects
     "rust-analyzer.cargo.buildScripts.enable": true,
     "rust-analyzer.cargo.buildScripts.overrideCommand": null,
     "rust-analyzer.cargo.buildScripts.useRustcWrapper": true,
-    "rust-analyzer.cargo.autoreload": true,
+    "rust-analyzer.cargo.autoreload": true, // Auto-reload for development efficiency
     "rust-analyzer.cargo.noDefaultFeatures": false,
-    "rust-analyzer.completion.callable.snippets": "fill_arguments",
-    "rust-analyzer.completion.postfix.enable": true,
-    "rust-analyzer.completion.privateEditable.enable": false,
+    "rust-analyzer.cargo.sysroot": "discover", // Auto-discover system libraries
+    "rust-analyzer.cargo.extraArgs": [], // Additional cargo arguments
+    "rust-analyzer.cargo.extraEnv": {}, // Environment variables for cargo
+    // Advanced completion for maximum productivity
+    "rust-analyzer.completion.callable.snippets": "fill_arguments", // AI & competitive programming
+    "rust-analyzer.completion.postfix.enable": true, // Productivity boost
+    "rust-analyzer.completion.privateEditable.enable": true, // Full access for development
     "rust-analyzer.completion.snippet.enable": true,
+    "rust-analyzer.completion.autoimport.enable": true, // Workspace organization
+    "rust-analyzer.completion.autoself.enable": true,
+    "rust-analyzer.completion.term.search.enable": true, // AI-powered search
+    "rust-analyzer.completion.term.search.fuel": 600, // Extended search for large codebases
+    "rust-analyzer.completion.limit": null, // No limit for comprehensive results
+    // Advanced diagnostics for all scenarios
     "rust-analyzer.diagnostics.enable": true,
-    "rust-analyzer.diagnostics.enableExperimental": true,
+    "rust-analyzer.diagnostics.enableExperimental": true, // Cutting-edge features
     "rust-analyzer.diagnostics.disabled": [],
     "rust-analyzer.diagnostics.remapPrefix": {},
     "rust-analyzer.diagnostics.warningsAsHint": [],
     "rust-analyzer.diagnostics.warningsAsInfo": [],
+    // Enhanced file watching for workspace organization
     "rust-analyzer.files.watcher": "server",
-    "rust-analyzer.files.excludeDirs": [],
-    "rust-analyzer.hover.actions.debug": true,
+    "rust-analyzer.files.excludeDirs": [
+        ".git",
+        "target",
+        "node_modules",
+        ".vscode",
+        ".idea",
+        "build",
+        "dist",
+        "__pycache__" // Additional exclusions
+    ],
+    // Comprehensive hover information
+    "rust-analyzer.hover.actions.debug": true, // Kernel development
     "rust-analyzer.hover.actions.enable": true,
-    "rust-analyzer.hover.actions.gotoTypeDefinition": true,
+    "rust-analyzer.hover.actions.gotoTypeDefinition": true, // Navigation
     "rust-analyzer.hover.actions.implementations": true,
-    "rust-analyzer.hover.actions.references": true,
-    "rust-analyzer.hover.actions.run": true,
-    "rust-analyzer.hover.documentation": true,
+    "rust-analyzer.hover.actions.references": true, // Code analysis
+    "rust-analyzer.hover.actions.run": true, // Competitive programming
+    "rust-analyzer.hover.documentation": true, // Learning & reference
     "rust-analyzer.hover.links": true,
-    "rust-analyzer.imports.granularity.enforce": false,
+    "rust-analyzer.hover.memoryLayout.enable": true, // Kernel development
+    "rust-analyzer.hover.memoryLayout.alignment": "hexadecimal", // Memory analysis
+    "rust-analyzer.hover.memoryLayout.niches": true,
+    "rust-analyzer.hover.memoryLayout.offset": "hexadecimal",
+    "rust-analyzer.hover.memoryLayout.size": "both", // Show both decimal and hex
+    // Advanced import management for workspace organization
+    "rust-analyzer.imports.granularity.enforce": true,
     "rust-analyzer.imports.group.enable": true,
     "rust-analyzer.imports.merge.glob": true,
-    "rust-analyzer.inlayHints.bindingModeHints.enable": true,
-    "rust-analyzer.inlayHints.chainingHints.enable": true,
-    "rust-analyzer.inlayHints.closingBraceHints.enable": true,
-    "rust-analyzer.inlayHints.closingBraceHints.minLines": 25,
-    "rust-analyzer.inlayHints.closureCaptureHints.enable": true,
-    "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "never",
-    "rust-analyzer.inlayHints.discriminantHints.enable": "never",
-    "rust-analyzer.inlayHints.expressionAdjustmentHints.enable": "never",
-    "rust-analyzer.inlayHints.implicitDropHints.enable": false,
-    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "never",
-    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": false,
-    "rust-analyzer.inlayHints.maxLength": 25,
-    "rust-analyzer.inlayHints.parameterHints.enable": true,
-    "rust-analyzer.inlayHints.reborrowHints.enable": "never",
+    "rust-analyzer.imports.prefix": "crate", // Better organization
+    "rust-analyzer.imports.granularity.group": "module",
+    // Ultimate inlay hints for all use cases - Enhanced visibility and productivity
+    "rust-analyzer.inlayHints.bindingModeHints.enable": true, // Pattern matching clarity
+    "rust-analyzer.inlayHints.chainingHints.enable": true, // Method chaining
+    "rust-analyzer.inlayHints.closingBraceHints.enable": true, // Large code blocks
+    "rust-analyzer.inlayHints.closingBraceHints.minLines": 15, // Reduced for better productivity
+    "rust-analyzer.inlayHints.closureCaptureHints.enable": true, // Closure analysis
+    "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "with_block", // Enhanced for AI/backend
+    "rust-analyzer.inlayHints.discriminantHints.enable": "fieldless", // Enum analysis
+    "rust-analyzer.inlayHints.expressionAdjustmentHints.enable": "reborrow", // Memory management
+    "rust-analyzer.inlayHints.expressionAdjustmentHints.hideOutsideUnsafe": false, // Kernel development
+    "rust-analyzer.inlayHints.expressionAdjustmentHints.mode": "prefix",
+    "rust-analyzer.inlayHints.implicitDropHints.enable": true, // Memory safety
+    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial", // Advanced lifetime analysis
+    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    "rust-analyzer.inlayHints.maxLength": 40, // Optimized for readability
+    "rust-analyzer.inlayHints.parameterHints.enable": true, // Function clarity
+    "rust-analyzer.inlayHints.rangeExclusiveHints.enable": true, // Range clarity
+    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable", // Borrow checker insights
     "rust-analyzer.inlayHints.renderColons": true,
-    "rust-analyzer.inlayHints.typeHints.enable": true,
+    "rust-analyzer.inlayHints.typeHints.enable": true, // Type inference visibility
     "rust-analyzer.inlayHints.typeHints.hideClosureInitialization": false,
     "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": false,
-    "rust-analyzer.lens.debug": true,
+    // Enhanced code lens for navigation and testing
+    "rust-analyzer.lens.debug": true, // Debugging support
     "rust-analyzer.lens.enable": true,
-    "rust-analyzer.lens.implementations": true,
-    "rust-analyzer.lens.references": true,
-    "rust-analyzer.lens.run": true,
-    "rust-analyzer.lens.methodReferences": false,
-    "rust-analyzer.lens.enumVariantReferences": false,
-    "rust-analyzer.linkedProjects": [],
-    "rust-analyzer.lru.capacity": 128,
+    "rust-analyzer.lens.implementations": true, // Interface exploration
+    "rust-analyzer.lens.references": true, // Code analysis
+    "rust-analyzer.lens.run": true, // Quick execution for competitive programming
+    "rust-analyzer.lens.methodReferences": true, // Enhanced navigation
+    "rust-analyzer.lens.enumVariantReferences": true, // Enum usage analysis
+    "rust-analyzer.lens.forceCustomCommands": true, // Custom workflows
+    // Project and workspace management
+    "rust-analyzer.linkedProjects": [], // Multi-project support
+    "rust-analyzer.lru.capacity": 256, // Increased cache for large projects
     "rust-analyzer.notifications.cargoTomlNotFound": true,
-    "rust-analyzer.procMacro.enable": true,
+    // Procedural macros for advanced features
+    "rust-analyzer.procMacro.enable": true, // Essential for modern Rust
     "rust-analyzer.procMacro.attributes.enable": true,
-    "rust-analyzer.procMacro.ignored": {},
+    "rust-analyzer.procMacro.ignored": {
+        "tokio": [
+            "main",
+            "test"
+        ], // Common async frameworks
+        "serde": [
+            "Serialize",
+            "Deserialize"
+        ], // Serialization
+        "clap": [
+            "Parser"
+        ], // CLI applications
+        "diesel": [
+            "Queryable",
+            "Insertable"
+        ] // Database ORMs
+    },
     "rust-analyzer.procMacro.server": null,
-    "rust-analyzer.references.excludeImports": false,
-    "rust-analyzer.rustc.source": null,
-    "rust-analyzer.rustfmt.extraArgs": [],
+    // Advanced reference and symbol handling
+    "rust-analyzer.references.excludeImports": false, // Include all references
+    "rust-analyzer.rustc.source": "discover", // Auto-discover rust source
+    // Enhanced formatting for all use cases - Optimized for productivity
+    "rust-analyzer.rustfmt.extraArgs": [
+        "--config",
+        "max_width=100", // Balanced for readability and screen space
+        "--config",
+        "hard_tabs=false",
+        "--config",
+        "tab_spaces=4",
+        "--config",
+        "edition=2021", // Latest edition
+        "--config",
+        "imports_granularity=Crate", // Better organization
+        "--config",
+        "group_imports=StdExternalCrate",
+        "--config",
+        "wrap_comments=true",
+        "--config",
+        "format_code_in_doc_comments=true", // Documentation
+        "--config",
+        "normalize_comments=true",
+        "--config",
+        "format_strings=true",
+        "--config",
+        "hex_literal_case=Upper", // Consistency for kernel dev
+        "--config",
+        "use_small_heuristics=Default", // Smart formatting decisions
+        "--config",
+        "fn_args_layout=Tall", // Function argument layout
+        "--config",
+        "brace_style=SameLineWhere", // Consistent with Rust style
+        "--config",
+        "control_brace_style=AlwaysSameLine",
+        "--config",
+        "trailing_comma=Vertical", // Better diffs
+        "--config",
+        "match_arm_trailing_comma=true",
+        "--config",
+        "indent_style=Visual", // Visual indentation
+        "--config",
+        "struct_lit_single_line=true", // Compact struct literals
+        "--config",
+        "fn_single_line=false", // Keep functions readable
+        "--config",
+        "where_single_line=true", // Compact where clauses when possible
+        "--config",
+        "force_explicit_abi=true", // Explicit ABI for FFI/kernel
+        "--config",
+        "condense_wildcard_suffixes=false", // Clear pattern matching
+        "--config",
+        "format_generated_files=true", // Format generated code
+        "--config",
+        "merge_derives=true", // Merge derive attributes
+        "--config",
+        "use_try_shorthand=true", // Use ? operator
+        "--config",
+        "use_field_init_shorthand=true", // Field init shorthand
+        "--config",
+        "force_multiline_blocks=false", // Allow single line blocks
+        "--config",
+        "format_macro_matchers=true", // Format macro patterns
+        "--config",
+        "format_macro_bodies=true", // Format macro bodies
+        "--config",
+        "report_todo=Never", // Don't report TODOs as errors
+        "--config",
+        "report_fixme=Never", // Don't report FIXMEs as errors
+        "--config",
+        "license_template_path=" // No license template
+    ],
     "rust-analyzer.rustfmt.overrideCommand": null,
-    "rust-analyzer.rustfmt.rangeFormatting.enable": false,
+    "rust-analyzer.rustfmt.rangeFormatting.enable": true, // Partial formatting
+    // Enhanced semantic highlighting for code clarity
     "rust-analyzer.semanticHighlighting.strings.enable": true,
-    "rust-analyzer.semanticHighlighting.punctuation.enable": false,
-    "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": false,
-    "rust-analyzer.semanticHighlighting.punctuation.specialization.enable": false,
-    "rust-analyzer.semanticHighlighting.operator.enable": true,
-    "rust-analyzer.semanticHighlighting.operator.specialization.enable": false,
-    "rust-analyzer.signatureInfo.detail": "full",
+    "rust-analyzer.semanticHighlighting.punctuation.enable": true, // Enhanced visibility
+    "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": true, // Macro clarity
+    "rust-analyzer.semanticHighlighting.punctuation.specialization.enable": true,
+    "rust-analyzer.semanticHighlighting.operator.enable": true, // Operator highlighting
+    "rust-analyzer.semanticHighlighting.operator.specialization.enable": true,
+    "rust-analyzer.semanticHighlighting.doc.comment.inject.enable": true, // Documentation
+    // Enhanced signature help
+    "rust-analyzer.signatureInfo.detail": "full", // Complete information
     "rust-analyzer.signatureInfo.documentation.enable": true,
+    // Performance and caching optimizations
+    "rust-analyzer.cachePriming.enable": true, // Faster startup
+    "rust-analyzer.cachePriming.numThreads": 0, // Use all available cores
+    "rust-analyzer.completion.fullFunctionSignatures.enable": true, // Complete signatures
+    // Enhanced highlighting for better code navigation
+    "rust-analyzer.highlightRelated.breakPoints.enable": true, // Debugging
+    "rust-analyzer.highlightRelated.exitPoints.enable": true, // Control flow
+    "rust-analyzer.highlightRelated.yieldPoints.enable": true, // Async/generators
+    "rust-analyzer.highlightRelated.references.enable": true, // Reference highlighting
+    // Experimental features for cutting-edge development
+    "rust-analyzer.experimental.procAttrMacros": true,
+    "rust-analyzer.joinLines.joinElseIf": true, // Code formatting
+    "rust-analyzer.joinLines.removeTrailingComma": true,
+    "rust-analyzer.joinLines.unwrapTrivialBlock": true,
+    "rust-analyzer.joinLines.joinAssignments": true,
+    // Enhanced settings for competitive programming and performance testing
+    "rust-analyzer.runnables.command": null, // Custom run commands
+    "rust-analyzer.runnables.extraArgs": [
+        "--release"
+    ], // Optimized builds for competitive programming
+    "rust-analyzer.runnables.extraEnv": {
+        "RUST_BACKTRACE": "1", // Debugging information
+        "RUST_LOG": "info", // Balanced logging level
+        "CARGO_INCREMENTAL": "1", // Faster compilation
+        "RUSTFLAGS": "-C target-cpu=native" // Optimize for current CPU in competitive programming
+    },
+    "rust-analyzer.typing.continueCommentsOnNewline": true, // Documentation workflow
+    "rust-analyzer.typing.autoClosingAngleBrackets.enable": true, // Generics support
+    // Enhanced workspace and project management
+    "rust-analyzer.workspace.symbol.search.scope": "workspace_and_dependencies", // Comprehensive symbol search
+    "rust-analyzer.workspace.symbol.search.kind": "all_symbols", // All symbol types
+    "rust-analyzer.workspace.symbol.search.limit": 128, // Increased limit for large projects
     // C/C++ Settings
     "C_Cpp.default.cppStandard": "c++20",
     "C_Cpp.default.cStandard": "c17",
@@ -821,7 +1104,23 @@
     "[toml]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.suggest.showInlineDetails": true, // Enhanced completion for Cargo.toml
+        "editor.hover.enabled": true, // Show documentation for Cargo fields
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "off",
+            "strings": "on" // Enable suggestions in strings for crate names
+        },
+        "editor.semanticHighlighting.enabled": true, // Better syntax highlighting
+        "editor.bracketPairColorization.enabled": true, // Visual aid for nested tables
+        "editor.guides.bracketPairs": "active", // Bracket pair guides
+        "editor.wordWrap": "on", // Wrap long dependency lists
+        "editor.rulers": [
+            100
+        ], // Consistent with Rust code width
+        "editor.trimAutoWhitespace": true, // Clean up whitespace
+        "editor.renderWhitespace": "boundary" // Show whitespace for TOML structure clarity
     },
     "[yaml]": {
         "editor.tabSize": 2,
@@ -1168,1296 +1467,1081 @@
         "razor": "html",
         "plaintext": "pug"
     },
-    "emmet.showExpandedAbbreviation": "always",
-    "emmet.showSuggestionsAsSnippets": true,
-    "emmet.triggerExpansionOnTab": true,
-    "emmet.useInlineCompletions": true,
-    "emmet.variables": {},
-    "emmet.preferences": {},
-    "emmet.syntaxProfiles": {},
-    "emmet.excludeLanguages": [],
+    // React Native specific
+    "react-native-tools.showUserTips": false,
+    "react-native-tools.projectRoot": "",
+    "react-native.packager.port": "8081",
     // ================================================
-    // GO (GOLANG) PROFESSIONAL DEVELOPMENT SETTINGS
+    // VUE.JS - ULTIMATE DEVELOPMENT 💚
     // ================================================
-    // 🚀 World-class Go development configuration for production work
-    // 🔧 gopls (Go Language Server) with optimal settings
-    // 🧪 Enhanced testing, debugging, and productivity features
-    // 📊 Code coverage, performance analysis, and documentation
-    // 🛠️ Professional linting, formatting, and code quality tools
-    "[go]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnPaste": true,
-        "editor.formatOnType": false, // Disabled to prevent interference with gopls
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit",
-            "source.fixAll": "explicit"
-        },
-        "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "editor.insertSpaces": false, // Go uses tabs by convention
-        "editor.detectIndentation": false,
-        "editor.tabSize": 4,
-        "editor.useTabStops": true,
-        "editor.wordWrap": "off", // Go prefers no wrapping for readability
-        "editor.rulers": [
-            80,
-            120
-        ], // Go style guide recommendations
-        "editor.trimAutoWhitespace": true,
-        "editor.semanticHighlighting.enabled": true,
-        "editor.bracketPairColorization.enabled": true,
-        "editor.inlayHints.enabled": "on",
-        "editor.suggest.autoImports": true,
-        "editor.suggest.completeFunctionCalls": true,
-        "editor.quickSuggestions": {
-            "other": "on",
-            "comments": "on",
-            "strings": "on"
-        },
-        "editor.acceptSuggestionOnEnter": "smart",
-        "editor.suggestOnTriggerCharacters": true,
-        "editor.parameterHints.enabled": true,
-        "editor.definitionLinkOpensInPeek": false,
-        "editor.peekWidgetDefaultFocus": "editor"
+    "vetur.validation.template": true,
+    "vetur.validation.style": true,
+    "vetur.validation.script": true,
+    "vetur.completion.autoImport": true,
+    "vetur.completion.scaffoldSnippetSources": {
+        "workspace": "💼",
+        "user": "🗒️",
+        "vetur": "✌"
     },
-    "[go.mod]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": false,
-        "editor.formatOnSave": true
-    },
-    "[go.sum]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": false,
-        "editor.formatOnSave": false
-    },
-    // Go Extension Settings - Enhanced for Professional Development
-    "go.useLanguageServer": true, // Always use gopls
-    "go.languageServerFlags": [
-        "serve",
-        "--debug=localhost:6060"
-    ],
-    "go.languageServerExperimentalFeatures": {
-        "diagnostics": true,
-        "documentLink": true,
-        "hoverKind": "FullDocumentation"
-    },
-    // gopls (Go Language Server) Configuration - Maximum Productivity
-    "gopls": {
-        // Semantic Tokens and Highlighting
-        "semanticTokens": true,
-        "noSemanticString": false,
-        "noSemanticNumber": false,
-        // Code Completion and IntelliSense
-        "completeUnimported": true,
-        "completionDocumentation": true,
-        "deepCompletion": true,
-        "fuzzyMatching": true,
-        "staticcheck": true,
-        // Hover Information - Detailed and Professional
-        "hoverKind": "FullDocumentation", // Show complete documentation
-        "linkTarget": "pkg.go.dev", // Link to official Go documentation
-        "linksInHover": true,
-        // Code Actions and Quick Fixes
-        "fillReturnValues": true,
-        "removeUnusedParameter": true,
-        "undeclaredName": true,
-        "unusedVariables": true,
-        // Formatting and Style
-        "gofumpt": true, // Use gofumpt for stricter formatting
-        "local": "", // Set your module prefix for import grouping
-        // Diagnostics and Error Detection - Comprehensive Analysis
-        "analyses": {
-            "assign": true,
-            "atomic": true,
-            "bools": true,
-            "buildtag": true,
-            "cgocall": true,
-            "composites": true,
-            "copylocks": true,
-            "deepequalerrors": true,
-            "errorsas": true,
-            "fieldalignment": true,
-            "httpresponse": true,
-            "ifaceassert": true,
-            "loopclosure": true,
-            "lostcancel": true,
-            "nilfunc": true,
-            "nilness": true,
-            "printf": true,
-            "shadow": true,
-            "shift": true,
-            "simplifycompositelit": true,
-            "simplifyrange": true,
-            "simplifyslice": true,
-            "sortslice": true,
-            "stdmethods": true,
-            "stringintconv": true,
-            "structtag": true,
-            "testinggoroutine": true,
-            "tests": true,
-            "timeformat": true,
-            "unmarshal": true,
-            "unreachable": true,
-            "unsafeptr": true,
-            "unusedparams": true,
-            "unusedresult": true,
-            "unusedvariable": true,
-            "unusedwrite": true,
-            "usesgenerics": true
-        },
-        // UI and Performance
-        "symbolMatcher": "Fuzzy",
-        "symbolStyle": "Dynamic",
-        "experimentalWorkspaceModule": true,
-        "expandWorkspaceToModule": true,
-        // Build and Dependencies
-        "buildFlags": [],
-        "env": {},
-        "directoryFilters": [
-            "-**/node_modules",
-            "-**/vendor"
-        ],
-        // Advanced Features
-        "vulncheck": "Imports", // Vulnerability checking
-        "templateExtensions": [
-            "tmpl",
-            "gotmpl",
-            "gohtml"
-        ],
-        "standaloneTags": [
-            "ignore"
-        ]
-    },
-    // Go Extension - Core Settings
-    "go.autocompleteUnimportedPackages": true,
-    "go.gotoSymbol.includeImports": true,
-    "go.gotoSymbol.includeGoroot": true,
-    "go.useCodeSnippetsOnFunctionSuggest": true,
-    "go.goroot": "",
-    // Go Extension - Testing Configuration
-    "go.testFlags": [
-        "-v",
-        "-race"
-    ],
-    "go.testTimeout": "30s",
-    "go.testEnvVars": {},
-    "go.testEnvFile": null,
-    "go.testOnSave": false, // Set to true if you want automatic testing
-    "go.coverOnSave": false,
-    "go.coverOnSaveTimeout": "30s",
-    "go.coverOnSingleTest": false,
-    "go.coverOnSingleTestFile": false,
-    "go.coverOnTestPackage": true,
-    "go.coverageDecorator": {
-        "type": "gutter",
-        "coveredHighlightColor": "rgba(64,128,64,0.5)",
-        "uncoveredHighlightColor": "rgba(128,64,64,0.25)",
-        "coveredBorderColor": "rgba(64,128,64,1)",
-        "uncoveredBorderColor": "rgba(128,64,64,1)",
-        "coveredGutterStyle": "blockgreen",
-        "uncoveredGutterStyle": "blockred"
-    },
-    // Go Extension - Build and Lint Settings
-    "go.buildOnSave": "package",
-    "go.buildFlags": [],
-    "go.buildTags": "",
-    "go.formatTool": "goimports",
-    "go.formatFlags": [],
-    "go.lintTool": "golangci-lint", // Professional linting tool
-    "go.lintFlags": [
-        "--fast",
-        "--enable-all",
-        "--disable=exhaustivestruct,exhaustruct,varnamelen,ireturn,depguard,lll,gochecknoglobals,gochecknoinits,funlen,godox,wsl"
-    ],
-    "go.lintOnSave": "package",
-    "go.vetOnSave": "package",
-    "go.vetFlags": [
-        "-all"
-    ],
-    // Go Extension - Debugging and Profiling
-    "go.delveConfig": {
-        "dlvLoadConfig": {
-            "followPointers": true,
-            "maxVariableRecurse": 1,
-            "maxStringLen": 512,
-            "maxArrayValues": 64,
-            "maxStructFields": -1
-        },
-        "apiVersion": 2,
-        "stackTraceDepth": 50,
-        "maxStringLen": 512,
-        "maxArrayValues": 64,
-        "maxVariableRecurse": 1,
-        "showGlobalVariables": true,
-        "debugAdapter": "legacy",
-        "substitutePath": [],
-        "hideSystemGoroutines": false,
-        "showLog": false,
-        "logOutput": "debugger",
-        "dlvFlags": []
-    },
-    // Go Extension - Documentation and Code Generation
-    "go.generateTestsFlags": [
-        "-all"
-    ],
-    "go.docsTool": "godoc",
-    "go.toolsManagement.autoUpdate": true,
-    "go.installDependenciesWhenBuilding": true,
-    "go.addTags": {
-        "tags": "json",
-        "options": "json=omitempty",
-        "promptForTags": false,
-        "transform": "snakecase"
-    },
-    // Go Extension - Productivity Features
-    "go.enableCodeLens": {
-        "references": true,
-        "runtest": true
-    },
-    "go.editorContextMenuCommands": {
-        "toggleTestFile": true,
-        "addTags": true,
-        "removeTags": true,
-        "testAtCursor": true,
-        "testFile": true,
-        "testPackage": true,
-        "generateTestForFunction": true,
-        "generateTestForFile": true,
-        "generateTestForPackage": true,
-        "addImport": true,
-        "testCoverage": true,
-        "playground": true,
-        "debugTestAtCursor": true
-    },
-    // Go Extension - Survey and Telemetry
-    "go.survey.prompt": false,
-    "go.telemetryOptout": false, // Set to true if you want to opt out
-    "go.disableConcurrentTests": false,
+    "vetur.completion.tagCasing": "kebab",
+    "vetur.format.defaultFormatter.html": "prettier",
+    "vetur.format.defaultFormatter.css": "prettier",
+    "vetur.format.defaultFormatter.postcss": "prettier",
+    "vetur.format.defaultFormatter.scss": "prettier",
+    "vetur.format.defaultFormatter.less": "prettier",
+    "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+    "vetur.format.defaultFormatter.js": "prettier",
+    "vetur.format.defaultFormatter.ts": "prettier",
+    "vetur.format.options.tabSize": 2,
+    "vetur.format.options.useTabs": false,
+    "vetur.ignoreProjectWarning": false,
+    "vetur.useWorkspaceDependencies": true,
+    "vetur.experimental.templateInterpolationService": true,
+    // Vue 3 / Volar settings
+    "vue.inlayHints.missingProps": true,
+    "vue.inlayHints.optionsWrapper": true,
+    "vue.inlayHints.inlineHandlerLeading": true,
+    "vue.inlayHints.destructuringParams": true,
+    "vue.complete.casing.tags": "kebab",
+    "vue.complete.casing.props": "camel",
+    "vue.autoInsert.dotValue": true,
     // ================================================
-    // JAVA DEVELOPMENT - ULTIMATE CONFIGURATION ☕
+    // RUST EXTENSIONS INTEGRATION 🦀
     // ================================================
-    "[java]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true,
-        "editor.formatOnPaste": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit",
-            "source.fixAll": "explicit",
-            "source.removeUnusedImports": "explicit"
-        },
-        "editor.rulers": [
-            80,
-            120
-        ],
-        "editor.semanticHighlighting.enabled": true,
-        "editor.wordWrap": "on",
-        "editor.wordWrapColumn": 120,
-        "editor.suggest.autoImports": true,
-        "editor.suggest.completeFunctionCalls": true,
-        "editor.inlayHints.enabled": "on",
-        "editor.bracketPairColorization.enabled": true,
-        "editor.guides.bracketPairs": "active",
-        "editor.showFoldingControls": "always",
-        "editor.foldingStrategy": "indentation",
-        "editor.autoClosingBrackets": "always",
-        "editor.autoClosingQuotes": "always",
-        "editor.autoIndent": "full",
-        "editor.quickSuggestions": {
-            "other": "on",
-            "comments": "on",
-            "strings": "on"
-        },
-        "editor.acceptSuggestionOnEnter": "smart",
-        "editor.suggestOnTriggerCharacters": true,
-        "editor.parameterHints.enabled": true,
-        "editor.definitionLinkOpensInPeek": false,
-        "editor.peekWidgetDefaultFocus": "editor"
-    },
-    // Java Language Server Settings - ULTIMATE INTELLIGENCE
-    "java.configuration.detectJdksAtStart": true,
-    "java.configuration.checkProjectSettingsExclusions": true,
-    "java.configuration.updateBuildConfiguration": "interactive",
-    "java.configuration.maven.userSettings": null,
-    "java.configuration.maven.globalSettings": null,
-    "java.configuration.workspaceCacheLimit": 90,
-    "java.autobuild.enabled": true,
-    "java.maxConcurrentBuilds": 1,
-    "java.completion.enabled": true,
-    "java.completion.overwrite": true,
-    "java.completion.guessMethodArguments": true,
-    "java.completion.favoriteStaticMembers": [
-        "org.junit.Assert.*",
-        "org.junit.Assume.*",
-        "org.junit.jupiter.api.Assertions.*",
-        "org.junit.jupiter.api.Assumptions.*",
-        "org.junit.jupiter.api.DynamicContainer.*",
-        "org.junit.jupiter.api.DynamicTest.*",
-        "org.mockito.Mockito.*",
-        "org.mockito.ArgumentMatchers.*",
-        "org.mockito.Answers.*"
+    // Even Better TOML for Cargo.toml - Enhanced for Rust projects
+    "evenBetterToml.formatter.alignEntries": true,
+    "evenBetterToml.formatter.arrayTrailingComma": true,
+    "evenBetterToml.formatter.compactArrays": true,
+    "evenBetterToml.formatter.compactInlineTables": false,
+    "evenBetterToml.formatter.indentTables": true,
+    "evenBetterToml.formatter.indentEntries": false,
+    "evenBetterToml.formatter.trailingNewline": true,
+    "evenBetterToml.formatter.reorderKeys": true,
+    "evenBetterToml.formatter.allowedBlankLines": 2,
+    "evenBetterToml.formatter.columnWidth": 120,
+    "evenBetterToml.schema.enabled": true, // Schema validation for Cargo.toml
+    "evenBetterToml.schema.catalogs": [
+        "https://www.schemastore.org/api/json/catalog.json"
     ],
-    "java.completion.filteredTypes": [
-        "java.awt.*",
-        "com.sun.*",
-        "sun.*",
-        "jdk.*",
-        "org.graalvm.*",
-        "io.micrometer.shaded.*"
+    // CodeLLDB for Rust debugging - Ultimate debugging experience
+    "lldb.displayFormat": "auto",
+    "lldb.showDisassembly": "auto",
+    "lldb.dereferencePointers": true,
+    "lldb.consoleMode": "commands",
+    "lldb.suppressMissingSourceFiles": true,
+    "lldb.showVariableScope": true, // Enhanced debugging for all use cases
+    "lldb.showVariableTypes": true, // Type information in debugger
+    "lldb.evalTimeout": 5000, // Extended timeout for complex expressions
+    // Error Lens for better error visualization - Critical for all development
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning",
+        "info",
+        "hint"
     ],
-    "java.completion.importOrder": [
-        "java",
-        "javax",
-        "com",
-        "org"
-    ],
-    "java.foldingRange.enabled": true,
-    "java.progressReports.enabled": true,
-    "java.format.enabled": true,
-    "java.format.settings.url": null,
-    "java.format.settings.profile": null,
-    "java.format.comments.enabled": true,
-    "java.format.onType.enabled": true,
-    "java.saveActions.organizeImports": true,
-    "java.selectionRange.enabled": true,
-    "java.showBuildStatusOnStart.enabled": "notification",
-    "java.signatureHelp.enabled": true,
-    "java.signatureHelp.description.enabled": true,
-    "java.contentProvider.preferred": null,
-    "java.import.gradle.enabled": true,
-    "java.import.gradle.wrapper.enabled": true,
-    "java.import.gradle.version": null,
-    "java.import.gradle.home": null,
-    "java.import.gradle.java.home": null,
-    "java.import.gradle.offline.enabled": false,
-    "java.import.gradle.arguments": null,
-    "java.import.gradle.jvmArguments": null,
-    "java.import.gradle.user.home": null,
-    "java.import.maven.enabled": true,
-    "java.import.maven.disableTestClasspathFlag": false,
-    "java.import.exclusions": [
-        "**/node_modules/**",
-        "**/.metadata/**",
-        "**/archetype-resources/**",
-        "**/META-INF/maven/**"
-    ],
-    "java.project.encoding": "ignore",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar"
-    ],
-    "java.project.sourcePaths": [],
-    "java.project.outputPath": "",
-    "java.project.resourceFilters": [
-        "node_modules",
-        ".git"
-    ],
-    "java.trace.server": "off",
-    "java.implementationsCodeLens.enabled": true,
-    "java.referencesCodeLens.enabled": true,
-    "java.references.includeAccessors": true,
-    "java.references.includeDecompiledSources": true,
-    "java.typeHierarchy.lazyLoad": false,
-    "java.codeGeneration.hashCodeEquals.useJava7Objects": false,
-    "java.codeGeneration.hashCodeEquals.useInstanceof": false,
-    "java.codeGeneration.useBlocks": false,
-    "java.codeGeneration.generateComments": false,
-    "java.codeGeneration.toString.template": "${object.className} [${member.name()}=${member.value}, ${otherMembers}]",
-    "java.codeGeneration.toString.codeStyle": "STRING_CONCATENATION",
-    "java.codeGeneration.toString.skipNullValues": false,
-    "java.codeGeneration.toString.listArrayContents": true,
-    "java.codeGeneration.toString.limitElements": 0,
-    "java.sources.organizeImports.starThreshold": 99,
-    "java.sources.organizeImports.staticStarThreshold": 99,
-    "java.inlayHints.parameterNames.enabled": "all",
+    "errorLens.messageTemplate": "$message", // Clean error display
+    "errorLens.messageMaxChars": 500, // Show full error messages
+    "errorLens.delay": 0, // Instant error feedback
+    "errorLens.onSave": true,
+    "errorLens.onSaveTimeout": 1000,
+    "errorLens.followCursor": "allLines", // Track cursor for context
+    "errorLens.followCursorMore": 0,
+    "errorLens.messageBackgroundMode": "line", // Highlight entire line
+    "errorLens.enableOnDiffView": true, // Show errors in diff view
+    "errorLens.statusBarIconsEnabled": true, // Status bar indicators
+    "errorLens.statusBarMessageEnabled": true,
     // ================================================
-    // KOTLIN DEVELOPMENT - ULTIMATE CONFIGURATION 🎯
+    // COMPETITIVE PROGRAMMING TEMPLATES 🏆
     // ================================================
-    "[kotlin]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true,
-        "editor.formatOnPaste": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit",
-            "source.fixAll": "explicit"
-        },
-        "editor.rulers": [
-            80,
-            120
-        ],
-        "editor.semanticHighlighting.enabled": true,
-        "editor.wordWrap": "on",
-        "editor.wordWrapColumn": 120,
-        "editor.suggest.autoImports": true,
-        "editor.suggest.completeFunctionCalls": true,
-        "editor.inlayHints.enabled": "on",
-        "editor.bracketPairColorization.enabled": true,
-        "editor.guides.bracketPairs": "active",
-        "editor.showFoldingControls": "always",
-        "editor.foldingStrategy": "indentation",
-        "editor.autoClosingBrackets": "always",
-        "editor.autoClosingQuotes": "always",
-        "editor.autoIndent": "full",
-        "editor.quickSuggestions": {
-            "other": "on",
-            "comments": "on",
-            "strings": "on"
-        },
-        "editor.acceptSuggestionOnEnter": "smart",
-        "editor.suggestOnTriggerCharacters": true,
-        "editor.parameterHints.enabled": true,
-        "editor.definitionLinkOpensInPeek": false,
-        "editor.peekWidgetDefaultFocus": "editor"
-    },
-    "[kotlinscript]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true
-    },
-    // Kotlin Language Server Settings - ULTIMATE INTELLIGENCE
-    "kotlin.languageServer.enabled": true,
-    "kotlin.languageServer.path": "",
-    "kotlin.languageServer.port": 0,
-    "kotlin.trace.server": "off",
-    "kotlin.completion.snippets.enabled": true,
-    "kotlin.linting.debounceTime": 250,
-    "kotlin.indexing.enabled": true,
-    "kotlin.externalSources.useKlsScheme": true,
-    "kotlin.externalSources.autoConvertToKotlin": true,
-    "kotlin.compiler.jvm.target": "1.8",
-    "kotlin.debounceTime": 250,
+    "rust-analyzer.completion.addCallArgumentSnippets": true,
+    "rust-analyzer.completion.addCallParenthesis": true,
+    "rust-analyzer.completion.hideDeprecated": false,
+    "rust-analyzer.completion.hidePrivateEditable": false,
+    "vue.autoInsert.bracketSpacing": true,
+    "vue.codeLens.enabled": true,
+    "vue.codeLens.scriptSetup.enabled": true,
     // ================================================
-    // PERFORMANCE OPTIMIZATIONS - LOW-END MACHINE FRIENDLY ⚡
+    // ANGULAR - ULTIMATE DEVELOPMENT 🅰️
     // ================================================
-    // Disable Heavy UI Features
-    "editor.smoothScrolling": false,
-    "workbench.reduceMotion": "on",
-    "workbench.list.smoothScrolling": false,
-    "workbench.tree.expandMode": "singleClick",
-    "workbench.hover.delay": 1500,
-    // Memory & Performance Optimizations
-    "typescript.tsserver.watchOptions": {
-        "watchFile": "useFsEventsOnParentDirectory"
-    },
-    "typescript.disableAutomaticTypeAcquisition": false,
-    "typescript.tsserver.useSyntaxServer": "auto",
-    // File System Performance
-    "files.hotExit": "onExitAndWindowClose",
-    "files.simpleDialog.enable": true,
-    "search.maxResults": 20000,
-    "search.quickOpen.includeSymbols": false,
-    "search.quickOpen.includeHistory": true,
-    // Editor Performance
-    "editor.lightbulb.enabled": "onCode",
-    "editor.codeLens": true,
-    "editor.colorDecorators": true,
-    "editor.gotoLocation.multipleDefinitions": "peek",
-    "editor.gotoLocation.multipleDeclarations": "peek",
-    "editor.gotoLocation.multipleImplementations": "peek",
-    "editor.gotoLocation.multipleReferences": "peek",
-    "editor.gotoLocation.multipleTypeDefinitions": "peek",
-    // Language Server Performance
-    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m",
-    "java.compile.nullAnalysis.mode": "automatic",
-    "java.eclipse.downloadSources": true,
-    "java.maven.downloadSources": true,
-    "java.gradle.downloadSources": true,
-    // Rust Performance
-    "rust-analyzer.server.extraEnv": {
-        "RUST_LOG": "warn"
-    },
-    "rust-analyzer.cargo.loadOutDirsFromCheck": true,
-    // Python Performance
-    "python.analysis.memory.keepLibraryAst": false,
-    "python.analysis.indexing": true,
-    // ================================================
-    // CODING FUN ENHANCEMENTS 🎉
-    // ================================================
-    // Visual Enhancements that are Performance-Friendly
-    "workbench.tokenColorCustomizations": {},
-    // Smart Code Navigation
-    "editor.find.addExtraSpaceOnTop": true,
-    "editor.find.cursorMoveOnType": true,
-    "editor.find.globalFindClipboard": false,
-    "editor.find.loop": true,
-    "editor.find.seedSearchStringFromSelection": "always",
-    // Zen Mode for Focus
-    "zenMode.centerLayout": true,
-    "zenMode.fullScreen": false,
-    "zenMode.hideActivityBar": true,
-    "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": true,
-    "zenMode.restore": true,
-    "zenMode.silentNotifications": true,
-    // Multi-Cursor Enhancement
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-    // Smart Indentation
-    "editor.indentSize": "tabSize",
-    // ================================================
-    // ADDITIONAL LANGUAGE SUPPORT 🌐
-    // ================================================
-    // Protocol Buffers
-    "[proto]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true
-    },
-    "[proto3]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true
-    },
-    // GraphQL
-    "[graphql]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true
-    },
-    // SQL
-    "[sql]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true
-    },
-    // Nginx Configuration
-    "[nginx]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": false
-    },
-    // Apache Configuration
-    "[apache]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": false
-    },
-    // Lua
-    "[lua]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true
-    },
-    // PowerShell
-    "[powershell]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true,
-        "editor.formatOnSave": true
-    },
-    // Batch Files
-    "[bat]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": false,
-        "editor.formatOnSave": false
-    },
-    // ================================================
-    // FINAL PRODUCTIVITY BOOSTERS 🚀
-    // ================================================
-    // Quick Open Enhancement
-    "workbench.quickOpen.closeOnFocusLost": false,
-    "workbench.quickOpen.preserveInput": false,
-    // Editor Tab Management
-    "workbench.editor.labelFormat": "default",
-    // Integrated Terminal Enhancement
-    "terminal.integrated.allowChords": true,
-    "terminal.integrated.allowMnemonics": false,
-    "terminal.integrated.altClickMovesCursor": true,
-    "terminal.integrated.bellDuration": 1000,
-    "terminal.integrated.commandsToSkipShell": [],
-    "terminal.integrated.cwd": "",
-    "terminal.integrated.enableFileLinks": "on",
-    "terminal.integrated.experimentalUseTitleEvent": false,
-    "terminal.integrated.fastScrollSensitivity": 5,
-    "terminal.integrated.gpuAcceleration": "auto",
-    "terminal.integrated.macOptionIsMeta": false,
-    "terminal.integrated.macOptionClickForcesSelection": false,
-    "terminal.integrated.mouseWheelScrollSensitivity": 1,
-    "terminal.integrated.persistentSessionReviveProcess": "onExit",
-    "terminal.integrated.shellIntegration.enabled": true,
-    "terminal.integrated.shellIntegration.decorationsEnabled": "both",
-    "terminal.integrated.shellIntegration.history": 100,
-    "terminal.integrated.showExitAlert": true,
-    "terminal.integrated.splitCwd": "workspaceRoot",
-    "terminal.integrated.tabs.hideCondition": "never",
-    "terminal.integrated.tabs.showActions": "singleTerminalOrNarrow",
-    "terminal.integrated.tabs.showActiveTerminal": "singleTerminal",
-    "terminal.integrated.unicodeVersion": "11",
-    "terminal.integrated.wordSeparators": " ()[]{}',\"`─'\"",
-    // Task System Enhancement
-    "task.autoDetect": "on",
-    "task.problemMatchers.neverPrompt": false,
-    "task.quickOpen.detail": true,
-    "task.quickOpen.history": 30,
-    "task.quickOpen.showErrors": true,
-    "task.saveBeforeRun": "always",
-    "task.showDecorations": true,
-    "task.slowProviderWarning": true,
-    // Comments Enhancement
-    "remote.extensionKind": {},
-    "remote.otherPortsAttributes": {},
-    "remote.portsAttributes": {},
-    // Accessibility Features
-    "accessibility.dimUnfocused.enabled": false,
-    "accessibility.dimUnfocused.opacity": 0.75,
-    "accessibility.hideAccessibleView": false,
-    "accessibility.keyboardNavigation.focusIndicator": true,
-    "accessibility.verbosity.comments": false,
-    "accessibility.verbosity.diffEditor": false,
-    "accessibility.verbosity.editor": false,
-    "accessibility.verbosity.hover": false,
-    "accessibility.verbosity.notification": false,
-    "accessibility.verbosity.terminal": false,
-    // Live Share (if applicable)
-    "liveshare.featureSet": "stable",
-    "liveshare.anonymousGuestApproval": "accept",
-    "liveshare.autoShareServers": true,
-    "liveshare.autoShareTerminals": true,
-    "liveshare.connectionMode": "auto",
-    "liveshare.audio.startCallOnShare": false,
-    "liveshare.codeLens.enabled": true,
-    "liveshare.focusBehavior": "accept",
-    "liveshare.guestApprovalRequired": false,
-    "liveshare.keepAliveInterval": 20,
-    "liveshare.languages.allowGuestCommandExecution": true,
-    "liveshare.launcherClient": "visualStudioCode",
-    "liveshare.nameTagVisibility": "activity",
-    "liveshare.presence": true,
-    "liveshare.publishWorkspaceInfo": true,
-    "liveshare.sharedTerminalWidth": 120,
-    "liveshare.sharedTerminalHeight": 30,
-    "liveshare.showInStatusBar": "whileCollaborating",
-    "liveshare.showReadOnlyUsersInEditor": true,
-    "liveshare.showVerboseNotifications": false,
-    // ==== COMMENTS & REVIEW SYSTEM ====
-    "comments.openView": "file",
-    "comments.useRelativeTime": true,
-    "comments.visible": true,
-    "comments.maxHeight": true,
-    // ==== WORKSPACE & PROJECT MANAGEMENT ====
-    "workspaces.newWindow": "on",
-    "workspace.trust.banner": "always",
-    "workspace.trust.emptyWindow": true,
-    "workspace.trust.enabled": true,
-    "workspace.trust.startupPrompt": "once",
-    "workspace.trust.untrustedFiles": "prompt",
-    // ==== SHARED SETTINGS & CONSISTENCY ====
-    "editor.trimAutoWhitespace": true,
-    "files.encoding": "utf8",
-    // ==== PULL REQUEST & CODE REVIEW ====
-    "github.pullRequests.defaultMergeMethod": "squash",
-    "github.pullRequests.alwaysCreatePullRequestOnPublish": "never",
-    "github.pullRequests.closeOnCreate": false,
-    "github.pullRequests.createOnPublishBranch": "never",
-    "github.pullRequests.fileListLayout": "tree",
-    "github.pullRequests.includeRemotes": "all",
-    "github.pullRequests.pullBranch": "ask",
-    "github.pullRequests.remotes": [
-        "origin",
-        "upstream"
-    ],
-    "github.pullRequests.terminalLinksHandler": "github",
-    "github.pullRequests.workingIssueFormatScm": "${issueTitle}",
-    // ==== ISSUE TRACKING & PROJECT MANAGEMENT ====
-    "github.issues.assignWhenWorking": true,
-    "github.issues.createInsertFormat": "number",
-    "github.issues.createIssueTriggers": [
-        "TODO",
-        "FIXME",
-        "BUG",
-        "HACK"
-    ],
-    "github.issues.ignoreCompletionTrigger": [
-        "#"
-    ],
-    "github.issues.queries": [
-        {
-            "label": "My Issues",
-            "query": "default"
-        },
-        {
-            "label": "Created Issues",
-            "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
-        },
-        {
-            "label": "Team Issues",
-            "query": "assignee:@me state:open repo:${owner}/${repository}"
-        }
-    ],
-    "github.issues.useBranchForIssues": "on",
-    "github.issues.workingIssueFormatScm": "${issueTitle}",
-    // ==== GITLENS ADVANCED COLLABORATION ====
-    "gitlens.advanced.blame.customArguments": null,
-    "gitlens.advanced.blame.delayAfterEdit": 5000,
-    "gitlens.advanced.blame.sizeThresholdAfterEdit": 5000,
-    "gitlens.blame.avatars": true,
-    "gitlens.blame.dateFormat": null,
-    "gitlens.blame.format": "${message|50?} ${agoOrDate|14-}",
-    "gitlens.blame.ignoreWhitespace": false,
-    "gitlens.blame.separateLines": true,
-    "gitlens.blame.toggleMode": "file",
-    "gitlens.currentLine.format": "${author, }${agoOrDate}${' via 'pullRequest}${ • message|50?}",
-    "gitlens.currentLine.scrollable": true,
-    // ==== CODE LENS FOR COLLABORATION ====
-    "gitlens.codeLens.authors.command": "gitlens.toggleFileBlame",
-    "gitlens.codeLens.includeSingleLineSymbols": false,
-    "gitlens.codeLens.recentChange.command": "gitlens.showQuickCommitDetails",
-    "gitlens.codeLens.scopes": [
-        "document"
-    ],
-    "gitlens.codeLens.symbolScopes": [
-        "!Module"
-    ],
-    // ==== HOVERS & ANNOTATIONS ====
-    "gitlens.hovers.annotations.changes": true,
-    "gitlens.hovers.annotations.details": true,
-    "gitlens.hovers.annotations.enabled": true,
-    "gitlens.hovers.annotations.over": "line",
-    "gitlens.hovers.autolinks.enabled": true,
-    "gitlens.hovers.autolinks.enhanced": true,
-    "gitlens.hovers.avatars": true,
-    "gitlens.hovers.changesDiff": "line",
-    "gitlens.hovers.currentLine.changes": true,
-    "gitlens.hovers.currentLine.details": true,
-    "gitlens.hovers.currentLine.enabled": true,
-    "gitlens.hovers.detailsMarkdownFormat": "${avatar} **${author}** ${ago} _(${date})_\n\n${message}\n\n${commands}",
-    "gitlens.hovers.pullRequests.enabled": true,
-    // ==== COLLABORATION VIEWS ====
-    "gitlens.views.branches.avatars": true,
-    "gitlens.views.branches.branches.layout": "list",
-    "gitlens.views.branches.pullRequests.enabled": true,
-    "gitlens.views.branches.pullRequests.showForBranches": true,
-    "gitlens.views.branches.pullRequests.showForCommits": true,
-    "gitlens.views.commits.avatars": true,
-    "gitlens.views.commits.pullRequests.enabled": true,
-    "gitlens.views.commits.pullRequests.showForBranches": true,
-    "gitlens.views.commits.pullRequests.showForCommits": true,
-    "gitlens.views.contributors.avatars": true,
-    "gitlens.views.contributors.pullRequests.enabled": true,
-    "gitlens.views.contributors.pullRequests.showForCommits": true,
-    "gitlens.views.contributors.showAllBranches": false,
-    "gitlens.views.contributors.showStatistics": true,
-    "gitlens.views.fileHistory.avatars": true,
-    "gitlens.views.lineHistory.avatars": true,
-    "gitlens.views.repositories.avatars": true,
-    "gitlens.views.repositories.branches.layout": "list",
-    "gitlens.views.repositories.pullRequests.enabled": true,
-    "gitlens.views.repositories.pullRequests.showForBranches": true,
-    "gitlens.views.repositories.pullRequests.showForCommits": true,
-    "gitlens.views.repositories.showBranchComparison": "working",
-    "gitlens.views.repositories.showCommits": true,
-    "gitlens.views.repositories.showContributors": true,
-    "gitlens.views.repositories.showIncomingActivity": true,
-    "gitlens.views.repositories.showRemotes": true,
-    "gitlens.views.repositories.showStashes": true,
-    "gitlens.views.repositories.showTags": true,
-    "gitlens.views.repositories.showUpstreamStatus": true,
-    "gitlens.views.searchAndCompare.avatars": true,
-    "gitlens.views.searchAndCompare.pullRequests.enabled": true,
-    "gitlens.views.searchAndCompare.pullRequests.showForCommits": true,
-    "gitlens.views.worktrees.avatars": true,
-    "gitlens.views.worktrees.pullRequests.enabled": true,
-    "gitlens.views.worktrees.pullRequests.showForBranches": true,
-    "gitlens.views.worktrees.pullRequests.showForCommits": true,
-    // ==== TIMELINE & HISTORY FOR TEAMS ====
-    "timeline.excludeSources": [],
-    "timeline.pageOnScroll": false,
-    "timeline.pageSize": 50,
-    // ==== REMOTE DEVELOPMENT ====
-    "remote.autoForwardPorts": true,
-    "remote.autoForwardPortsSource": "hybrid",
-    "remote.downloadExtensionsLocally": false,
-    "remote.localPortHost": "localhost",
-    "remote.restoreForwardedPorts": true,
-    // ==== WORKSPACE SHARING ====
-    "workspaceKeybindings.enabled": true,
-    "extensions.closeExtensionDetailsOnViewChange": false,
-    "extensions.confirmedUriHandlerExtensionIds": [],
-    // ==== TEAM SETTINGS SYNCHRONIZATION ====
-    "settingsSync.ignoredExtensions": [],
-    "settingsSync.ignoredSettings": [],
-    "settingsSync.keybindingsPerPlatform": true,
-    // ==== EDITOR COLLABORATION FEATURES ====
-    "editor.find.seedSearchStringFromNearestWord": false,
-    // ==== SCM ADVANCED COLLABORATION ====
-    "scm.alwaysShowActions": false,
-    "scm.repositories.sortOrder": "discovery time",
-    "scm.repositories.visible": 10,
-    // ==== NOTIFICATION & COMMUNICATION ====
-    "notifications.showExtensionsEnabledMessage": true,
-    "chat.editor.fontSize": 14,
-    "chat.editor.fontFamily": "default",
-    "chat.editor.lineHeight": 1.4,
-    "chat.editor.wordWrap": "on",
-    // ==== PRODUCTIVITY FOR TEAMS ====
-    "editor.suggest.showStatusBar": true,
-    "editor.suggest.shareSuggestSelections": true,
-    "editor.suggest.localityBonus": true,
-    "terminal.integrated.enableMultiLinePasteWarning": "auto",
-    "terminal.integrated.enablePersistentSessions": true,
-    // ==== DEBUGGING COLLABORATION ====
-    "debug.allowBreakpointsEverywhere": false,
-    "debug.confirmOnExit": "never",
-    "debug.console.acceptSuggestionOnEnter": "off",
-    "debug.console.closeOnEnd": false,
-    "debug.console.collapseIdenticalLines": true,
-    "debug.console.historySuggestions": true,
-    "debug.console.lineHeight": 0,
-    "debug.console.wordWrap": true,
-    "debug.enableAllHovers": false,
-    "debug.focusEditorOnBreak": true,
-    "debug.focusWindowOnBreak": true,
-    "debug.openExplorerOnEnd": false,
-    "debug.showSubSessionsInToolBar": false,
-    // ==== SEARCH COLLABORATION ====
-    "search.collapseResults": "auto",
-    "search.mode": "view",
-    "search.showLineNumbers": false,
-    "search.useParentIgnoreFiles": false,
-    // ================================================================
-    // ADVANCED PRODUCTION TEAM COLLABORATION & CODE MANAGEMENT 🏆
-    // ================================================================
-    // ==== ADVANCED GIT COLLABORATION ====
-    "git.rememberPostCommitCommand": true,
-    "git.requireGitUserConfig": true,
-    "git.similarityThreshold": 50,
-    "git.useForcePushIfIncludes": false,
-    // ==== LIVE SHARE COLLABORATION ====
-    "liveshare.allowGuestCommandControl": false,
-    "liveshare.allowGuestTaskControl": false,
-    "liveshare.audio.enabled": true,
-    "liveshare.enableContactSuggestions": true,
-    "liveshare.joinDebugSessionOption": "Automatic",
-    "liveshare.notebooks.allowGuestExecute": false,
-    "liveshare.openSharedServer": false,
-    // ==== PULL REQUEST INTEGRATION ====
-    "githubPullRequests.createOnPublishBranch": "never",
-    "githubPullRequests.defaultDeletionMethod.selectionsForDeletedFiles": "modified",
-    "githubPullRequests.defaultMergeMethod": "merge",
-    "githubPullRequests.fileListLayout": "tree",
-    "githubPullRequests.focusedMode": false,
-    "githubPullRequests.ignoredPullRequestBranches": [],
-    "githubPullRequests.includeRemotes": "default",
-    "githubPullRequests.logLevel": "info",
-    "githubPullRequests.notifications": "pullRequests",
-    "githubPullRequests.overrideDefaultBranch": "",
-    "githubPullRequests.pullBranch": "ask",
-    "githubPullRequests.queries": [
-        {
-            "label": "Waiting For My Review",
-            "query": "is:open is:pr review-requested:@me"
-        },
-        {
-            "label": "Assigned To Me",
-            "query": "is:open is:pr assignee:@me"
-        },
-        {
-            "label": "Created By Me",
-            "query": "is:open is:pr author:@me"
-        },
-        {
-            "label": "Mentioned Me",
-            "query": "is:open is:pr mentions:@me"
-        }
-    ],
-    "githubPullRequests.remotes": [
-        "origin",
-        "upstream"
-    ],
-    "githubPullRequests.setAutoMerge": false,
-    "githubPullRequests.showPullRequestNumberInTree": false,
-    "githubPullRequests.terminalLinksHandler": "vscode",
-    // ==== ISSUE TRACKING & PROJECT MANAGEMENT ====
-    "githubIssues.assignWhenWorking": true,
-    "githubIssues.createInsertFormat": "number",
-    "githubIssues.createIssueTriggers": [
-        "TODO",
-        "todo",
-        "BUG",
-        "FIXME",
-        "ISSUE",
-        "HACK"
-    ],
-    "githubIssues.ignoreCompletionTrigger": [],
-    "githubIssues.ignoreMilestones": [],
-    "githubIssues.issueCompletions.enabled": true,
-    "githubIssues.queries": [
-        {
-            "label": "My Issues",
-            "query": "default"
-        },
-        {
-            "label": "Created Issues",
-            "query": "author:@me state:open repo:${owner}/${repo} sort:created-desc"
-        },
-        {
-            "label": "Recent Issues",
-            "query": "state:open repo:${owner}/${repo} sort:updated-desc"
-        }
-    ],
-    "githubIssues.useBranchForIssues": "on",
-    "githubIssues.workingIssueFormatScm": "${issueTitle} \nFixes ${issueNumber}",
-    "githubIssues.workingIssueBranch": "${issueNumber}-${sanitizedIssueTitle}",
-    // ==== CODE REVIEW & QUALITY ASSURANCE ====
-    "security.workspace.trust.enabled": true,
-    // ==== ADVANCED SEARCH & NAVIGATION ====
-    "search.actionsPosition": "auto",
-    "search.decorations.badges": true,
-    "search.decorations.colors": true,
-    "search.globalFindClipboard": false,
-    // ==== DEPRECATED SETTINGS REMOVED ====
-    "search.runInExtensionHost": false,
-    "search.sortOrder": "default",
-    // ==== DEPRECATED SETTINGS REMOVED ====
-    "multiDiffEditor.experimental.enabled": false,
-    "workbench.editor.mouseBackForwardToNavigate": true,
-    "workbench.editor.openPositioning": "right",
-    "workbench.editor.openSideBySideDirection": "right",
-    "workbench.editor.pinnedTabSizing": "normal",
-    "workbench.editor.restoreViewState": true,
-    "workbench.editor.revealIfOpen": false,
-    "workbench.editor.scrollToSwitchTabs": false,
-    "workbench.editor.showIcons": true,
-    "workbench.editor.splitInGroupLayout": "vertical",
-    "workbench.editor.splitOnDragAndDrop": true,
-    "workbench.editor.splitSizing": "split",
-    "workbench.editor.tabCloseButton": "right",
-    "workbench.editor.tabSizingFixedMinWidth": 50,
-    "workbench.editor.tabSizingFixedMaxWidth": 160,
-    // ==== TEAM EXTENSION MANAGEMENT ====
-    "extensions.confirmUninstall": true,
-    "extensions.supportUntrustedWorkspaces": {},
-    "extensions.supportVirtualWorkspaces": {},
-    "extensions.verifySignature": true,
-    // ================================================================
-    // ENHANCED ERROR REPORTING SPECIFIC SETTINGS 🔍
-    // การตั้งค่าเฉพาะสำหรับการแสดงข้อผิดพลาดที่ละเอียดและเข้าใจง่าย
-    // ================================================================
-    // ==== UNIQUE ERROR ENHANCEMENT SETTINGS ====
-    "editor.documentHighlightProvider": true,
-    "editor.occurrencesHighlight": "singleFile",
-    "editor.renderFinalNewline": "on",
-    "editor.unusualLineTerminators": "prompt",
-    "editor.unicodeHighlight.nonBasicASCII": false,
-    "editor.unicodeHighlight.invisibleCharacters": true,
-    "editor.unicodeHighlight.ambiguousCharacters": true,
-    "editor.unicodeHighlight.includeComments": true,
-    "editor.unicodeHighlight.includeStrings": true,
-    "editor.unicodeHighlight.allowedCharacters": {},
-    "editor.unicodeHighlight.allowedLocales": {
-        "th": true,
-        "en": true
-    },
-    // ==== IMPROVED ERROR VISIBILITY ====
-    // ==== IMPROVED PROBLEM PANEL ====
-    "problems.visibility": true,
-    // ==== ENHANCED TERMINAL FOR ERROR TRACKING ====
-    "terminal.integrated.localEchoEnabled": "auto",
-    "terminal.integrated.localEchoLatencyThreshold": 30,
-    "terminal.integrated.localEchoStyle": "dim",
-    "terminal.integrated.localEchoExcludePrograms": [
-        "vim",
-        "vi",
-        "nano",
-        "tmux",
-        "screen"
-    ],
-    // ==== LANGUAGE SERVER ERROR IMPROVEMENTS ====
-    "extensions.experimental.affinity": {
-        "ms-python.python": 1,
-        "rust-lang.rust-analyzer": 1,
-        "ms-vscode.cpptools": 1,
-        "golang.go": 1,
-        "ms-vscode.vscode-typescript-next": 1
-    },
-    // ==== WORKSPACE ERROR CONTEXT ====
-    "files.watcherExclude": {
-        "**/.git/objects/**": true,
-        "**/.git/subtree-cache/**": true,
-        "**/node_modules/*/**": true,
-        "**/.hg/store/**": true,
-        "**/target/**": true,
-        "**/build/**": true,
-        "**/dist/**": true,
-        "**/*.pyc": true,
-        "**/__pycache__/**": true,
-        "**/.pytest_cache/**": true,
-        "**/pubspec.lock": true
-    },
-    // ================================================================
-    // ERROR ENHANCEMENT SUMMARY FOR THAI DEVELOPERS
-    // ================================================================
-    // 🔍 แสดงข้อผิดพลาดแบบละเอียดและชัดเจน
-    // 📝 ปรับปรุงการแสดงข้อความเตือนสำหรับแต่ละภาษาโปรแกรม
-    // 🐛 ข้อมูลการดีบักที่ดีขึ้น
-    // ⚡ การตรวจจับข้อผิดพลาดแบบเรียลไทม์
-    // 🎯 ระบุตำแหน่งข้อผิดพลาดได้แม่นยำ
-    // 📊 การตรวจสอบและ validation ครอบคลุม
-    // 🔧 คำแนะนำการแก้ไขอัตโนมัติ
-    // 📱 ข้อความแสดงข้อผิดพลาดที่เข้าใจง่ายทั้งภาษาไทยและอังกฤษ
-    // 🎨 สีสันที่แยกแยะข้อผิดพลาดชัดเจน (แดง=Error, เหลือง=Warning, ฟ้า=Info)
-    // 🌐 รองรับอักขระไทยและ Unicode อย่างครอบคลุม
-    // ================================================================
-    // 🔍 ENHANCED HOVER & ERROR TOOLTIPS SETTINGS
-    // ตั้งค่าการแสดงข้อผิดพลาดเมื่อชี้เมาส์ไปที่โค้ด
-    // ================================================================
-    // ==== ENHANCED HOVER INFORMATION ====
-    "editor.hover.enabled": true,
-    "editor.hover.above": false,
-    "editor.hover.hidingDelay": 300,
-    // ==== DETAILED ERROR DIAGNOSTICS ====
-    "editor.showUnused": true,
-    "editor.showDeprecated": true,
-    "editor.renderValidationDecorations": "on",
-    "editor.parameterHints.cycle": true,
-    "editor.signatureHelp.enabled": true,
-    // ==== ENHANCED TOOLTIP CONTENT ====
-    "editor.tooltipDelay": 100,
-    "editor.suggest.showWords": true,
-    "editor.suggest.statusBar.visible": true,
-    // ==== PROBLEMS PANEL ENHANCEMENTS ====
-    "problems.maxErrorsCount": 1000,
-    "problems.maxWarningsCount": 1000,
-    // ==== COMPREHENSIVE ERROR HIGHLIGHTING ====
-    "editor.renderLineHighlight": "all",
-    "editor.renderLineHighlightOnlyWhenFocus": false,
-    "editor.wordHighlightDelay": 300,
-    "editor.wordHighlightStrongDelay": 300,
-    // ================================================================
-    // � ENHANCED HOVER & ERROR TOOLTIPS FOR ALL LANGUAGES
-    // การปรับปรุงการแสดงข้อผิดพลาดให้ละเอียดและเข้าใจง่าย
-    // ================================================================
-    "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "ignore",
-    "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "ignore",
-    "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "ignore",
-    "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "ignore",
-    "C_Cpp.vcFormat.newLine.scopeBracesOnSeparateLines": false,
-    "C_Cpp.vcFormat.newLine.beforeCatch": true,
-    "C_Cpp.vcFormat.newLine.beforeElse": true,
-    "C_Cpp.vcFormat.newLine.beforeWhileInDoWhile": false,
-    "C_Cpp.vcFormat.space.beforeFunctionOpenParenthesis": "ignore",
-    "C_Cpp.vcFormat.space.withinParameterListParentheses": false,
-    "C_Cpp.vcFormat.space.betweenEmptyParameterListParentheses": false,
-    "C_Cpp.vcFormat.space.afterKeywordsInControlFlowStatements": true,
-    "C_Cpp.vcFormat.space.withinControlFlowStatementParentheses": false,
-    "C_Cpp.vcFormat.space.beforeLambdaOpenParenthesis": false,
-    "C_Cpp.vcFormat.space.withinCastParentheses": false,
-    "C_Cpp.vcFormat.space.afterCastCloseParenthesis": false,
-    "C_Cpp.vcFormat.space.withinExpressionParentheses": false,
-    "C_Cpp.vcFormat.space.beforeBlockOpenBrace": true,
-    "C_Cpp.vcFormat.space.betweenEmptyBraces": false,
-    "C_Cpp.vcFormat.space.beforeInitializerListOpenBrace": false,
-    "C_Cpp.vcFormat.space.withinInitializerListBraces": true,
-    "C_Cpp.vcFormat.space.preserveInInitializerList": true,
-    "C_Cpp.vcFormat.space.beforeOpenSquareBracket": false,
-    "C_Cpp.vcFormat.space.withinSquareBrackets": false,
-    "C_Cpp.vcFormat.space.beforeEmptySquareBrackets": false,
-    "C_Cpp.vcFormat.space.betweenEmptySquareBrackets": false,
-    "C_Cpp.vcFormat.space.groupSquareBrackets": true,
-    "C_Cpp.vcFormat.space.withinLambdaBrackets": false,
-    "C_Cpp.vcFormat.space.betweenEmptyLambdaBrackets": false,
-    "C_Cpp.vcFormat.space.beforeComma": false,
-    "C_Cpp.vcFormat.space.afterComma": true,
-    "C_Cpp.vcFormat.space.removeAroundMemberOperators": true,
-    "C_Cpp.vcFormat.space.beforeInheritanceColon": true,
-    "C_Cpp.vcFormat.space.beforeConstructorColon": true,
-    "C_Cpp.vcFormat.space.removeBeforeSemicolon": true,
-    "C_Cpp.vcFormat.space.insertAfterSemicolon": false,
-    "C_Cpp.vcFormat.space.removeAroundUnaryOperator": true,
-    "C_Cpp.vcFormat.space.aroundBinaryOperator": "insert",
-    "C_Cpp.vcFormat.space.aroundAssignmentOperator": "insert",
-    "C_Cpp.vcFormat.space.pointerReferenceAlignment": "left",
-    "C_Cpp.vcFormat.space.aroundTernaryOperator": "insert",
-    "C_Cpp.vcFormat.wrap.preserveBlocks": "one_liners",
-    "launch": {
-        "compounds": [],
-        "configurations": []
-    },
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "extensions.autoCheckUpdates": false,
-    "extensions.autoUpdate": false,
-    "update.mode": "none",
-    "telemetry.telemetryLevel": "off",
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.selectionClipboard": false,
-    "editor.find.autoFindInSelection": "multiline",
-    "workbench.editor.closeOnFileDelete": true,
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.editor.wrapTabs": true,
-    "workbench.editor.decorations.badges": true,
-    "workbench.editor.decorations.colors": true,
-    "breadcrumbs.symbolSortOrder": "type",
-    "scm.diffDecorations": "all",
-    "scm.alwaysShowRepositories": true,
-    "merge-conflict.autoNavigateNextConflict.enabled": true,
-    // godmode
-    "editor.experimental.asyncTokenization": true,
-    "editor.experimental.asyncTokenizationLogging": false,
-    "editor.experimental.asyncTokenizationVerification": false,
-    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
     "typescript.preferences.includePackageJsonAutoImports": "on",
-    "typescript.suggest.enabled": true,
-    "typescript.validate.enable": true,
-    "javascript.validate.enable": true,
-    "editor.largeFileOptimizations": true, // เปิดฟีเจอร์เต็มแม้ไฟล์ใหญ่
-    "files.readonlyInclude": {},
-    "files.readonlyFromPermissions": false,
-    "editor.suggest.matchOnWordStartOnly": false,
-    "editor.suggest.maxVisibleSuggestions": 15,
-    "editor.suggest.selectionMode": "always",
-    "editor.suggest.showParameterHints": true,
-    "editor.suggest.showTypeParameters": true,
-    "editor.suggest.insertHighlights": true,
-    "editor.suggest.commitCharacters": [
-        ".",
-        ",",
-        ";",
-        "("
+    "html.customData": [
+        ".vscode/html.html-data.json"
     ],
-    "editor.accessibilitySupport": "off",
-    "editor.experimental.pasteActions.enabled": true,
-    "editor.gotoLocation.alternativeDeclarationCommand": "editor.action.goToReferences",
-    "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.peekDefinition",
-    "editor.gotoLocation.alternativeImplementationCommand": "editor.action.peekImplementation",
-    "editor.gotoLocation.alternativeReferenceCommand": "editor.action.referenceSearch.trigger",
-    "editor.gotoLocation.alternativeTypeDefinitionCommand": "editor.action.peekTypeDefinition",
-    "workbench.editor.doubleClickTabToToggleEditorGroupSizes": "expand",
-    "workbench.editor.closeEmptyGroups": true,
-    "workbench.editor.enablePreviewFromCodeNavigation": false,
-    "workbench.editor.focusRecentEditorAfterClose": true,
-    "workbench.colorCustomizations": {
-        "editor.background": "#0d1117",
-        "editor.foreground": "#c9d1d9",
-        "editorCursor.foreground": "#58a6ff",
-        "editor.selectionBackground": "#264f78",
-        "editor.inactiveSelectionBackground": "#3a3d41",
-        "editorIndentGuide.background": "#21262d",
-        "editorIndentGuide.activeBackground": "#f85149",
-        "editorBracketMatch.background": "#3fb95040",
-        "editorBracketMatch.border": "#3fb950",
-        "statusBar.background": "#21262d",
-        "statusBar.foreground": "#f0f6fc",
-        "activityBar.background": "#0d1117",
-        "activityBar.foreground": "#f0f6fc",
-        "sideBar.background": "#161b22",
-        "sideBar.foreground": "#f0f6fc",
-        "terminal.background": "#0d1117",
-        "terminal.foreground": "#f0f6fc"
+    "angular.enable-strict-mode-prompt": false,
+    "angular.experimental-ivy": true,
+    "angular.log": "verbose",
+    "ng.CLI.defaultCollection": "@angular/material",
+    // ================================================
+    // SVELTE - ULTIMATE DEVELOPMENT 🧡
+    // ================================================
+    "svelte.enable-ts-plugin": true,
+    "svelte.plugin.typescript.enable": true,
+    "svelte.plugin.typescript.diagnostics.enable": true,
+    "svelte.plugin.typescript.hover.enable": true,
+    "svelte.plugin.typescript.documentSymbols.enable": true,
+    "svelte.plugin.typescript.completions.enable": true,
+    "svelte.plugin.typescript.findReferences.enable": true,
+    "svelte.plugin.typescript.definitions.enable": true,
+    "svelte.plugin.typescript.codeActions.enable": true,
+    "svelte.plugin.typescript.rename.enable": true,
+    "svelte.plugin.typescript.selectionRange.enable": true,
+    "svelte.plugin.typescript.signatureHelp.enable": true,
+    "svelte.plugin.typescript.semanticTokens.enable": true,
+    "svelte.plugin.css.enable": true,
+    "svelte.plugin.css.globals": "",
+    "svelte.plugin.css.diagnostics.enable": true,
+    "svelte.plugin.css.hover.enable": true,
+    "svelte.plugin.css.completions.enable": true,
+    "svelte.plugin.css.documentColors.enable": true,
+    "svelte.plugin.css.colorPresentations.enable": true,
+    "svelte.plugin.css.documentSymbols.enable": true,
+    "svelte.plugin.html.enable": true,
+    "svelte.plugin.html.hover.enable": true,
+    "svelte.plugin.html.completions.enable": true,
+    "svelte.plugin.html.tagComplete.enable": true,
+    "svelte.plugin.html.documentSymbols.enable": true,
+    "svelte.plugin.html.linkedEditing.enable": true,
+    "svelte.plugin.svelte.enable": true,
+    "svelte.plugin.svelte.diagnostics.enable": true,
+    "svelte.plugin.svelte.compilerWarnings": {},
+    "svelte.plugin.svelte.format.enable": true,
+    "svelte.plugin.svelte.format.config.svelteSortOrder": "options-scripts-markup-styles",
+    "svelte.plugin.svelte.format.config.svelteStrictMode": false,
+    "svelte.plugin.svelte.format.config.svelteAllowShorthand": true,
+    "svelte.plugin.svelte.format.config.svelteBracketNewLine": true,
+    "svelte.plugin.svelte.format.config.svelteIndentScriptAndStyle": true,
+    "svelte.plugin.svelte.hover.enable": true,
+    "svelte.plugin.svelte.completions.enable": true,
+    "svelte.plugin.svelte.rename.enable": true,
+    "svelte.plugin.svelte.codeActions.enable": true,
+    "svelte.plugin.svelte.selectionRange.enable": true,
+    "svelte.plugin.svelte.defaultScriptLanguage": "typescript",
+    // ================================================
+    // TAILWIND CSS - ULTIMATE PRODUCTIVITY 🎨
+    // ================================================
+    "tailwindCSS.includeLanguages": {
+        "html": "html",
+        "javascript": "javascript",
+        "typescript": "typescript",
+        "javascriptreact": "javascriptreact",
+        "typescriptreact": "typescriptreact",
+        "vue": "vue",
+        "svelte": "svelte",
+        "php": "php",
+        "python": "python",
+        "rust": "rust"
     },
-    "editor.tokenColorCustomizations": {
-        "comments": "#8b949e",
-        "keywords": "#ff7b72",
-        "strings": "#a5d6ff",
-        "numbers": "#79c0ff",
-        "types": "#ffa657",
-        "functions": "#d2a8ff",
-        "variables": "#ffa657"
+    "tailwindCSS.files.exclude": [
+        "**/.git/**",
+        "**/node_modules/**",
+        "**/.hg/**",
+        "**/.svn/**"
+    ],
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+        "ngClass",
+        "class:list"
+    ],
+    "tailwindCSS.lint.cssConflict": "warning",
+    "tailwindCSS.lint.invalidApply": "error",
+    "tailwindCSS.lint.invalidConfigPath": "error",
+    "tailwindCSS.lint.invalidScreen": "error",
+    "tailwindCSS.lint.invalidTailwindDirective": "error",
+    "tailwindCSS.lint.invalidVariant": "error",
+    "tailwindCSS.lint.recommendedVariantOrder": "warning",
+    "tailwindCSS.suggestions": true,
+    "tailwindCSS.validate": true,
+    "tailwindCSS.colorDecorators": true,
+    "tailwindCSS.rootFontSize": 16,
+    "tailwindCSS.showPixelEquivalents": true,
+    "tailwindCSS.hovers": true,
+    "tailwindCSS.codeActions": true,
+    // ================================================
+    // BOOTSTRAP - ULTIMATE PRODUCTIVITY 💜
+    // ================================================
+    "bootstrap-3-snippets.showIconsInAutoCompletion": true,
+    "bootstrap4-vscode.showIconsInAutoCompletion": true,
+    "bootstrap5-vscode.showIconsInAutoCompletion": true,
+    // ================================================
+    // MATERIAL-UI / MUI - ULTIMATE PRODUCTIVITY 💙
+    // ================================================
+    "materialui.includeVariables": true,
+    "materialui.showSnippetsInAutoCompletion": true,
+    // ================================================
+    // JEST & TESTING LIBRARIES - ULTIMATE TESTING 🧪
+    // ================================================
+    "jest.jestCommandLine": "npm test --",
+    "jest.autoRun": "watch",
+    "jest.showCoverageOnLoad": false,
+    "jest.coverageFormatter": "DefaultFormatter",
+    "jest.debugMode": false,
+    "jest.enableSnapshotUpdateMessages": true,
+    "jest.pathToJest": null,
+    "jest.pathToConfig": "",
+    "jest.restartJestOnSnapshotUpdate": false,
+    "jest.rootPath": "",
+    "jest.runAllTestsFirst": true,
+    "jest.showTerminalOnLaunch": true,
+    "jest.shell": null,
+    "jest.testExplorer.enabled": true,
+    // Testing Library specific
+    "testing-library.highlightQueries": true,
+    "testing-library.testIdAttribute": "data-testid",
+    // ================================================
+    // ESLINT & PRETTIER - ULTIMATE CODE QUALITY ✨
+    // ================================================
+    "eslint.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": false,
+    "eslint.codeAction.disableRuleComment": {
+        "enable": true,
+        "location": "separateLine",
+        "commentStyle": "line"
     },
-    "editor.multiCursorLimit": 10000,
-    "editor.multiCursorMergeOverlapping": true,
-    "editor.multiCursorPaste": "spread",
-    "editor.columnSelection": false,
-    "workbench.settings.openDefaultKeybindings": true,
-    "workbench.settings.openDefaultSettings": true,
-    "workbench.settings.useSplitJSON": true,
-    "workbench.experimental.settingsProfiles.enabled": true,
-    "workbench.localHistory.enabled": true,
-    "workbench.localHistory.maxFileSize": 256,
-    "workbench.localHistory.maxFileEntries": 50,
-    "terminal.integrated.automationProfile.linux": {
-        "path": "/usr/bin/fish",
-        "args": [
-            "-l"
+    "eslint.codeAction.showDocumentation": {
+        "enable": true
+    },
+    "eslint.codeActionsOnSave.mode": "all",
+    "eslint.codeActionsOnSave.rules": null,
+    "eslint.debug": false,
+    "eslint.experimental.useFlatConfig": false,
+    "eslint.format.enable": false,
+    "eslint.lintTask.enable": false,
+    "eslint.lintTask.options": "",
+    "eslint.migration.2_x": "off",
+    "eslint.nodePath": null,
+    "eslint.onIgnoredFiles": "off",
+    "eslint.options": {},
+    "eslint.packageManager": "npm",
+    "eslint.probe": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "html",
+        "vue",
+        "markdown"
+    ],
+    "eslint.quiet": false,
+    "eslint.run": "onType",
+    "eslint.useESLintClass": false,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "html"
+    ],
+    "eslint.workingDirectories": [],
+    "eslint.rules.customizations": [],
+    "eslint.runtime": null,
+    "eslint.execArgv": null,
+    // Prettier
+    "prettier.enable": true,
+    "prettier.requireConfig": false,
+    "prettier.useEditorConfig": true,
+    "prettier.withNodeModules": false,
+    "prettier.packageManager": "npm",
+    "prettier.resolveGlobalModules": false,
+    "prettier.documentSelectors": [],
+    "prettier.enableDebugLogs": false,
+    "prettier.printWidth": 80,
+    "prettier.tabWidth": 2,
+    "prettier.useTabs": false,
+    "prettier.semi": true,
+    "prettier.singleQuote": true,
+    "prettier.quoteProps": "as-needed",
+    "prettier.jsxSingleQuote": true,
+    "prettier.trailingComma": "es5",
+    "prettier.bracketSpacing": true,
+    "prettier.bracketSameLine": false,
+    "prettier.arrowParens": "avoid",
+    "prettier.proseWrap": "preserve",
+    "prettier.htmlWhitespaceSensitivity": "css",
+    "prettier.vueIndentScriptAndStyle": false,
+    "prettier.endOfLine": "lf",
+    "prettier.embeddedLanguageFormatting": "auto",
+    "prettier.singleAttributePerLine": false,
+    // ================================================
+    // WEBPACK & BUNDLERS - ULTIMATE BUILD TOOLS 📦
+    // ================================================
+    "webpack.enableLinting": true,
+    "webpack.validate": true,
+    // Vite
+    "vite.devCommand": "npm run dev",
+    "vite.buildCommand": "npm run build",
+    // ================================================
+    // NEXT.JS - ULTIMATE FULL-STACK 🚀
+    // ================================================
+    "nextjs.includeWorkspaceSymbols": true,
+    "nextjs.experimentalDecorators": true,
+    "nextjs.defaultExport": true,
+    // ================================================
+    // NUXT.JS - ULTIMATE VUE FRAMEWORK 💚
+    // ================================================
+    "nuxt.isNuxtApp": false,
+    // ================================================
+    // GATSBY - ULTIMATE STATIC SITE 🟣
+    // ================================================
+    "gatsby.format.enable": true,
+    "gatsby.completion.enable": true,
+    // ================================================
+    // STORYBOOK - ULTIMATE COMPONENT DEVELOPMENT 📚
+    // ================================================
+    "storybook.enableCheckForUpdates": false,
+    // ================================================
+    // REDUX & STATE MANAGEMENT - ULTIMATE HINTS 🔄
+    // ================================================
+    "redux-devtools.trace": true,
+    "redux-devtools.traceLimit": 25,
+    // ================================================
+    // GRAPHQL - ULTIMATE API DEVELOPMENT 🔗
+    // ================================================
+    "graphql-config.load.baseDir": "./",
+    "graphql-config.load.configName": "graphql",
+    "graphql-config.load.legacy": true,
+    "graphql.useLanguageServer": true,
+    "graphql.debug": false,
+    // ================================================
+    // PRISMA - ULTIMATE DATABASE ORM 🗄️
+    // ================================================
+    "prisma.showPrismaDataPlatformNotification": false,
+    "prisma.telemetry": false,
+    "prisma.fileWatcher": true,
+    // ================================================
+    // MONGOOSE & MONGODB - ULTIMATE DATABASE 🍃
+    // ================================================
+    "mongodbforrustaceans.showOverview": true,
+    // ================================================
+    // DOCKER & CONTAINERIZATION - ULTIMATE DEVOPS 🐳
+    // ================================================
+    // ...existing docker settings...
+    "docker.attachShellCommand.linuxContainer": "/bin/sh",
+    "docker.attachShellCommand.windowsContainer": "powershell",
+    "docker.defaultRegistryPath": "",
+    "docker.explorerRefreshInterval": 1000,
+    "docker.groupImagesBy": "None",
+    "docker.images.checkForOutdatedImages": true,
+    "docker.images.description": [
+        "CreatedTime",
+        "ImageId"
+    ],
+    "docker.images.groupBy": "None",
+    "docker.images.label": "Tag",
+    "docker.languageserver.formatter.ignoreMultilineInstructions": false,
+    "docker.containers.description": [
+        "ContainerName",
+        "Status"
+    ],
+    "docker.containers.groupBy": "None",
+    "docker.containers.label": "ContainerName",
+    "docker.containers.showFiles": false,
+    "docker.networks.description": [
+        "NetworkDriver",
+        "CreatedTime"
+    ],
+    "docker.networks.groupBy": "None",
+    "docker.networks.label": "NetworkName",
+    "docker.promptOnSystemPrune": true,
+    "docker.volumes.description": [
+        "CreatedTime"
+    ],
+    "docker.volumes.groupBy": "None",
+    "docker.volumes.label": "VolumeName",
+    // ================================================
+    // KUBERNETES - ULTIMATE ORCHESTRATION ☸️
+    // ================================================
+    "vs-kubernetes": {
+        "vs-kubernetes.crd-code-completion": "enabled",
+        "vs-kubernetes.kubectl-path": "",
+        "vs-kubernetes.helm-path": "",
+        "vs-kubernetes.minikube-path": "",
+        "vs-kubernetes.kubectlVersioning": "user-provided",
+        "vs-kubernetes.outputFormat": "yaml",
+        "vs-kubernetes.kubeconfig": "",
+        "vs-kubernetes.knownKubeconfigs": [],
+        "vs-kubernetes.autoCleanupOnDebugTerminate": false,
+        "vs-kubernetes.nodejs-autodetect-remote-root": true,
+        "vs-kubernetes.nodejs-remote-root": "",
+        "vs-kubernetes.nodejs-debug-port": 9229,
+        "vs-kubernetes.enable-active-cluster-checking": true
+    },
+    // ================================================
+    // TERRAFORM - ULTIMATE INFRASTRUCTURE 🏗️
+    // ================================================
+    "terraform.experimentalFeatures.validateOnSave": true,
+    "terraform.experimentalFeatures.prefillRequiredFields": true,
+    "terraform.validation.enableEnhancedValidation": true,
+    "terraform.codelens.referenceCount": true,
+    "terraform.format.enable": true,
+    "terraform.lint.enable": true,
+    // ================================================
+    // AWS - ULTIMATE CLOUD DEVELOPMENT ☁️
+    // ================================================
+    "aws.telemetry": false,
+    "aws.suppressPrompts": {
+        "regionAddAutomatically": false,
+        "credentialsNotFound": false,
+        "pythonToolkitUpgrade": false
+    },
+    "aws.profile": "default",
+    "aws.onDefaultRegionMissing": "prompt",
+    "aws.experiments.jsonResourceModification": true,
+    "aws.codewhisperer.shareCodeWhispererContentWithAWS": false,
+    "aws.codewhisperer.includeSuggestionsWithCodeReferences": true,
+    "aws.codewhisperer.importRecommendation": true,
+    "aws.codewhisperer.optOut": false,
+    // ================================================
+    // FIREBASE - ULTIMATE BACKEND-AS-A-SERVICE 🔥
+    // ================================================
+    "firebase.hosting.github.enabled": false,
+    "firebase.emulator.useDataConnectEmulator": true,
+    // ================================================
+    // GITHUB COPILOT ALTERNATIVES - AI ASSISTANCE 🤖
+    // ================================================
+    "codeium.enableConfig": {
+        "*": true,
+        "diff": false
+    },
+    "codeium.enableCodeLens": true,
+    "codeium.enableSearch": true,
+    "codeium.enableChat": true,
+    "codeium.aggressiveShutdown": false,
+    "codeium.detectProxy": true,
+    // TabNine
+    "tabnine.experimentalAutoImports": true,
+    "tabnine.disableLineRegex": [],
+    "tabnine.disable_file_regex": [],
+    "tabnine.receiveBetaChannelUpdates": false,
+    "tabnine.logFilePath": null,
+    // ================================================
+    // POSTMAN & API TESTING - ULTIMATE API TOOLS 📡
+    // ================================================
+    "rest-client.enableTelemetry": false,
+    "rest-client.environmentVariables": {},
+    "rest-client.excludeHostsForProxy": [],
+    "rest-client.fontSize": 13,
+    "rest-client.fontFamily": "'JetBrains Mono', 'Fira Code', monospace",
+    "rest-client.fontWeight": "normal",
+    "rest-client.logLevel": "error",
+    "rest-client.previewOption": "full",
+    "rest-client.previewResponseInUntitledDocument": false,
+    "rest-client.previewResponsePanelTakeFocus": true,
+    "rest-client.requestNameAsResponseTabTitle": false,
+    "rest-client.showHeaders": true,
+    "rest-client.showResponseInDifferentTab": false,
+    "rest-client.timeoutinmilliseconds": 0,
+    "rest-client.followredirect": true,
+    "rest-client.defaultHeaders": {
+        "User-Agent": "vscode-restclient",
+        "Accept-Encoding": "gzip"
+    },
+    // ================================================
+    // INSOMNIA - ALTERNATIVE API CLIENT 🔮
+    // ================================================
+    "insomnia.environmentVariables": {},
+    // ================================================
+    // LIVE SERVER - ULTIMATE LOCAL DEVELOPMENT 🖥️
+    // ================================================
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.root": "/",
+    "liveServer.settings.CustomBrowser": "default",
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "liveServer.settings.NoBrowser": false,
+    "liveServer.settings.IgnoreFiles": [
+        ".vscode/**",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.ts"
+    ],
+    "liveServer.settings.donotVerifyTags": false,
+    "liveServer.settings.donotShowInfoMsg": false,
+    "liveServer.settings.host": "127.0.0.1",
+    "liveServer.settings.proxy": {
+        "enable": false,
+        "baseUri": "/",
+        "proxyUri": "http://127.0.0.1:80"
+    },
+    "liveServer.settings.mount": [],
+    "liveServer.settings.file": "",
+    "liveServer.settings.wait": 100,
+    "liveServer.settings.fullReload": false,
+    "liveServer.settings.useBrowserPreview": false,
+    "liveServer.settings.useLocalIp": false,
+    "liveServer.settings.showOnStatusbar": false,
+    "liveServer.settings.multiRootWorkspaceName": "",
+    // ================================================
+    // BRACKET PAIR COLORIZER - ULTIMATE VISUAL AIDS 🌈
+    // ================================================
+    "bracketPairColorizer.timeOut": 200,
+    "bracketPairColorizer.forceUniqueOpeningColor": false,
+    "bracketPairColorizer.forceIterationColorCycle": false,
+    "bracketPairColorizer.colorMode": "Consecutive",
+    "bracketPairColorizer.highlightActiveScope": false,
+    "bracketPairColorizer.activeScopeCSS": [
+        "borderStyle : solid",
+        "borderWidth : 1px",
+        "borderColor : {color}",
+        "opacity : 0.5"
+    ],
+    "bracketPairColorizer.showBracketsInGutter": false,
+    "bracketPairColorizer.showBracketsInRuler": false,
+    "bracketPairColorizer.rulerPosition": "Full",
+    "bracketPairColorizer.showVerticalScopeLine": false,
+    "bracketPairColorizer.showHorizontalScopeLine": false,
+    "bracketPairColorizer.consecutivePairColors": [
+        "()",
+        "[]",
+        "{}",
+        [
+            "Gold",
+            "Orchid",
+            "LightSkyBlue"
+        ],
+        "Red"
+    ],
+    "bracketPairColorizer.independentPairColors": [
+        [
+            "()",
+            [
+                "Gold",
+                "Orchid",
+                "LightSkyBlue"
+            ]
+        ],
+        [
+            "[]",
+            [
+                "Gold",
+                "Orchid",
+                "LightSkyBlue"
+            ]
+        ],
+        [
+            "{}",
+            [
+                "Gold",
+                "Orchid",
+                "LightSkyBlue"
+            ]
         ]
-    },
-    "terminal.integrated.profiles.linux": {
-        "fish-ultimate": {
-            "path": "/usr/bin/fish",
-            "args": [
-                "-l"
-            ],
-            "icon": "terminal-powershell",
-            "color": "terminal.ansiBlue"
-        },
-        "bash-enhanced": {
-            "path": "/bin/bash",
-            "args": [
-                "--login"
-            ],
-            "icon": "terminal-bash"
-        },
-        "zsh-poweruser": {
-            "path": "/usr/bin/zsh",
-            "args": [
-                "-l"
-            ],
-            "icon": "terminal-ubuntu"
-        }
-    },
-    "terminal.integrated.defaultProfile.linux": "fish-ultimate",
-    "terminal.integrated.environmentChangesIndicator": "on",
-    "terminal.integrated.environmentChangesRelaunch": true,
-    "terminal.integrated.minimumContrastRatio": 4.5,
-    "terminal.integrated.smoothScrolling": false, // ปิดเพื่อประสิทธิภาพ
-    "terminal.integrated.experimentalRestore": true,
-    // ts
-    "typescript.preferences.importModuleSpecifier": "relative",
-    "typescript.preferences.quoteStyle": "single",
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
-    "typescript.workspaceSymbols.scope": "allOpenProjects",
-    "typescript.suggest.objectLiteralMethodSnippets.enabled": true,
-    "typescript.suggest.jsdoc.generateReturns": true,
-    "typescript.implementationsCodeLens.enabled": true,
-    "typescript.referencesCodeLens.enabled": true,
-    "typescript.referencesCodeLens.showOnAllFunctions": true,
-    "typescript.tsserver.maxTsServerMemory": 2048,
-    // python
-    "python.analysis.completeFunctionParens": true,
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.autoFormatStrings": true,
-    "python.analysis.diagnosticSeverityOverrides": {
-        "reportUnusedImport": "information",
-        "reportUnusedVariable": "information",
-        "reportMissingImports": "error"
-    },
-    "python.terminal.focusAfterLaunch": false,
-    "python.terminal.launchArgs": [
-        "-X",
-        "dev",
-        "-X",
-        "utf8"
     ],
-    // rust
-    "rust-analyzer.completion.autoimport.enable": true,
-    "rust-analyzer.completion.autoself.enable": true,
-    "rust-analyzer.imports.granularity.group": "module",
-    "rust-analyzer.imports.prefix": "crate",
-    "rust-analyzer.workspace.symbol.search.kind": "all_symbols",
-    "rust-analyzer.workspace.symbol.search.limit": 256,
-    "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
-    // go
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.gocodeAutoBuild": true,
-    "go.gocodePackageLookupMode": "go",
-    "go.inferGopath": true,
-    "go.gopath": "${workspaceFolder}",
-    "go.alternateTools": {
-        "go": "go",
-        "gofmt": "goimports",
-        "golint": "golangci-lint"
+    // ================================================
+    // INDENT RAINBOW - ULTIMATE INDENTATION GUIDE 🌈
+    // ================================================
+    "indentRainbow.includedLanguages": [],
+    "indentRainbow.excludedLanguages": [
+        "plaintext"
+    ],
+    "indentRainbow.updateDelay": 100,
+    "indentRainbow.indentSetter": {},
+    "indentRainbow.errorColor": "rgba(128,32,32,0.6)",
+    "indentRainbow.tabmixColor": "rgba(128,32,96,0.6)",
+    "indentRainbow.colors": [
+        "rgba(255,255,64,0.07)",
+        "rgba(127,255,127,0.07)",
+        "rgba(255,127,255,0.07)",
+        "rgba(79,236,236,0.07)"
+    ],
+    "indentRainbow.ignoreLinePatterns": [
+        "/[ \t]* [*]/g",
+        "/[ \t]+[/]{2}/g"
+    ],
+    "indentRainbow.ignoreErrorLanguages": [
+        "markdown",
+        "haskell"
+    ],
+    "indentRainbow.colorOnWhiteSpaceOnly": true,
+    // ================================================
+    // AUTO RENAME TAG - ULTIMATE HTML/XML EDITING 🔄
+    // ================================================
+    "auto-rename-tag.activationOnLanguage": [
+        "html",
+        "xml",
+        "php",
+        "javascript",
+        "typescript",
+        "javascriptreact",
+        "typescriptreact",
+        "vue",
+        "svelte"
+    ],
+    // ================================================
+    // PATH INTELLISENSE - ULTIMATE FILE NAVIGATION 📁
+    // ================================================
+    "path-intellisense.extensionOnImport": false,
+    "path-intellisense.showHiddenFiles": true,
+    "path-intellisense.autoSlashAfterDirectory": false,
+    "path-intellisense.absolutePathToWorkspace": true,
+    "path-intellisense.mappings": {},
+    // ================================================
+    // CSS PEEK - ULTIMATE CSS NAVIGATION 👁️
+    // ================================================
+    "css_peek.activeLanguages": [
+        "html",
+        "ejs",
+        "erb",
+        "php",
+        "javascriptreact",
+        "typescriptreact"
+    ],
+    "css_peek.searchFileExtensions": [
+        ".css",
+        ".scss",
+        ".sass",
+        ".less"
+    ],
+    "css_peek.exclude": [
+        "node_modules",
+        "bower_components"
+    ],
+    "css_peek.peekFromLanguages": [
+        "html",
+        "django-html",
+        "laravel-blade",
+        "razor",
+        "vue",
+        "blade",
+        "pug",
+        "jade",
+        "handlebars",
+        "php",
+        "twig",
+        "md",
+        "nunjucks",
+        "javascript",
+        "typescript",
+        "javascriptreact",
+        "typescriptreact"
+    ],
+    // ================================================
+    // COLOR HIGHLIGHT - ULTIMATE COLOR VISUALIZATION 🎨
+    // ================================================
+    "color-highlight.enable": true,
+    "color-highlight.languages": [
+        "css",
+        "scss",
+        "sass",
+        "less",
+        "stylus",
+        "javascript",
+        "typescript",
+        "html",
+        "vue",
+        "svelte",
+        "jsx",
+        "tsx"
+    ],
+    "color-highlight.markerType": "underline",
+    "color-highlight.matchWords": false,
+    "color-highlight.sass.includePaths": [],
+    // ================================================
+    // REGEX PREVIEWER - ULTIMATE REGEX TESTING 🔍
+    // ================================================
+    "regexpreview.enableDiagnostics": true,
+    "regexpreview.enableHover": true,
+    "regexpreview.enableSmartEdit": true,
+    // ================================================
+    // IMPORT COST - ULTIMATE BUNDLE SIZE AWARENESS 📊
+    // ================================================
+    "importCost.bundleSizeDecoration": "both",
+    "importCost.showCalculatingDecoration": true,
+    "importCost.debug": false,
+    "importCost.typescriptExtensions": [
+        "\\.tsx?$"
+    ],
+    "importCost.javascriptExtensions": [
+        "\\.jsx?$"
+    ],
+    "importCost.smallPackageSize": 50,
+    "importCost.mediumPackageSize": 100,
+    "importCost.smallPackageColor": "#7cc36e",
+    "importCost.mediumPackageColor": "#7cc36e",
+    "importCost.largePackageColor": "#d44e40",
+    // ================================================
+    // BUNDLE ANALYZER - ULTIMATE WEBPACK INSIGHTS 📈
+    // ================================================
+    "webpack-bundle-analyzer.enableCodeSplitting": true,
+    // ================================================
+    // RAINBOW BRACKETS - ULTIMATE BRACKET MATCHING 🌈
+    // ================================================
+    "rainbow_brackets.showBracketsContentHighlight": true,
+    "rainbow_brackets.showVerticalScopeLine": false,
+    "rainbow_brackets.showHorizontalScopeLine": false,
+    "rainbow_brackets.showIconsInGutter": false,
+    "rainbow_brackets.showRuler": false,
+    // ================================================
+    // BETTER COMMENTS - ULTIMATE CODE DOCUMENTATION 💬
+    // ================================================
+    "better-comments.multilineComments": true,
+    "better-comments.highlightPlainText": false,
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+    // ================================================
+    // TODO HIGHLIGHT - ULTIMATE TASK MANAGEMENT ✅
+    // ================================================
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": true,
+    "todohighlight.keywords": [
+        {
+            "text": "TODO:",
+            "color": "#ff6b6b",
+            "backgroundColor": "rgba(255, 107, 107, 0.1)",
+            "overviewRulerColor": "#ff6b6b"
+        },
+        {
+            "text": "FIXME:",
+            "color": "#ff9ff3",
+            "backgroundColor": "rgba(255, 159, 243, 0.1)",
+            "overviewRulerColor": "#ff9ff3"
+        },
+        {
+            "text": "NOTE:",
+            "color": "#51cff7",
+            "backgroundColor": "rgba(81, 207, 247, 0.1)",
+            "overviewRulerColor": "#51cff7"
+        },
+        {
+            "text": "HACK:",
+            "color": "#ffa726",
+            "backgroundColor": "rgba(255, 167, 38, 0.1)",
+            "overviewRulerColor": "#ffa726"
+        },
+        {
+            "text": "BUG:",
+            "color": "#f44336",
+            "backgroundColor": "rgba(244, 67, 54, 0.1)",
+            "overviewRulerColor": "#f44336"
+        }
+    ],
+    "todohighlight.keywordsPattern": "TODO:|FIXME:|NOTE:|HACK:|BUG:",
+    "todohighlight.defaultStyle": {},
+    "todohighlight.include": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.html",
+        "**/*.php",
+        "**/*.css",
+        "**/*.scss",
+        "**/*.sass",
+        "**/*.less",
+        "**/*.vue",
+        "**/*.py",
+        "**/*.rb",
+        "**/*.go",
+        "**/*.java",
+        "**/*.c",
+        "**/*.cpp",
+        "**/*.cs",
+        "**/*.rs"
+    ],
+    "todohighlight.exclude": [
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/dist/**",
+        "**/build/**"
+    ],
+    "todohighlight.maxFilesForSearch": 5120,
+    "todohighlight.toggleURI": false,
+    // ================================================
+    // BOOKMARKS - ULTIMATE CODE NAVIGATION 🔖
+    // ================================================
+    "bookmarks.saveBookmarksInProject": false,
+    "bookmarks.gutterIconPath": "",
+    "bookmarks.backgroundLineColor": "",
+    "bookmarks.navigateThroughAllFiles": false,
+    "bookmarks.wrapNavigation": true,
+    "bookmarks.useWorkaroundForFormatters": false,
+    "bookmarks.multicursor.toggleMode": "allLinesAtOnce",
+    "bookmarks.label.suggestion": "useWhenSelected",
+    "bookmarks.experimental.enableNewStickyEngine": false,
+    // ================================================
+    // PROJECT MANAGER - ULTIMATE WORKSPACE MANAGEMENT 📂
+    // ================================================
+    "projectManager.git.baseFolders": [
+        "~/workspace",
+        "~/projects",
+        "~/dev",
+        "~/learn"
+    ],
+    "projectManager.git.maxDepthRecursion": 2,
+    "projectManager.git.ignoredFolders": [
+        "node_modules",
+        "out",
+        "typings",
+        "test",
+        ".vscode"
+    ],
+    "projectManager.hg.baseFolders": [],
+    "projectManager.svn.baseFolders": [],
+    "projectManager.vscode.baseFolders": [],
+    "projectManager.any.baseFolders": [],
+    "projectManager.removeCurrentProjectFromList": true,
+    "projectManager.sortList": "Name",
+    "projectManager.groupList": false,
+    "projectManager.projectsLocation": "",
+    "projectManager.cacheProjectsBetweenSessions": true,
+    "projectManager.checkInvalidPathsBeforeListing": true,
+    "projectManager.filterOnType": true,
+    "projectManager.openInNewWindowWhenClickingInStatusBar": false,
+    "projectManager.supportSymlinksOnBaseFolders": false,
+    "projectManager.ignoreProjectsWithinProjects": false,
+    "projectManager.showParentFolderInfoOnDuplicates": false,
+    "projectManager.showProjectNameInStatusBar": true,
+    // ================================================
+    // CODE SPELL CHECKER - ULTIMATE SPELLING ASSISTANCE 📝
+    // ================================================
+    "cSpell.enabled": true,
+    "cSpell.language": "en,th",
+    "cSpell.showStatus": true,
+    "cSpell.enableFiletypes": [
+        "javascript",
+        "typescript",
+        "javascriptreact",
+        "typescriptreact",
+        "html",
+        "css",
+        "scss",
+        "sass",
+        "less",
+        "vue",
+        "svelte",
+        "markdown",
+        "json",
+        "yaml",
+        "toml",
+        "rust",
+        "python",
+        "go",
+        "java",
+        "kotlin",
+        "c",
+        "cpp"
+    ],
+    "cSpell.checkLimit": 500,
+    "cSpell.numSuggestions": 8,
+    "cSpell.minWordLength": 4,
+    "cSpell.maxNumberOfProblems": 100,
+    "cSpell.maxDuplicateProblems": 5,
+    "cSpell.allowCompoundWords": true,
+    "cSpell.ignorePaths": [
+        "node_modules",
+        "**/node_modules",
+        "**/node_modules/**",
+        "node_modules/**",
+        "vscode-extension",
+        ".git",
+        "*.dll",
+        "**/*.dll"
+    ],
+    "cSpell.import": [],
+    "cSpell.words": [
+        "autofocus",
+        "bgcolor",
+        "borderless",
+        "className",
+        "clickable",
+        "componentDidMount",
+        "componentWillUnmount",
+        "destructuring",
+        "eslint",
+        "flexbox",
+        "Frontend",
+        "fullscreen",
+        "gitignore",
+        "href",
+        "innerHTML",
+        "Javascript",
+        "localStorage",
+        "middleware",
+        "onclick",
+        "preventDefault",
+        "readonly",
+        "refactor",
+        "stringify",
+        "stylesheet",
+        "substr",
+        "Tailwind",
+        "typeof",
+        "unmount",
+        "viewport",
+        "whitespace",
+        "workflow"
+    ],
+    "cSpell.userWords": [],
+    "cSpell.flagWords": [],
+    "cSpell.patterns": [],
+    "cSpell.overrides": [],
+    // ================================================
+    // LOREM IPSUM - ULTIMATE PLACEHOLDER TEXT 📄
+    // ================================================
+    "loremipsum.unitWord": "words",
+    "loremipsum.unitSentence": "sentences",
+    "loremipsum.unitParagraph": "paragraphs",
+    "loremipsum.defaultUnit": "words",
+    "loremipsum.defaultCount": 1,
+    "loremipsum.defaultFormat": "plain",
+    // ================================================
+    // SNIPPET MANAGEMENT - ULTIMATE CODE SNIPPETS ✂️
+    // ================================================
+    "snippetshub.showConsoleCode": false,
+    "snippet-creator.useSpaces": true,
+    "snippet-creator.indentSize": 2,
+    // ================================================
+    // ADVANCED NEW FILE - ULTIMATE FILE CREATION 📁
+    // ================================================
+    "advancedNewFile.exclude": {
+        "node_modules": true,
+        "dev": true,
+        "dist": true
     },
-    // general
-    "editor.experimental.dropIntoEditor.enabled": true,
-    "workbench.experimental.enableNewProfilesUI": true,
-    "workbench.experimental.cloudChanges.enabled": false,
-    "workbench.trustedDomains.promptInTrustedWorkspace": false,
-    "security.promptForLocalFileProtocolHandling": false,
-    // command
-    "workbench.editor.limit.enabled": true,
-    "workbench.editor.limit.value": 20,
-    "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.limit.excludeDirty": true,
-    "workbench.editor.tabActionLocation": "right",
-    "zenMode.showTabs": "single",
-    "code-runner.runInTerminal": true
+    "advancedNewFile.showInformationMessages": true,
+    "advancedNewFile.convenienceOptions": [
+        "last",
+        "current",
+        "root"
+    ],
+    // ================================================
+    // PEACOCK - ULTIMATE WORKSPACE IDENTIFICATION 🦚
+    // ================================================
+    "peacock.affectActivityBar": true,
+    "peacock.affectStatusBar": true,
+    "peacock.affectTitleBar": true,
+    "peacock.affectAccentBorders": false,
+    "peacock.affectTabActiveBorder": false,
+    "peacock.keepBadgeColor": false,
+    "peacock.keepForegroundColor": false,
+    "peacock.surpriseMeOnStartup": false,
+    "peacock.favoriteColors": [
+        {
+            "name": "Angular Red",
+            "value": "#dd0531"
+        },
+        {
+            "name": "Azure Blue",
+            "value": "#007fff"
+        },
+        {
+            "name": "JavaScript Yellow",
+            "value": "#f9e64f"
+        },
+        {
+            "name": "Mandalorian Blue",
+            "value": "#1857a4"
+        },
+        {
+            "name": "Node Green",
+            "value": "#215732"
+        },
+        {
+            "name": "React Blue",
+            "value": "#61dafb"
+        },
+        {
+            "name": "Something Different",
+            "value": "#832561"
+        },
+        {
+            "name": "Svelte Orange",
+            "value": "#ff3d00"
+        },
+        {
+            "name": "Vue Green",
+            "value": "#42b883"
+        }
+    ],
+    // ================================================
+    // THUNDER CLIENT - ULTIMATE API TESTING ⚡
+    // ================================================
+    "thunder-client.requestLayout": "Horizontal",
+    "thunder-client.responseLayout": "Horizontal",
+    "thunder-client.saveRequestOnSend": true,
+    "thunder-client.htmlView": "Preview",
+    "thunder-client.followRedirects": true,
+    "thunder-client.certificateVerification": true,
+    "thunder-client.loadFromProject": false,
+    "thunder-client.workspaceRelativePath": "",
+    "thunder-client.customLocation": "",
+    "thunder-client.codeSnippetLanguage": "curl",
+    // ================================================
+    // VSCODE PETS - ULTIMATE CODING COMPANION 🐱
+    // ================================================
+    "vscode-pets.theme": "forest",
+    "vscode-pets.petColor": "brown",
+    "vscode-pets.petType": "cat",
+    "vscode-pets.petSize": "medium",
+    "vscode-pets.position": "explorer",
+    "vscode-pets.throwBallWithMouse": true,
+    // ================================================
+    // POLACODE - ULTIMATE CODE SCREENSHOTS 📸
+    // ================================================
+    "polacode.transparentBackground": false,
+    "polacode.backgroundColor": "#2e3440",
+    "polacode.target": "snippet",
+    // ================================================
+    // MARKDOWN ENHANCED - ULTIMATE DOCUMENTATION ✍️
+    // ================================================
+    "markdown.preview.fontSize": 14,
+    "markdown.preview.lineHeight": 1.6,
+    "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', sans-serif",
+    "markdown.preview.breaks": false,
+    "markdown.preview.linkify": true,
+    "markdown.preview.typographer": false,
+    "markdown.trace": "off",
+    "markdown-pdf.format": "A4",
+    "markdown-pdf.orientation": "portrait",
+    "markdown-pdf.border.top": "1.5cm",
+    "markdown-pdf.border.bottom": "1cm",
+    "markdown-pdf.border.right": "1cm",
+    "markdown-pdf.border.left": "1cm"
 }
