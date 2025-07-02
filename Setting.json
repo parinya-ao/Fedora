@@ -124,11 +124,11 @@
     "editor.insertSpaces": true,
     "editor.detectIndentation": true,
     "editor.tabSize": 4,
-    // Additional formatting and code actions
+
     "editor.trimAutoWhitespace": true,
     "editor.renderFinalNewline": "on",
     "editor.autoFixOnSave": true,
-    // COMPLETE GITHUB COPILOT BLOCKING - ALL SETTINGS DISABLED
+
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
