@@ -7,7 +7,12 @@
         "source.fixAll": "explicit",
         "source.organizeImports": "explicit",
         "source.removeUnusedImports": "explicit",
-        "source.addMissingImports": "explicit"
+        "source.addMissingImports": "explicit",
+        "source.sortImports": "explicit",
+        "source.removeUnused": "explicit",
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.tslint": "explicit",
+        "source.fixAll.stylelint": "explicit"
     },
     "editor.inlayHints.enabled": "on",
     "editor.inlayHints.fontSize": 12,
@@ -48,6 +53,7 @@
     "editor.suggest.insertMode": "replace",
     "editor.suggest.matchOnWordStartOnly": true,
     "editor.suggest.statusBar.visible": false,
+    "editor.suggest.height": 100,
     "editor.wordBasedSuggestions": "off",
     "editor.wordBasedSuggestionsMode": "currentDocument",
     "editor.quickSuggestionsDelay": 20,
@@ -118,6 +124,11 @@
     "editor.insertSpaces": true,
     "editor.detectIndentation": true,
     "editor.tabSize": 4,
+    // Additional formatting and code actions
+    "editor.trimAutoWhitespace": true,
+    "editor.renderFinalNewline": "on",
+    "editor.autoFixOnSave": true,
+    // COMPLETE GITHUB COPILOT BLOCKING - ALL SETTINGS DISABLED
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
@@ -200,6 +211,14 @@
     "ai.chat.enabled": false,
     "extensions.ignoreRecommendations": true,
     "extensions.closeExtensionDetailsOnViewChange": true,
+    "extensions.autoUpdate": false,
+    "extensions.autoCheckUpdates": false,
+    "workbench.extensionManagement.synchronizedKeys": {},
+    "extensions.dontShowRecommendationsNotification": true,
+    "workbench.extensionManagement.enabled": true,
+    "workbench.extensionManagement.installVSIXDisabled": false,
+    "editor.suggest.showCopilot": false,
+    "editor.inlineSuggest.showToolbar": "never",
     "github.copilot.chat.localeOverride": "auto",
     "github.copilot.preferences.enabled": false,
     "github.copilot.workspaceFiltering.enabled": false,
@@ -297,9 +316,9 @@
         "*.gohtml": "gohtml",
         "*.gotmpl": "gohtml"
     },
-    "extensions.autoCheckUpdates": false,
-    "extensions.autoUpdate": false,
-    "update.mode": "manual",
+    "update.mode": "none",
+    "update.enableWindowsBackgroundUpdates": false,
+    "update.showReleaseNotes": false,
     "telemetry.telemetryLevel": "off",
     "workbench.enableExperiments": false,
     "workbench.settings.enableNaturalLanguageSearch": false,
@@ -332,7 +351,10 @@
     "search.smartCase": true,
     "search.seedOnFocus": true,
     "search.seedWithNearestWord": true,
-    "terminal.integrated.shell.linux": "/usr/bin/fish",
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.inheritEnv": false,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.fontSize": 14,
@@ -345,10 +367,8 @@
     "accessibility.signals.terminalBell": {
         "sound": "off"
     },
-    "terminal.integrated.inheritEnv": true,
     "terminal.integrated.tabs.enabled": true,
     "terminal.integrated.tabs.location": "left",
-    "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
     "task.problemMatchers.neverPrompt": false,
     "task.quickOpen.history": 30,
     "debug.allowBreakpointsEverywhere": true,
@@ -1659,5 +1679,9 @@
     "code-runner.executorMapByFileExtension": {
         ".rs": "cd $workspaceRoot && cargo run",
         "*.go": "cd $workspaceRoot && nodemon --exec go run main.go --signal SIGTERM"
-    }
+    },
+    "telemetry.feedback.enabled": false,
+    "editor.foldingImportsByDefault": true,
+    "javascript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.preferences.importModuleSpecifier": "project-relative"
 }
