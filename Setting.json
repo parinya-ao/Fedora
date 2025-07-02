@@ -11,10 +11,9 @@
     },
     "editor.inlayHints.enabled": "on",
     "editor.inlayHints.fontSize": 12,
-    "editor.suggest.showInlineDetails": true,
     "editor.suggest.preview": true,
     "editor.suggest.previewMode": "prefix",
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": true,
     "editor.suggest.showMethods": true,
     "editor.suggest.showFunctions": true,
     "editor.suggest.showConstructors": true,
@@ -38,13 +37,13 @@
     "editor.suggest.showReferences": true,
     "editor.suggest.showCustomcolors": true,
     "editor.suggest.showFolders": true,
-    "editor.suggest.showSnippets": true,
+    "editor.suggest.showSnippets": false,
     "editor.suggest.showUsers": false,
     "editor.suggest.showIssues": true,
     "editor.suggest.filterGraceful": true,
     "editor.suggest.localityBonus": true,
     "editor.suggest.shareSuggestSelections": true,
-    "editor.suggest.showStatusBar": false,
+    "editor.suggest.showStatusBar": true,
     "editor.suggest.selectionMode": "always",
     "editor.suggest.insertMode": "replace",
     "editor.suggest.matchOnWordStartOnly": true,
@@ -53,7 +52,7 @@
     "editor.wordBasedSuggestionsMode": "currentDocument",
     "editor.quickSuggestionsDelay": 20,
     "editor.suggestSelection": "first",
-    "editor.tabCompletion": "on",
+    "editor.tabCompletion": "off",
     "editor.quickSuggestions": {
         "other": "on",
         "comments": "off",
@@ -79,9 +78,6 @@
     "editor.find.cursorMoveOnType": true,
     "editor.find.loop": true,
     "editor.find.seedSearchStringFromSelection": "always",
-    // ================================================
-    // 🚫 GITHUB COPILOT DISABLED - IntelliSense Only
-    // ================================================
     "editor.autoClosingBrackets": "always",
     "editor.autoClosingQuotes": "always",
     "editor.autoIndent": "full",
@@ -101,7 +97,7 @@
     "editor.selectionHighlight": false,
     "editor.semanticHighlighting.enabled": true,
     "editor.showFoldingControls": "always",
-    "editor.snippetSuggestions": "top",
+    "editor.snippetSuggestions": "none",
     "editor.stickyScroll.enabled": true,
     "editor.stickyScroll.maxLineCount": 5,
     "editor.suggestOnTriggerCharacters": true,
@@ -118,7 +114,7 @@
     "editor.lineHeight": 1.5,
     "editor.cursorBlinking": "solid",
     "editor.cursorSmoothCaretAnimation": "off",
-    "editor.smoothScrolling": false, // Disable for performance
+    "editor.smoothScrolling": false,
     "editor.insertSpaces": true,
     "editor.detectIndentation": true,
     "editor.tabSize": 4,
@@ -149,12 +145,67 @@
         "shellscript": false,
         "bash": false,
         "dockerfile": false,
-        "xml": false
+        "xml": false,
+        "powershell": false,
+        "bat": false
     },
-    "chat.commandCenter.enabled": false,
-    "chat.agent.enabled": true,
     "github.copilot.advanced": {},
     "github.copilot.telemetry.enabled": false,
+    "github.copilot.chat.enabled": false,
+    "github.copilot.suggestion.acceptOnReturn": false,
+    "github.copilot.suggestion.acceptOnTab": false,
+    "github.copilot.suggestion.acceptOnEnter": false,
+    "github.copilot.suggestion.disabledLanguages": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": true,
+        "yaml": true,
+        "yml": true,
+        "json": true,
+        "jsonc": true,
+        "javascript": true,
+        "typescript": true,
+        "python": true,
+        "go": true,
+        "rust": true,
+        "c": true,
+        "cpp": true,
+        "html": true,
+        "css": true,
+        "scss": true,
+        "vue": true,
+        "php": true,
+        "java": true,
+        "csharp": true,
+        "sql": true,
+        "shellscript": true,
+        "bash": true,
+        "dockerfile": true,
+        "xml": true,
+        "powershell": true,
+        "bat": true
+    },
+    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.showInlineDetails": false,
+    "chat.commandCenter.enabled": false,
+    "chat.agent.enabled": false,
+    "chat.enabled": false,
+    "workbench.panel.chatSidebar.enabled": false,
+    "workbench.view.alwaysShowHeaderActions": false,
+    "workbench.view.chatSidebar.position": "hidden",
+    "ai.enabled": false,
+    "ai.models.enabled": false,
+    "ai.completions.enabled": false,
+    "ai.chat.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "extensions.closeExtensionDetailsOnViewChange": true,
+    "github.copilot.chat.localeOverride": "auto",
+    "github.copilot.preferences.enabled": false,
+    "github.copilot.workspaceFiltering.enabled": false,
+    "github.copilot.renameSuggestions.enabled": false,
+    "github.copilot.chat.welcomeMessage": false,
+    "github.copilot.chat.welcomeMessageDisplay": false,
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.iconTheme": "vs-seti",
     "workbench.editor.enablePreview": true,
@@ -188,13 +239,9 @@
     "explorer.sortOrder": "type",
     "files.autoSave": "off",
     "files.autoSaveDelay": 1000,
-    "files.hotExit": "onExitAndWindowClose", // Keep unsaved files when closing
-    "window.confirmBeforeClose": "always", // Always confirm before closing VS Code
-    "window.closeWhenEmpty": false, // Don't close VS Code when no folders are open
-    // 🔒 IMPORTANT: These settings protect your running background processes!
-    // - terminal.integrated.confirmOnExit: "always" - Prevents accidental terminal closure
-    // - window.confirmBeforeClose: "always" - Requires confirmation to close VS Code
-    // - files.hotExit & persistentSessionReviveProcess: Keep work and processes alive
+    "files.hotExit": "onExitAndWindowClose",
+    "window.confirmBeforeClose": "always",
+    "window.closeWhenEmpty": false,
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
@@ -258,15 +305,13 @@
     "workbench.settings.enableNaturalLanguageSearch": false,
     "editor.codeLens": false,
     "editor.glyphMargin": false,
-    "editor.occurrencesHighlight": "off", // Disable occurrence highlighting
-    "editor.renderLineHighlight": "none", // Disable line highlighting
+    "editor.occurrencesHighlight": "off",
+    "editor.renderLineHighlight": "none",
     "editor.scrollBeyondLastLine": true,
-    "breadcrumbs.enabled": false, // Disable breadcrumbs
-    "problems.decorations.enabled": false, // Disable problem decorations
-    // Terminal performance
+    "breadcrumbs.enabled": false,
+    "problems.decorations.enabled": false,
     "terminal.integrated.gpuAcceleration": "off",
     "terminal.integrated.rendererType": "dom",
-    // File performance
     "files.participants.timeout": 5000,
     "files.maxMemoryForLargeFilesMB": 4096,
     "search.exclude": {
@@ -287,9 +332,6 @@
     "search.smartCase": true,
     "search.seedOnFocus": true,
     "search.seedWithNearestWord": true,
-    // ================================================
-    // TERMINAL SETTINGS
-    // ================================================
     "terminal.integrated.shell.linux": "/usr/bin/fish",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
@@ -298,7 +340,7 @@
     "terminal.integrated.scrollback": 10000,
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.rightClickBehavior": "paste",
-    "terminal.integrated.confirmOnExit": "always", // Always confirm before closing terminal
+    "terminal.integrated.confirmOnExit": "always",
     "terminal.integrated.enableVisualBell": false,
     "accessibility.signals.terminalBell": {
         "sound": "off"
@@ -306,17 +348,11 @@
     "terminal.integrated.inheritEnv": true,
     "terminal.integrated.tabs.enabled": true,
     "terminal.integrated.tabs.location": "left",
-    "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose", // Keep processes alive
-    // ================================================
-    // 🔒 ADDITIONAL TASK & PROCESS PROTECTION
-    // ================================================
-    "task.problemMatchers.neverPrompt": false, // Show warnings about running tasks
-    "task.quickOpen.history": 30, // Keep task history for recovery
-    "debug.allowBreakpointsEverywhere": true, // Allow debugging anywhere
-    "debug.confirmOnExit": "always", // Confirm before exiting debug sessions
-    // ================================================
-    // DEBUG SETTINGS
-    // ================================================
+    "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
+    "task.problemMatchers.neverPrompt": false,
+    "task.quickOpen.history": 30,
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.confirmOnExit": "always",
     "debug.inlineValues": "on",
     "debug.showInStatusBar": "always",
     "debug.toolBarLocation": "floating",
@@ -327,15 +363,11 @@
     "debug.openDebugConsole": "openOnSessionStart",
     "debug.showBreakpointsInOverviewRuler": true,
     "debug.showInlineBreakpointCandidates": true,
-    // ================================================
-    // SMART GIT SETTINGS - Ultimate Intelligence
-    // ================================================
-    // ==== AUTO-FETCH & SYNC INTELLIGENCE ====
     "git.autofetch": true,
-    "git.autofetchPeriod": 120, // Fetch every 2 minutes for latest updates
+    "git.autofetchPeriod": 120,
     "git.autorefresh": true,
     "git.autoRepositoryDetection": true,
-    "git.autoStash": true, // Auto-stash uncommitted changes when switching branches
+    "git.autoStash": true,
     "git.branchProtection": [],
     "git.branchProtectionPrompt": "alwaysPrompt",
     "git.confirmSync": false,
@@ -345,24 +377,23 @@
     "git.detectSubmodulesLimit": 10,
     "git.fetchOnPull": true,
     "git.followTagsWhenSync": true,
-    "git.pruneOnFetch": true, // Auto-clean remote tracking branches
+    "git.pruneOnFetch": true,
     "git.pullBeforeCheckout": true,
-    "git.rebaseWhenSync": true, // Use rebase instead of merge for cleaner history
+    "git.rebaseWhenSync": true,
     "git.requireGitSuffix": false,
     "git.showProgress": true,
     "git.supportCancellation": true,
     "git.useCommitInputAsStashMessage": true,
-    "git.useForcePushWithLease": true, // Safer force push
+    "git.useForcePushWithLease": true,
     "git.useIntegratedAskPass": true,
     "git.verboseCommit": true,
-    // ==== SMART COMMIT INTELLIGENCE ====
     "git.enableSmartCommit": true,
-    "git.smartCommitChanges": "all", // Include all changes in smart commits
+    "git.smartCommitChanges": "all",
     "git.suggestSmartCommit": true,
-    "git.enableCommitSigning": false, // GPG signing for security
-    "git.alwaysSignOff": true, // Add Signed-off-by line
-    "git.allowForcePush": false, // Prevent accidental force push
-    "git.allowNoVerifyCommit": false, // Always run pre-commit hooks
+    "git.enableCommitSigning": false,
+    "git.alwaysSignOff": true,
+    "git.allowForcePush": false,
+    "git.allowNoVerifyCommit": false,
     "git.postCommitCommand": "none",
     "git.promptToSaveFilesBeforeCommit": "always",
     "git.promptToSaveFilesBeforeStash": "always",
@@ -371,11 +402,10 @@
     "git.showPushSuccessNotification": true,
     "git.showUnpublishedCommitsButton": "always",
     "git.showUntracked": true,
-    "git.untrackedChanges": "mixed", // Show untracked files in changes view
+    "git.untrackedChanges": "mixed",
     "git.useEditorAsCommitInput": true,
-    // ==== ADVANCED BRANCHING INTELLIGENCE ====
     "git.branchRandomName.enable": true,
-    "git.branchSortOrder": "committerdate", // Sort branches by most recent commits
+    "git.branchSortOrder": "committerdate",
     "git.branchValidationRegEx": "^(feature|bugfix|hotfix|release|develop|main|master)\/[a-z0-9\\-]+$",
     "git.branchWhitespaceChar": "-",
     "git.checkoutType": [
@@ -385,19 +415,17 @@
     ],
     "git.closeDiffOnOperation": true,
     "git.defaultBranchName": "main",
-    "git.mergeEditor": true, // Use VS Code's 3-way merge editor
+    "git.mergeEditor": true,
     "git.openDiffOnClick": true,
     "git.showActionButton": {
         "commit": true,
         "publish": true,
         "sync": true
     },
-    // ==== TIMELINE & HISTORY INTELLIGENCE ====
     "git.timeline.enabled": true,
     "git.timeline.date": "committed",
     "git.timeline.showAuthor": true,
     "git.timeline.showUncommitted": true,
-    // ==== REPOSITORY DISCOVERY & MANAGEMENT ====
     "git.openRepositoryInParentFolders": "always",
     "git.repositoryScanIgnoredFolders": [
         "node_modules",
@@ -418,7 +446,6 @@
         "~/projects",
         "~/dev"
     ],
-    // ==== VISUAL & UI INTELLIGENCE ====
     "git.decorations.enabled": true,
     "git.enableStatusBarSync": true,
     "git.ignoreRebaseWarning": true,
@@ -428,10 +455,9 @@
     "git.showTags": true,
     "git.showIncomingChanges": "always",
     "git.showOutgoingChanges": "always",
-    // ==== DIFF & COMPARISON INTELLIGENCE ====
     "diffEditor.codeLens": true,
-    "diffEditor.diffAlgorithm": "advanced", // Better diff algorithm
-    "diffEditor.experimental.showMoves": true, // Show moved code blocks
+    "diffEditor.diffAlgorithm": "advanced",
+    "diffEditor.experimental.showMoves": true,
     "diffEditor.hideUnchangedRegions.enabled": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "diffEditor.maxComputationTime": 5000,
@@ -439,11 +465,10 @@
     "diffEditor.renderMarginRevertIcon": true,
     "diffEditor.renderSideBySide": true,
     "diffEditor.wordWrap": "on",
-    // ==== SCM (Source Control) INTELLIGENCE ====
     "scm.autoReveal": true,
-    "scm.countBadge": "all", // Show count of all changes
-    "scm.defaultViewMode": "tree", // Tree view for better organization
-    "scm.defaultViewSortKey": "status", // Sort by change status
+    "scm.countBadge": "all",
+    "scm.defaultViewMode": "tree",
+    "scm.defaultViewSortKey": "status",
     "scm.diffDecorationsGutterAction": "diff",
     "scm.diffDecorationsGutterPattern": {
         "added": true,
@@ -461,7 +486,6 @@
     "scm.showOutgoingChanges": "always",
     "scm.workingSets.enabled": true,
     "scm.workingSets.default": "current",
-    // ==== GITGRAPH & VISUALIZATION ====
     "git.graph.branches.showRemoteBranches": true,
     "git.graph.commits.showSignatureStatus": true,
     "git.graph.dateFormat": "relative",
@@ -477,13 +501,10 @@
     "git.graph.showStashes": true,
     "git.graph.showTags": true,
     "git.graph.showUncommittedChanges": true,
-    // ==== MERGE CONFLICTS INTELLIGENCE ====
     "merge-conflict.codeLens.enabled": true,
     "merge-conflict.decorators.enabled": true,
     "merge-conflict.diffViewPosition": "Below",
-    // ==== GITIGNORE INTELLIGENCE ====
-    "gitignore.cacheExpirationInterval": 3600, // Cache for 1 hour
-    // ==== GITLENS INTEGRATION (if available) ====
+    "gitignore.cacheExpirationInterval": 3600,
     "gitlens.autolinks": [
         {
             "prefix": "#",
@@ -517,7 +538,6 @@
     "gitlens.views.repositories.enabled": true,
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
-    // ==== GIT WORKFLOW AUTOMATION ====
     "git.workflows.enabled": true,
     "git.workflows.pullRequestReviewMode": true,
     "git.workflows.autoCreateBranch": true,
@@ -527,17 +547,13 @@
         "hotfix": "hotfix/{ticket}-{description}",
         "release": "release/{version}"
     },
-    // ==== SECURITY & BEST PRACTICES ====
     "git.alwaysShowStagedChangesResourceGroup": true,
     "git.confirmNoVerifyCommit": true,
     "git.inputValidation": true,
-    "git.inputValidationLength": 72, // Standard commit message length
-    "git.inputValidationSubjectLength": 50, // Subject line length
+    "git.inputValidationLength": 72,
+    "git.inputValidationSubjectLength": 50,
     "git.terminalAuthentication": true,
     "git.terminalGitEditor": true,
-    // ================================================
-    // WEB DEVELOPMENT - HTML, CSS, JavaScript, TypeScript
-    // ================================================
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features",
         "editor.tabSize": 2,
@@ -630,27 +646,26 @@
         "editor.insertSpaces": true,
         "editor.formatOnSave": true
     },
-    // JavaScript/TypeScript Language Server Settings - Performance Optimized
-    "typescript.updateImportsOnFileMove.enabled": "always", // Keep auto-import
-    "typescript.suggest.autoImports": true, // Keep auto-import
-    "typescript.suggest.completeFunctionCalls": true, // Keep for productivity
-    "typescript.suggest.includeAutomaticOptionalChainCompletions": false, // Disable for performance
-    "typescript.suggest.includeCompletionsForImportStatements": true, // Keep auto-import
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.suggest.autoImports": true,
+    "typescript.suggest.completeFunctionCalls": true,
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+    "typescript.suggest.includeCompletionsForImportStatements": true,
     "typescript.format.enable": true,
     "typescript.format.semicolons": "insert",
-    "typescript.inlayHints.parameterNames.enabled": "literals", // Reduce for performance
-    "typescript.inlayHints.parameterTypes.enabled": false, // Disable for performance
-    "typescript.inlayHints.variableTypes.enabled": false, // Disable for performance
-    "typescript.inlayHints.propertyDeclarationTypes.enabled": false, // Disable for performance
-    "typescript.inlayHints.functionLikeReturnTypes.enabled": false, // Disable for performance
-    "typescript.inlayHints.enumMemberValues.enabled": false, // Disable for performance
-    "typescript.disableAutomaticTypeAcquisition": true, // Disable for performance
-    "javascript.updateImportsOnFileMove.enabled": "always", // Keep auto-import
-    "javascript.suggest.autoImports": true, // Keep auto-import
-    "javascript.suggest.completeFunctionCalls": true, // Keep for productivity
-    "javascript.suggest.includeAutomaticOptionalChainCompletions": false, // Disable for performance
-    "javascript.suggest.includeCompletionsForImportStatements": true, // Keep auto-import
-    "javascript.preferences.includePackageJsonAutoImports": "auto",
+    "typescript.inlayHints.parameterNames.enabled": "literals",
+    "typescript.inlayHints.parameterTypes.enabled": false,
+    "typescript.inlayHints.variableTypes.enabled": false,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
+    "typescript.inlayHints.enumMemberValues.enabled": false,
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.suggest.autoImports": true,
+    "javascript.suggest.completeFunctionCalls": true,
+    "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "javascript.suggest.includeCompletionsForImportStatements": true,
+    "javascript.preferences.includePackageJsonAutoImports": "true",
     "javascript.preferences.quoteStyle": "single",
     "javascript.format.enable": true,
     "javascript.format.semicolons": "insert",
@@ -660,7 +675,6 @@
     "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
     "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
     "javascript.inlayHints.enumMemberValues.enabled": true,
-    // CSS Settings
     "css.validate": true,
     "css.lint.unknownAtRules": "ignore",
     "css.lint.validProperties": [],
@@ -672,7 +686,6 @@
     "less.validate": true,
     "less.completion.completePropertyWithSemicolon": true,
     "less.completion.triggerPropertyValueCompletion": true,
-    // HTML Settings
     "html.validate.scripts": true,
     "html.validate.styles": true,
     "html.autoClosingTags": true,
@@ -689,9 +702,6 @@
     "html.format.maxPreserveNewLines": 2,
     "html.format.unformatted": "wbr",
     "html.format.contentUnformatted": "pre,code,textarea",
-    // ================================================
-    // MOBILE DEVELOPMENT - React Native & Kotlin
-    // ================================================
     "[gradle]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
@@ -708,43 +718,40 @@
         "editor.formatOnSave": true,
         "editor.autoClosingTags": true
     },
-    // ================================================
-    // LOW LEVEL DEVELOPMENT - Rust, C, C++, IoT
-    // ================================================
     "[rust]": {
         "editor.defaultFormatter": "rust-lang.rust-analyzer",
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
         "editor.formatOnSave": true,
-        "editor.formatOnType": true, // Real-time formatting for productivity
-        "editor.formatOnPaste": true, // Clean up pasted code
+        "editor.formatOnType": true,
+        "editor.formatOnPaste": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit",
-            "source.fixAll.rust-analyzer": "explicit" // Auto-fix clippy suggestions
+            "source.fixAll.rust-analyzer": "explicit"
         },
         "editor.rulers": [
             80,
             100,
             120
-        ], // Multiple rulers for different contexts
+        ],
         "editor.semanticHighlighting.enabled": true,
-        "editor.inlayHints.enabled": "on", // Show all hints
-        "editor.suggest.showInlineDetails": true, // Enhanced completion
+        "editor.inlayHints.enabled": "on",
+        "editor.suggest.showInlineDetails": true,
         "editor.hover.enabled": true,
-        "editor.hover.delay": 0, // ไม่มีดีเลย์ hover เลย สำหรับความเร็วสูงสุด
-        "editor.hover.sticky": true, // Keep hover visible
+        "editor.hover.delay": 0,
+        "editor.hover.sticky": true,
         "editor.parameterHints.enabled": true,
-        "editor.parameterHints.cycle": true, // Cycle through overloads
+        "editor.parameterHints.cycle": true,
         "editor.quickSuggestions": {
-            "other": "on", // เปิดทุกอย่าง
-            "comments": "on", // เปิดใน comments ด้วย เพื่อการเขียน doc
-            "strings": "on" // เปิดใน strings ด้วย สำหรับ format strings
+            "other": "on",
+            "comments": "on",
+            "strings": "on"
         },
         "editor.suggest.insertMode": "replace",
         "editor.suggest.filterGraceful": true,
-        "editor.suggest.localityBonus": true, // ให้ความสำคัญกับ local context
-        "editor.suggest.showKeywords": true, // แสดง Rust keywords
-        "editor.suggest.showSnippets": true, // แสดง code snippets
+        "editor.suggest.localityBonus": true,
+        "editor.suggest.showKeywords": true,
+        "editor.suggest.showSnippets": false,
         "editor.suggest.showMethods": true,
         "editor.suggest.showFunctions": true,
         "editor.suggest.showConstructors": true,
@@ -769,26 +776,26 @@
         "editor.suggest.showIssues": false,
         "editor.suggest.showUsers": false,
         "editor.suggest.showEvents": false,
-        "editor.suggestSelection": "first", // เลือก suggestion แรกเสมอ
-        "editor.tabCompletion": "on", // Tab completion
-        "editor.acceptSuggestionOnEnter": "smart", // Smart enter
-        "editor.acceptSuggestionOnCommitCharacter": false, // รับ suggestion เมื่อพิมพ์ commit characters
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "off",
+        "editor.acceptSuggestionOnEnter": "smart",
+        "editor.acceptSuggestionOnCommitCharacter": false,
         "editor.wordBasedSuggestions": "currentDocument",
-        "editor.bracketPairColorization.enabled": true, // Visual aid for nested code
+        "editor.bracketPairColorization.enabled": true,
         "editor.guides.bracketPairs": "active",
         "editor.guides.bracketPairsHorizontal": "active",
-        "editor.showFoldingControls": "always", // Code folding for large files
+        "editor.showFoldingControls": "always",
         "editor.foldingStrategy": "indentation",
         "editor.folding": true,
         "editor.foldingHighlight": true,
-        "editor.showUnused": true, // Highlight unused code
-        "editor.showDeprecated": true, // Show deprecated items
-        "editor.lightbulb.enabled": "on", // Quick fixes
-        "editor.suggest.preview": true, // Preview suggestions
-        "editor.quickSuggestionsDelay": 0, // Instant suggestions
+        "editor.showUnused": true,
+        "editor.showDeprecated": true,
+        "editor.lightbulb.enabled": "on",
+        "editor.suggest.preview": true,
+        "editor.quickSuggestionsDelay": 0,
         "editor.suggestOnTriggerCharacters": true,
         "editor.wordWrap": "on",
-        "editor.wordWrapColumn": 100, // Optimized for readability (matching rustfmt config)
+        "editor.wordWrapColumn": 100,
         "editor.wrappingIndent": "indent",
         "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
         "editor.guides.highlightActiveIndentation": true,
@@ -854,28 +861,25 @@
     "rust-analyzer.cargo.sysroot": "discover",
     "rust-analyzer.cargo.extraArgs": [],
     "rust-analyzer.cargo.extraEnv": {},
-    "rust-analyzer.completion.callable.snippets": "fill_arguments", // เติม argument อัตโนมัติ
-    "rust-analyzer.completion.postfix.enable": true, // Postfix completion สำหรับ .iter(), .ok() ฯลฯ
-    "rust-analyzer.completion.privateEditable.enable": true, // เข้าถึงทุก private items
-    "rust-analyzer.completion.snippet.enable": true, // Code snippets ทุกแบบ
-    "rust-analyzer.completion.autoimport.enable": true, // Auto import ทุกอย่าง
-    "rust-analyzer.completion.autoself.enable": true, // เติม self. อัตโนมัติ
-    "rust-analyzer.completion.term.search.enable": true, // ค้นหา semantic ขั้นเทพ
-    "rust-analyzer.completion.term.search.fuel": 1000, // เพิ่มพลังค้นหาสูงสุด
-    "rust-analyzer.completion.limit": null, // ไม่จำกัดจำนวน suggestions
-    "rust-analyzer.completion.fullFunctionSignatures.enable": true, // แสดง signature เต็ม
-    "rust-analyzer.completion.addCallArgumentSnippets": true, // เติม argument snippets
-    "rust-analyzer.completion.addCallParenthesis": true, // เติม parenthesis อัตโนมัติ
-    // 🔥 SUPER INTELLIGENT SYMBOL RESOLUTION
-    "rust-analyzer.completion.hideDeprecated": false, // แสดงทั้ง deprecated items
-    "rust-analyzer.completion.hidePrivateEditable": false, // แสดงทั้ง private items
-    "rust-analyzer.completion.enablePostfixCompletions": true, // เปิด postfix ทั้งหมด
-    // 💡 SEMANTIC INTELLIGENCE สำหรับการเติมคำอัจฉริยะ
-    "rust-analyzer.completion.resolve.additionalTextEdits.enable": "always", // แก้ไข code อัตโนมัติ
-    "rust-analyzer.completion.unresolved.fixups.enable": true, // ซ่อมแซม unresolved อัตโนมัติ
-    // Advanced diagnostics for all scenarios
+    "rust-analyzer.completion.callable.snippets": "none",
+    "rust-analyzer.completion.postfix.enable": true,
+    "rust-analyzer.completion.privateEditable.enable": true,
+    "rust-analyzer.completion.snippet.enable": false,
+    "rust-analyzer.completion.autoimport.enable": true,
+    "rust-analyzer.completion.autoself.enable": true,
+    "rust-analyzer.completion.term.search.enable": true,
+    "rust-analyzer.completion.term.search.fuel": 1000,
+    "rust-analyzer.completion.limit": null,
+    "rust-analyzer.completion.fullFunctionSignatures.enable": true,
+    "rust-analyzer.completion.addCallArgumentSnippets": true,
+    "rust-analyzer.completion.addCallParenthesis": true,
+    "rust-analyzer.completion.hideDeprecated": false,
+    "rust-analyzer.completion.hidePrivateEditable": false,
+    "rust-analyzer.completion.enablePostfixCompletions": true,
+    "rust-analyzer.completion.resolve.additionalTextEdits.enable": "always",
+    "rust-analyzer.completion.unresolved.fixups.enable": true,
     "rust-analyzer.diagnostics.enable": true,
-    "rust-analyzer.diagnostics.enableExperimental": true, // Cutting-edge features
+    "rust-analyzer.diagnostics.enableExperimental": true,
     "rust-analyzer.diagnostics.disabled": [],
     "rust-analyzer.diagnostics.remapPrefix": {},
     "rust-analyzer.diagnostics.warningsAsHint": [],
@@ -899,196 +903,179 @@
     "rust-analyzer.hover.actions.run": true,
     "rust-analyzer.hover.documentation": true,
     "rust-analyzer.hover.links": true,
-    "rust-analyzer.hover.memoryLayout.enable": true, // Kernel development
-    "rust-analyzer.hover.memoryLayout.alignment": "hexadecimal", // Memory analysis
+    "rust-analyzer.hover.memoryLayout.enable": true,
+    "rust-analyzer.hover.memoryLayout.alignment": "hexadecimal",
     "rust-analyzer.hover.memoryLayout.niches": true,
     "rust-analyzer.hover.memoryLayout.offset": "hexadecimal",
-    "rust-analyzer.hover.memoryLayout.size": "both", // Show both decimal and hex
-    // Advanced import management for workspace organization
+    "rust-analyzer.hover.memoryLayout.size": "both",
     "rust-analyzer.imports.granularity.enforce": true,
     "rust-analyzer.imports.group.enable": true,
     "rust-analyzer.imports.merge.glob": true,
-    "rust-analyzer.imports.prefix": "crate", // Better organization
+    "rust-analyzer.imports.prefix": "crate",
     "rust-analyzer.imports.granularity.group": "module",
-    // Ultimate inlay hints for all use cases - Enhanced visibility and productivity
-    "rust-analyzer.inlayHints.bindingModeHints.enable": true, // Pattern matching clarity
-    "rust-analyzer.inlayHints.chainingHints.enable": true, // Method chaining
-    "rust-analyzer.inlayHints.closingBraceHints.enable": true, // Large code blocks
-    "rust-analyzer.inlayHints.closingBraceHints.minLines": 15, // Reduced for better productivity
-    "rust-analyzer.inlayHints.closureCaptureHints.enable": true, // Closure analysis
-    "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "with_block", // Enhanced for AI/backend
-    "rust-analyzer.inlayHints.discriminantHints.enable": "fieldless", // Enum analysis
-    "rust-analyzer.inlayHints.expressionAdjustmentHints.enable": "reborrow", // Memory management
-    "rust-analyzer.inlayHints.expressionAdjustmentHints.hideOutsideUnsafe": false, // Kernel development
+    "rust-analyzer.inlayHints.bindingModeHints.enable": true,
+    "rust-analyzer.inlayHints.chainingHints.enable": true,
+    "rust-analyzer.inlayHints.closingBraceHints.enable": true,
+    "rust-analyzer.inlayHints.closingBraceHints.minLines": 15,
+    "rust-analyzer.inlayHints.closureCaptureHints.enable": true,
+    "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "with_block",
+    "rust-analyzer.inlayHints.discriminantHints.enable": "fieldless",
+    "rust-analyzer.inlayHints.expressionAdjustmentHints.enable": "reborrow",
+    "rust-analyzer.inlayHints.expressionAdjustmentHints.hideOutsideUnsafe": false,
     "rust-analyzer.inlayHints.expressionAdjustmentHints.mode": "prefix",
-    "rust-analyzer.inlayHints.implicitDropHints.enable": true, // Memory safety
-    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial", // Advanced lifetime analysis
+    "rust-analyzer.inlayHints.implicitDropHints.enable": true,
+    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "skip_trivial",
     "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
-    "rust-analyzer.inlayHints.maxLength": 40, // Optimized for readability
-    "rust-analyzer.inlayHints.parameterHints.enable": true, // Function clarity
-    "rust-analyzer.inlayHints.rangeExclusiveHints.enable": true, // Range clarity
-    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable", // Borrow checker insights
+    "rust-analyzer.inlayHints.maxLength": 40,
+    "rust-analyzer.inlayHints.parameterHints.enable": true,
+    "rust-analyzer.inlayHints.rangeExclusiveHints.enable": true,
+    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
     "rust-analyzer.inlayHints.renderColons": true,
-    "rust-analyzer.inlayHints.typeHints.enable": true, // Type inference visibility
+    "rust-analyzer.inlayHints.typeHints.enable": true,
     "rust-analyzer.inlayHints.typeHints.hideClosureInitialization": false,
     "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": false,
-    // Enhanced code lens for navigation and testing
-    "rust-analyzer.lens.debug": true, // Debugging support
+    "rust-analyzer.lens.debug": true,
     "rust-analyzer.lens.enable": true,
-    "rust-analyzer.lens.implementations": true, // Interface exploration
-    "rust-analyzer.lens.references": true, // Code analysis
-    "rust-analyzer.lens.run": true, // Quick execution for competitive programming
-    "rust-analyzer.lens.methodReferences": true, // Enhanced navigation
-    "rust-analyzer.lens.enumVariantReferences": true, // Enum usage analysis
-    "rust-analyzer.lens.forceCustomCommands": true, // Custom workflows
-    // Project and workspace management
-    "rust-analyzer.linkedProjects": [], // Multi-project support
+    "rust-analyzer.lens.implementations": true,
+    "rust-analyzer.lens.references": true,
+    "rust-analyzer.lens.run": true,
+    "rust-analyzer.lens.methodReferences": true,
+    "rust-analyzer.lens.enumVariantReferences": true,
+    "rust-analyzer.lens.forceCustomCommands": true,
+    "rust-analyzer.linkedProjects": [],
     "rust-analyzer.notifications.cargoTomlNotFound": true,
-    // Procedural macros for advanced features
-    "rust-analyzer.procMacro.enable": true, // Essential for modern Rust
+    "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.procMacro.attributes.enable": true,
     "rust-analyzer.procMacro.ignored": {
         "tokio": [
             "main",
             "test"
-        ], // Common async frameworks
+        ],
         "serde": [
             "Serialize",
             "Deserialize"
-        ], // Serialization
+        ],
         "clap": [
             "Parser"
-        ], // CLI applications
+        ],
         "diesel": [
             "Queryable",
             "Insertable"
-        ] // Database ORMs
+        ]
     },
     "rust-analyzer.procMacro.server": null,
-    // Advanced reference and symbol handling
-    "rust-analyzer.references.excludeImports": false, // Include all references
-    "rust-analyzer.rustc.source": "discover", // Auto-discover rust source
-    // Enhanced formatting for all use cases - Optimized for productivity
+    "rust-analyzer.references.excludeImports": false,
+    "rust-analyzer.rustc.source": "discover",
     "rust-analyzer.rustfmt.extraArgs": [
         "--config",
-        "max_width=100", // Balanced for readability and screen space
+        "max_width=100",
         "--config",
         "hard_tabs=false",
         "--config",
         "tab_spaces=4",
         "--config",
-        "edition=2024", // Latest edition
+        "edition=2024",
         "--config",
-        "imports_granularity=Crate", // Better organization
+        "imports_granularity=Crate",
         "--config",
         "group_imports=StdExternalCrate",
         "--config",
         "wrap_comments=true",
         "--config",
-        "format_code_in_doc_comments=true", // Documentation
+        "format_code_in_doc_comments=true",
         "--config",
         "normalize_comments=true",
         "--config",
         "format_strings=true",
         "--config",
-        "hex_literal_case=Upper", // Consistency for kernel dev
+        "hex_literal_case=Upper",
         "--config",
-        "use_small_heuristics=Default", // Smart formatting decisions
+        "use_small_heuristics=Default",
         "--config",
-        "fn_args_layout=Tall", // Function argument layout
+        "fn_args_layout=Tall",
         "--config",
-        "brace_style=SameLineWhere", // Consistent with Rust style
+        "brace_style=SameLineWhere",
         "--config",
         "control_brace_style=AlwaysSameLine",
         "--config",
-        "trailing_comma=Vertical", // Better diffs
+        "trailing_comma=Vertical",
         "--config",
         "match_arm_trailing_comma=true",
         "--config",
-        "indent_style=Visual", // Visual indentation
+        "indent_style=Visual",
         "--config",
-        "struct_lit_single_line=true", // Compact struct literals
+        "struct_lit_single_line=true",
         "--config",
-        "fn_single_line=false", // Keep functions readable
+        "fn_single_line=false",
         "--config",
-        "where_single_line=true", // Compact where clauses when possible
+        "where_single_line=true",
         "--config",
-        "force_explicit_abi=true", // Explicit ABI for FFI/kernel
+        "force_explicit_abi=true",
         "--config",
-        "condense_wildcard_suffixes=false", // Clear pattern matching
+        "condense_wildcard_suffixes=false",
         "--config",
-        "format_generated_files=true", // Format generated code
+        "format_generated_files=true",
         "--config",
-        "merge_derives=true", // Merge derive attributes
+        "merge_derives=true",
         "--config",
-        "use_try_shorthand=true", // Use ? operator
+        "use_try_shorthand=true",
         "--config",
-        "use_field_init_shorthand=true", // Field init shorthand
+        "use_field_init_shorthand=true",
         "--config",
-        "force_multiline_blocks=false", // Allow single line blocks
+        "force_multiline_blocks=false",
         "--config",
-        "format_macro_matchers=true", // Format macro patterns
+        "format_macro_matchers=true",
         "--config",
-        "format_macro_bodies=true", // Format macro bodies
+        "format_macro_bodies=true",
         "--config",
-        "report_todo=Never", // Don't report TODOs as errors
+        "report_todo=Never",
         "--config",
-        "report_fixme=Never", // Don't report FIXMEs as errors
+        "report_fixme=Never",
         "--config",
-        "license_template_path=" // No license template
+        "license_template_path="
     ],
     "rust-analyzer.rustfmt.overrideCommand": null,
-    "rust-analyzer.rustfmt.rangeFormatting.enable": true, // Partial formatting
-    // 🎨 ULTIMATE SEMANTIC HIGHLIGHTING - แสดงข้อมูลทุกรายละเอียด
-    "rust-analyzer.semanticHighlighting.strings.enable": true, // Highlight strings
-    "rust-analyzer.semanticHighlighting.punctuation.enable": true, // Enhanced visibility
-    "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": true, // Macro clarity
+    "rust-analyzer.rustfmt.rangeFormatting.enable": true,
+    "rust-analyzer.semanticHighlighting.strings.enable": true,
+    "rust-analyzer.semanticHighlighting.punctuation.enable": true,
+    "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": true,
     "rust-analyzer.semanticHighlighting.punctuation.specialization.enable": true,
-    "rust-analyzer.semanticHighlighting.operator.enable": true, // Operator highlighting
+    "rust-analyzer.semanticHighlighting.operator.enable": true,
     "rust-analyzer.semanticHighlighting.operator.specialization.enable": true,
-    "rust-analyzer.semanticHighlighting.doc.comment.inject.enable": true, // Documentation
-    "rust-analyzer.semanticHighlighting.nonStandardTokens": true, // แสดง non-standard tokens
-    "rust-analyzer.semanticHighlighting.rainbow.enable": true, // Rainbow highlighting
-    // 🔍 SIGNATURE HELP เทพสุด
-    "rust-analyzer.signatureInfo.detail": "full", // Complete information
+    "rust-analyzer.semanticHighlighting.doc.comment.inject.enable": true,
+    "rust-analyzer.semanticHighlighting.nonStandardTokens": true,
+    "rust-analyzer.semanticHighlighting.rainbow.enable": true,
+    "rust-analyzer.signatureInfo.detail": "full",
     "rust-analyzer.signatureInfo.documentation.enable": true,
-    // ⚡ PERFORMANCE OPTIMIZATION ความเร็วสูงสุด
-    "rust-analyzer.cachePriming.enable": true, // Faster startup
-    "rust-analyzer.cachePriming.numThreads": 0, // Use all available cores
-    "rust-analyzer.lru.capacity": 512, // เพิ่ม cache size สูงสุด
-    // 🎯 ENHANCED HIGHLIGHTING ระบุตำแหน่งอย่างแม่นยำ
-    "rust-analyzer.highlightRelated.breakPoints.enable": true, // Debugging
-    "rust-analyzer.highlightRelated.exitPoints.enable": true, // Control flow
-    "rust-analyzer.highlightRelated.yieldPoints.enable": true, // Async/generators
-    "rust-analyzer.highlightRelated.references.enable": true, // Reference highlighting
-    "rust-analyzer.highlightRelated.closureCaptures.enable": true, // Closure captures
-    // 🎮 COMPETITIVE PROGRAMMING & PERFORMANCE
-    "rust-analyzer.runnables.command": null, // Custom run commands
+    "rust-analyzer.cachePriming.enable": true,
+    "rust-analyzer.cachePriming.numThreads": 0,
+    "rust-analyzer.lru.capacity": 512,
+    "rust-analyzer.highlightRelated.breakPoints.enable": true,
+    "rust-analyzer.highlightRelated.exitPoints.enable": true,
+    "rust-analyzer.highlightRelated.yieldPoints.enable": true,
+    "rust-analyzer.highlightRelated.references.enable": true,
+    "rust-analyzer.highlightRelated.closureCaptures.enable": true,
+    "rust-analyzer.runnables.command": null,
     "rust-analyzer.runnables.extraArgs": [
-        "--release" // Optimized builds สำหรับการแข่งขัน
+        "--release"
     ],
     "rust-analyzer.runnables.extraEnv": {
-        "RUST_BACKTRACE": "1", // Debugging information
-        "RUST_LOG": "debug", // เพิ่มข้อมูล logging
-        "CARGO_INCREMENTAL": "1", // Faster compilation
-        "RUSTFLAGS": "-C target-cpu=native -C opt-level=3" // Optimize สำหรับ CPU ปัจจุบัน (ลบ static linking)
+        "RUST_BACKTRACE": "1",
+        "RUST_LOG": "debug",
+        "CARGO_INCREMENTAL": "1",
+        "RUSTFLAGS": "-C target-cpu=native -C opt-level=3"
     },
-    // 💻 ADVANCED TYPING ASSISTANCE
-    "rust-analyzer.typing.continueCommentsOnNewline": true, // Documentation workflow
-    "rust-analyzer.typing.autoClosingAngleBrackets.enable": true, // Generics support
-    // 🔍 ULTIMATE WORKSPACE SYMBOL SEARCH - ค้นหาอะไรก็เจอ
-    "rust-analyzer.workspace.symbol.search.scope": "workspace_and_dependencies", // ค้นหา symbols ในทุกที่
-    "rust-analyzer.workspace.symbol.search.kind": "all_symbols", // ค้นหา symbols ทุกประเภท
-    "rust-analyzer.workspace.symbol.search.limit": 512, // เพิ่มขีดจำกัดการค้นหา
-    // 🚀 EXPERIMENTAL FEATURES สำหรับความเทพ
-    "rust-analyzer.experimental.procAttrMacros": true, // Proc attribute macros
-    "rust-analyzer.experimental.withinBlockSuggest": true, // Suggestions within blocks
-    // 🔗 ADVANCED JOIN LINES - จัดรูปแบบโค้ดอัตโนมัติ
-    "rust-analyzer.joinLines.joinElseIf": true, // Code formatting
+    "rust-analyzer.typing.continueCommentsOnNewline": true,
+    "rust-analyzer.typing.autoClosingAngleBrackets.enable": true,
+    "rust-analyzer.workspace.symbol.search.scope": "workspace_and_dependencies",
+    "rust-analyzer.workspace.symbol.search.kind": "all_symbols",
+    "rust-analyzer.workspace.symbol.search.limit": 512,
+    "rust-analyzer.experimental.procAttrMacros": true,
+    "rust-analyzer.experimental.withinBlockSuggest": true,
+    "rust-analyzer.joinLines.joinElseIf": true,
     "rust-analyzer.joinLines.removeTrailingComma": true,
     "rust-analyzer.joinLines.unwrapTrivialBlock": true,
     "rust-analyzer.joinLines.joinAssignments": true,
-    // C/C++ Settings
     "C_Cpp.default.cppStandard": "c++20",
     "C_Cpp.default.cStandard": "c17",
     "C_Cpp.default.compilerPath": "/usr/bin/gcc",
@@ -1130,77 +1117,66 @@
     "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores": true,
     "C_Cpp.inlayHints.referenceOperator.enabled": true,
     "C_Cpp.inlayHints.referenceOperator.showSpace": false,
-    // ================================================
-    // 🐍 PYTHON DEVELOPMENT - ULTIMATE PRODUCTIVITY & EASE OF USE
-    // Optimized for maximum productivity, excellent auto-suggestions, and ease of coding
-    // ================================================
     "[python]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
-        "editor.formatOnSave": false, // ปิดเพื่อให้เขียนได้อิสระ
-        "editor.formatOnType": false, // ปิดเพื่อไม่ให้รบกวนขณะพิมพ์
-        "editor.formatOnPaste": false, // ปิดเพื่อให้ paste ได้อิสระ
+        "editor.formatOnSave": false,
+        "editor.formatOnType": false,
+        "editor.formatOnPaste": false,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "never", // ปิดเพื่อไม่ให้จัดเรียง import อัตโนมัติ
-            "source.fixAll.ruff": "never" // ปิด ruff auto-fix เพื่อไม่ให้ strict
+            "source.organizeImports": "never",
+            "source.fixAll.ruff": "never"
         },
         "editor.rulers": [
             120
-        ], // เอาเส้น 79, 88 ออกเพื่อให้เขียนสบายขึ้น
+        ],
         "editor.wordWrapColumn": 120,
-        "editor.wordWrap": "on", // เปิด word wrap
-        // Enhanced auto-suggestions และ IntelliSense
+        "editor.wordWrap": "on",
         "editor.suggest.showInlineDetails": true,
         "editor.suggest.preview": true,
         "editor.suggest.previewMode": "prefix",
         "editor.suggest.insertMode": "replace",
         "editor.suggest.filterGraceful": true,
         "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "editor.suggest.localityBonus": true, // ให้ความสำคัญกับ suggestions ใกล้เคียง
-        "editor.acceptSuggestionOnEnter": "on", // รับ suggestion ด้วย Enter
+        "editor.suggest.localityBonus": true,
+        "editor.acceptSuggestionOnEnter": "on",
         "editor.acceptSuggestionOnCommitCharacter": true,
         "editor.quickSuggestions": {
             "other": "on",
-            "comments": "on", // เปิด suggestions ใน comments
-            "strings": "on" // เปิด suggestions ใน strings
+            "comments": "on",
+            "strings": "on"
         },
-        "editor.quickSuggestionsDelay": 0, // ไม่มี delay
+        "editor.quickSuggestionsDelay": 0,
         "editor.suggestOnTriggerCharacters": true,
         "editor.wordBasedSuggestions": "allDocuments",
-        "editor.suggest.autoImports": true, // Auto import ทันที
-        // Enhanced IntelliSense และ Type Hints
+        "editor.suggest.autoImports": true,
         "editor.hover.enabled": true,
-        "editor.hover.delay": 50, // แสดง hover เร็วมากขึ้น
+        "editor.hover.delay": 50,
         "editor.hover.sticky": true,
         "editor.parameterHints.enabled": true,
         "editor.parameterHints.cycle": true,
-        "editor.inlayHints.enabled": "on", // แสดง type hints
+        "editor.inlayHints.enabled": "on",
         "editor.semanticHighlighting.enabled": true,
-        // Code completion และ productivity features
         "editor.autoClosingBrackets": "always",
         "editor.autoClosingQuotes": "always",
-        "editor.autoClosingComments": "always", // เปิด auto-closing สำหรับ comments
+        "editor.autoClosingComments": "always",
         "editor.autoSurround": "languageDefined",
         "editor.bracketPairColorization.enabled": true,
         "editor.guides.bracketPairs": "active",
         "editor.linkedEditing": true,
-        "editor.showUnused": false, // ปิดเพื่อไม่ให้รบกวน
-        "editor.showDeprecated": false, // ปิดเพื่อไม่ให้รบกวน
-        // Code folding และ navigation
+        "editor.showUnused": false,
+        "editor.showDeprecated": false,
         "editor.showFoldingControls": "always",
         "editor.foldingStrategy": "indentation",
         "editor.folding": true,
         "editor.foldingHighlight": true,
-        // Auto-complete และ snippets
-        "editor.snippetSuggestions": "top",
-        "editor.tabCompletion": "on",
+        "editor.snippetSuggestions": "none",
+        "editor.tabCompletion": "off",
         "editor.emptySelectionClipboard": false,
-        // Error handling - ไม่ strict
-        "editor.renderWhitespace": "none", // ซ่อน whitespace marks
-        "editor.trimAutoWhitespace": false, // ปิดการลบ whitespace อัตโนมัติ
-        "editor.detectIndentation": false, // บังคับใช้ 4 spaces
-        "editor.lightbulb.enabled": "on", // แสดง quick fixes
-        // Advanced Python productivity features
+        "editor.renderWhitespace": "none",
+        "editor.trimAutoWhitespace": false,
+        "editor.detectIndentation": false,
+        "editor.lightbulb.enabled": "on",
         "editor.suggest.showKeywords": true,
         "editor.suggest.showClasses": true,
         "editor.suggest.showFields": false,
@@ -1223,36 +1199,31 @@
         "editor.suggest.showSnippets": false,
         "editor.suggest.showUsers": false,
         "editor.suggest.showIssues": false,
-        // Enhanced code navigation
         "editor.gotoLocation.multipleReferences": "goto",
         "editor.gotoLocation.multipleDefinitions": "goto",
         "editor.gotoLocation.multipleDeclarations": "goto",
         "editor.gotoLocation.multipleImplementations": "goto",
         "editor.gotoLocation.multipleTypeDefinitions": "goto",
-        // Smart selection and multi-cursor
         "editor.smartSelect.selectLeadingAndTrailingWhitespace": false,
         "editor.multiCursorModifier": "ctrlCmd",
         "editor.selectionHighlight": true,
         "editor.occurrencesHighlight": "singleFile",
-        // Enhanced find and replace
         "editor.find.addExtraSpaceOnTop": false,
         "editor.find.autoFindInSelection": "never",
         "editor.find.cursorMoveOnType": true,
         "editor.find.loop": true,
         "editor.find.seedSearchStringFromSelection": "always",
-        // 💨 ENHANCED COMMENT AUTO-COMPLETION & ASSISTANCE
-        "editor.comments.insertSpace": true, // เพิ่ม space หลัง # อัตโนมัติ
-        "editor.comments.ignoreEmptyLines": false, // ให้ comment ได้ทุกบรรทัด
-        "editor.suggest.showStatusBar": true, // แสดงสถานะ suggestion
-        "editor.suggest.shareSuggestSelections": true, // แชร์ suggestion selections
-        // 🚀 ULTRA SPEED CODING FEATURES
-        "editor.minimap.enabled": false, // ปิด minimap เพื่อประสิทธิภาพ
-        "editor.codeLens": true, // เปิด code lens สำหรับ references
-        "editor.colorDecorators": true, // แสดง color decorators
-        "editor.definitionLinkOpensInPeek": false, // เปิด definition ใน tab ใหม่
-        "editor.peekWidgetDefaultFocus": "editor", // focus ที่ editor ใน peek widget
-        "editor.dragAndDrop": true, // เปิด drag and drop
-        "editor.copyWithSyntaxHighlighting": true // copy พร้อม syntax highlighting
+        "editor.comments.insertSpace": true,
+        "editor.comments.ignoreEmptyLines": false,
+        "editor.suggest.showStatusBar": true,
+        "editor.suggest.shareSuggestSelections": true,
+        "editor.minimap.enabled": false,
+        "editor.codeLens": true,
+        "editor.colorDecorators": true,
+        "editor.definitionLinkOpensInPeek": false,
+        "editor.peekWidgetDefaultFocus": "editor",
+        "editor.dragAndDrop": true,
+        "editor.copyWithSyntaxHighlighting": true
     },
     "[pip-requirements]": {
         "editor.tabSize": 4,
@@ -1262,22 +1233,22 @@
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
         "editor.formatOnSave": true,
-        "editor.suggest.showInlineDetails": true, // Enhanced completion for Cargo.toml
-        "editor.hover.enabled": true, // Show documentation for Cargo fields
+        "editor.suggest.showInlineDetails": true,
+        "editor.hover.enabled": true,
         "editor.quickSuggestions": {
             "other": "on",
             "comments": "off",
-            "strings": "on" // Enable suggestions in strings for crate names
+            "strings": "on"
         },
-        "editor.semanticHighlighting.enabled": true, // Better syntax highlighting
-        "editor.bracketPairColorization.enabled": true, // Visual aid for nested tables
-        "editor.guides.bracketPairs": "active", // Bracket pair guides
-        "editor.wordWrap": "on", // Wrap long dependency lists
+        "editor.semanticHighlighting.enabled": true,
+        "editor.bracketPairColorization.enabled": true,
+        "editor.guides.bracketPairs": "active",
+        "editor.wordWrap": "on",
         "editor.rulers": [
             100
-        ], // Consistent with Rust code width
-        "editor.trimAutoWhitespace": true, // Clean up whitespace
-        "editor.renderWhitespace": "boundary" // Show whitespace for TOML structure clarity
+        ],
+        "editor.trimAutoWhitespace": true,
+        "editor.renderWhitespace": "boundary"
     },
     "[yaml]": {
         "editor.tabSize": 2,
@@ -1291,73 +1262,60 @@
         "editor.formatOnSave": true,
         "editor.autoIndent": "full"
     },
-    // Python Language Server Settings - ปรับปรุงสำหรับ productivity สูงสุด
     "python.analysis.autoSearchPaths": true,
-    "python.analysis.diagnosticMode": "openFilesOnly", // วิเคราะห์เฉพาะไฟล์ที่เปิดเพื่อความเร็ว
+    "python.analysis.diagnosticMode": "openFilesOnly",
     "python.analysis.extraPaths": [],
     "python.analysis.stubPath": "typings",
-    "python.analysis.typeCheckingMode": "off", // ปิด strict type checking เพื่อความง่าย
+    "python.analysis.typeCheckingMode": "off",
     "python.analysis.useLibraryCodeForTypes": true,
-    "python.analysis.autoImportCompletions": true, // เปิด auto import completions
-    "python.analysis.completeFunctionParens": true, // ใส่วงเล็บให้อัตโนมัติ
-    "python.analysis.autoFormatStrings": false, // ปิดการจัดรูปแบบ f-strings อัตโนมัติ
-    "python.analysis.fixAll": [
-        "source.unusedImports"
-    ], // เฉพาะ unused imports เท่านั้น
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.autoFormatStrings": false,
+    "python.analysis.fixAll": [],
     "python.analysis.ignore": [],
     "python.analysis.importFormat": "absolute",
-    // Enhanced IntelliSense และ Type Hints
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.analysis.inlayHints.pytestParameters": true,
-    "python.analysis.inlayHints.variableTypes": false, // ปิดเพื่อไม่ให้รก
-    "python.analysis.inlayHints.callArgumentNames": "off", // ปิดเพื่อไม่รบกวน
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.inlayHints.callArgumentNames": "off",
     "python.analysis.logLevel": "Information",
     "python.analysis.packageIndexDepths": [
         {
             "name": "",
-            "depth": 3, // เพิ่ม depth สำหรับ better suggestions
+            "depth": 3,
             "includeAllSymbols": true
         }
     ],
-    "python.analysis.userFileIndexingLimit": -1, // ไม่จำกัด file indexing
-    // Enhanced completion และ suggestions
-    "python.analysis.completionSortingHeuristics": true, // เรียงลำดับ completion ที่ดีขึ้น
-    "python.analysis.enablePytestSupport": true, // รองรับ pytest
-    "python.analysis.gotoDefinitionInStringLiteral": true, // ไปที่ definition ใน string
-    "python.analysis.supportDocstringDuplicates": true, // รองรับ docstring ซ้ำ
-    // Advanced Pylance Settings for Better IntelliSense
-    "python.analysis.indexing": true, // เปิด indexing เต็มรูปแบบ
-    "python.analysis.memory.keepLibraryAst": true, // เก็บ AST ของ library ไว้ใน memory
-    "python.analysis.nodeExecutable": "", // ใช้ Node.js default
-    "python.analysis.regenerateStdLib": true, // regenerate standard library ถ้าจำเป็น
-    "python.analysis.watchForLibraryChanges": true, // ติดตาม library changes
+    "python.analysis.userFileIndexingLimit": -1,
+    "python.analysis.completionSortingHeuristics": true,
+    "python.analysis.enablePytestSupport": true,
+    "python.analysis.gotoDefinitionInStringLiteral": true,
+    "python.analysis.supportDocstringDuplicates": true,
+    "python.analysis.indexing": true,
+    "python.analysis.memory.keepLibraryAst": true,
+    "python.analysis.nodeExecutable": "",
+    "python.analysis.regenerateStdLib": true,
+    "python.analysis.watchForLibraryChanges": true,
     "python.analysis.includeFileSpecs": [
         "**/*.py"
-    ], // include ไฟล์ Python ทั้งหมด
+    ],
     "python.analysis.excludeFileSpecs": [
         "**/node_modules/**",
         "**/__pycache__/**",
         "**/.*/**"
-    ], // exclude directories ที่ไม่จำเป็น
-    // IntelliCode Settings for AI-powered suggestions - Enhanced for Python
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "vsintellicode.features.python.deepLearning": "enabled", // AI suggestions
-    "vsintellicode.python.completionsEnabled": true, // AI completions
-    "vsintellicode.python.argumentsCompletionEnabled": true, // AI argument completion
-    "vsintellicode.python.importCompletionEnabled": true, // AI import suggestions
-    "vsintellicode.python.functionSignatureEnabled": true, // AI function signatures
-    "vsintellicode.supportedLanguages": [
-        "python",
-        "typescript",
-        "javascript",
-        "rust"
     ],
+    "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
+    "vsintellicode.features.python.deepLearning": "disabled",
+    "vsintellicode.python.completionsEnabled": false,
+    "vsintellicode.python.argumentsCompletionEnabled": false,
+    "vsintellicode.python.importCompletionEnabled": false,
+    "vsintellicode.python.functionSignatureEnabled": false,
+    "vsintellicode.supportedLanguages": [],
     "python.defaultInterpreterPath": "/usr/bin/python3",
-    "python.terminal.activateEnvironment": true, // เปิด virtual environment อัตโนมัติ
-    "python.terminal.activateEnvInCurrentTerminal": true, // เปิดใน terminal ปัจจุบัน
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
     "python.terminal.executeInFileDir": false,
-    // 🚀 ENHANCED AUTO-IMPORT & INTELLIGENT FEATURES
-    "python.autoComplete.addBrackets": true, // เพิ่มวงเล็บอัตโนมัติ
+    "python.autoComplete.addBrackets": true,
     "python.autoComplete.preloadModules": [
         "numpy",
         "pandas",
@@ -1369,39 +1327,34 @@
         "datetime",
         "math",
         "random"
-    ], // โหลดโมดูลที่ใช้บ่อยไว้ล่วงหน้า
+    ],
     "python.analysis.completionSettings": {
         "includeArgumentNamesInFunctionSignatures": true,
         "includeImportStatements": true,
         "includeParameterDefaults": true,
         "includeMethodSignatures": true
-    }, // การตั้งค่า completion แบบครบถ้วน
-    // Enhanced Debugging Settings
-    "python.debugging.console": "internalConsole", // ใช้ internal console
-    "python.debugging.django": false, // ปิด Django debugging ถ้าไม่ใช้
-    "python.debugging.flask": false, // ปิด Flask debugging ถ้าไม่ใช้
-    "python.debugging.pyramid": false, // ปิด Pyramid debugging ถ้าไม่ใช้
-    // Enhanced Refactoring และ Code Actions
-    "python.refactoring.enabled": true, // เปิด refactoring
-    "python.refactoring.extractMethod": true, // extract method
-    "python.refactoring.extractVariable": true, // extract variable
-    "python.refactoring.inlineVariable": true, // inline variable
-    // Documentation และ Docstring Settings
-    "python.docstring.format": "google", // ใช้ Google docstring format
-    "python.docstring.generateOnEnter": true, // สร้าง docstring เมื่อกด Enter
-    // 🎯 ULTRA PYTHON PRODUCTIVITY & SNIPPETS
-    "python.analysis.enableAutoDocstring": true, // เปิด auto docstring generation
-    "python.analysis.enableQuickInfo": true, // แสดง quick info
-    "python.analysis.enableSignatureHelp": true, // แสดง signature help
-    "python.analysis.enableWorkspaceSymbols": true, // เปิด workspace symbols
-    "python.analysis.enableDocumentSymbols": true, // เปิด document symbols
-    // Linting Settings - ปรับให้ไม่ strict มากเกินไป
-    "python.linting.enabled": false, // ปิด linting เพื่อไม่ให้รบกวน
+    },
+    "python.debugging.console": "internalConsole",
+    "python.debugging.django": false,
+    "python.debugging.flask": false,
+    "python.debugging.pyramid": false,
+    "python.refactoring.enabled": true,
+    "python.refactoring.extractMethod": true,
+    "python.refactoring.extractVariable": true,
+    "python.refactoring.inlineVariable": true,
+    "python.docstring.format": "google",
+    "python.docstring.generateOnEnter": true,
+    "python.analysis.enableAutoDocstring": true,
+    "python.analysis.enableQuickInfo": true,
+    "python.analysis.enableSignatureHelp": true,
+    "python.analysis.enableWorkspaceSymbols": true,
+    "python.analysis.enableDocumentSymbols": true,
+    "python.linting.enabled": false,
     "python.linting.lintOnSave": false,
-    "python.linting.maxNumberOfProblems": 50, // ลดจำนวน problems ลง
+    "python.linting.maxNumberOfProblems": 50,
     "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": false, // ปิด flake8 เพื่อไม่ให้ strict
-    "python.linting.mypyEnabled": false, // ปิด mypy type checking
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": false,
     "python.linting.banditEnabled": false,
     "python.linting.prospectorEnabled": false,
     "python.linting.pydocstyleEnabled": false,
@@ -1453,22 +1406,17 @@
         "-p",
         "*test.py"
     ],
-    // ================================================
-    // 🚀 GO DEVELOPMENT - ULTIMATE AUTO-SUGGESTION & PRODUCTIVITY
-    // การตั้งค่าเฉพาะสำหรับภาษา Go เพื่อ auto-suggestion ที่เทพที่สุด
-    // ================================================
     "[go]": {
         "editor.tabSize": 4,
-        "editor.insertSpaces": false, // Go uses tabs
+        "editor.insertSpaces": false,
         "editor.formatOnSave": true,
-        "editor.formatOnType": false, // Disable for performance
-        "editor.formatOnPaste": false, // Disable for performance
+        "editor.formatOnType": false,
+        "editor.formatOnPaste": false,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
         },
-        // Keep essential auto-suggestions for Go
-        "editor.suggest.showInlineDetails": true, // Keep for productivity
-        "editor.suggest.preview": false, // Disable for performance
+        "editor.suggest.showInlineDetails": true,
+        "editor.suggest.preview": false,
         "editor.suggest.insertMode": "replace",
         "editor.suggest.filterGraceful": true,
         "editor.suggest.localityBonus": true,
@@ -1479,29 +1427,26 @@
             "comments": "off",
             "strings": "off"
         },
-        "editor.quickSuggestionsDelay": 50, // Slight delay for performance
-        "editor.suggest.autoImports": true, // Keep auto-import
+        "editor.quickSuggestionsDelay": 50,
+        "editor.suggest.autoImports": true,
         "editor.hover.enabled": true,
-        "editor.hover.delay": 100, // Increase delay for performance
-        "editor.inlayHints.enabled": "off", // Disable for performance
-        "editor.semanticHighlighting.enabled": false, // Disable for performance
+        "editor.hover.delay": 100,
+        "editor.inlayHints.enabled": "off",
+        "editor.semanticHighlighting.enabled": false,
         "editor.hover.sticky": true,
         "editor.parameterHints.enabled": true,
         "editor.parameterHints.cycle": true,
-        // Code completion features
         "editor.autoClosingBrackets": "always",
         "editor.autoClosingQuotes": "always",
         "editor.autoSurround": "languageDefined",
         "editor.bracketPairColorization.enabled": true,
         "editor.guides.bracketPairs": "active",
         "editor.linkedEditing": true,
-        "editor.showUnused": false, // Disable for performance
-        "editor.showDeprecated": false, // Disable for performance
-        // Auto-complete และ snippets
-        "editor.snippetSuggestions": "top",
-        "editor.tabCompletion": "on",
-        "editor.lightbulb.enabled": "off", // Disable for performance
-        // Go specific completions - optimized for performance
+        "editor.showUnused": false,
+        "editor.showDeprecated": false,
+        "editor.snippetSuggestions": "none",
+        "editor.tabCompletion": "off",
+        "editor.lightbulb.enabled": "off",
         "editor.autoClosingTags": true
     },
     "[gotmpl]": {
@@ -1510,29 +1455,23 @@
         "editor.formatOnSave": true,
         "editor.autoClosingTags": true
     },
-    // ================================================
-    // 🚀 GO LANGUAGE SERVER (gopls) CONFIGURATION
-    // การตั้งค่า gopls เพื่อ auto-suggestion และ IntelliSense เทพๆ
-    // ================================================
-    // Go Language Server - Performance Optimized but keep auto-import
     "go.useLanguageServer": true,
     "go.languageServerExperimentalFeatures": {
-        "diagnostics": false, // Disable for performance
-        "documentLink": false, // Disable for performance
-        "hoverKind": "Structured" // Lighter than FullDocumentation
+        "diagnostics": false,
+        "documentLink": false,
+        "hoverKind": "Structured"
     },
     "go.languageServerFlags": [
         "serve",
-        "-rpc.trace" // For debugging if needed
+        "-rpc.trace"
     ],
-    "go.buildOnSave": "off", // Disable for performance
-    "go.lintOnSave": "off", // Disable for performance
-    "go.vetOnSave": "off", // Disable for performance
-    "go.formatTool": "goimports", // Keep auto-import functionality
-    "go.gocodeAutoBuild": false, // Disable for performance
-    "go.autocompleteUnimportedPackages": true, // Keep for productivity
+    "go.lintOnSave": "off",
+    "go.vetOnSave": "off",
+    "go.formatTool": "goimports",
+    "go.gocodeAutoBuild": false,
+    "go.autocompleteUnimportedPackages": true,
     "go.enableCodeLens": {
-        "runtest": false // Disable for performance
+        "runtest": false
     },
     "go.coverOnSave": false,
     "go.coverOnSingleTest": false,
@@ -1552,9 +1491,6 @@
         "share": true
     },
     "go.survey.prompt": false,
-    // ================================================
-    // 🎯 GOPLS ADVANCED SETTINGS สำหรับ auto-suggestion เทพ
-    // ================================================
     "gopls": {
         "ui.semanticTokens": true,
         "ui.completion.usePlaceholders": true,
@@ -1588,57 +1524,57 @@
         ],
         "build.templateExtensions": [],
         "build.expandWorkspaceToModule": true,
-        "build.experimentalWorkspaceModule": true, // Enable experimental workspace module
+        "build.experimentalWorkspaceModule": true,
         "verboseOutput": false,
-        "completeUnimported": true, // เปิด completion สำหรับ packages ที่ยังไม่ import
+        "completeUnimported": true,
         "completionDocumentation": true,
-        "deepCompletion": true, // เปิด deep completion analysis
-        "completeFunctionCalls": true, // auto-complete function calls
-        "usePlaceholders": true, // ใช้ placeholders ใน snippets
-        "matcher": "CaseInsensitive", // Better fuzzy matching for more suggestions
+        "deepCompletion": true,
+        "completeFunctionCalls": true,
+        "usePlaceholders": false,
+        "matcher": "CaseInsensitive",
         "symbolMatcher": "FastFuzzy",
         "symbolStyle": "Dynamic",
-        "hoverKind": "SynopsisDocumentation", // Faster hover with essential docs
+        "hoverKind": "SynopsisDocumentation",
         "linkTarget": "pkg.go.dev",
         "linksInHover": true,
         "importShortcut": "Both",
         "analyses": {
-            "fieldalignment": true, // Enable field alignment analysis
-            "nilness": true, // Detect nil pointer dereferences
-            "shadow": true, // Detect shadowed variables
-            "unusedparams": true, // Detect unused parameters
-            "unusedwrite": true, // Detect unused writes
-            "useany": true, // Detect when interface{} can be replaced with any
-            "fillreturns": true, // Fill in return values automatically
-            "nonewvars": true, // Suggests variable reuse
-            "undeclaredname": true, // Reports undeclared names
-            "unreachable": true, // Detects unreachable code
-            "ST1000": false, // Disable package comment check
-            "ST1003": true, // Ensure proper naming
-            "ST1016": true, // Methods have receiver names
-            "ST1020": true, // Comments on exported items
-            "ST1021": true, // Consistent error checks
-            "ST1022": true // Simplify error handling
+            "fieldalignment": true,
+            "nilness": true,
+            "shadow": true,
+            "unusedparams": true,
+            "unusedwrite": true,
+            "useany": true,
+            "fillreturns": true,
+            "nonewvars": true,
+            "undeclaredname": true,
+            "unreachable": true,
+            "ST1000": false,
+            "ST1003": true,
+            "ST1016": true,
+            "ST1020": true,
+            "ST1021": true,
+            "ST1022": true
         },
-        "staticcheck": true, // Enable staticcheck analyzer
+        "staticcheck": true,
         "directoryFilters": [
             "-node_modules",
             "-vendor"
         ],
-        "semanticTokens": true, // Enable semantic tokens for better highlighting
-        "tempModfile": true, // Use temporary modfile for changes
-        "gofumpt": true, // Enhanced gofmt formatting
-        "experimentalWorkspaceModule": true, // Enable experimental workspace features
-        "experimentalDiagnosticsDelay": "0ms", // Instant diagnostics
-        "experimentalPostfixCompletions": true, // Enable postfix completions
-        "experimentalUseInvalidMetadata": true, // Use invalid metadata for suggestions
+        "semanticTokens": true,
+        "tempModfile": true,
+        "gofumpt": true,
+        "experimentalWorkspaceModule": true,
+        "experimentalDiagnosticsDelay": "0ms",
+        "experimentalPostfixCompletions": true,
+        "experimentalUseInvalidMetadata": true,
         "templateExtensions": [
             "tmpl",
             "gotmpl",
             "gohtml"
         ],
-        "allExperiments": true, // Enable all experimental features
-        "vulncheck": "Imports", // Check for vulnerabilities
+        "allExperiments": true,
+        "vulncheck": "Imports",
     },
     "annotations": {
         "bounds": true,
@@ -1646,16 +1582,10 @@
         "inline": true,
         "nil": true
     },
-    // 🚀 TEST FRAMEWORK OPTIMIZATION & INTEGRATION
-    // การตั้งค่าเพิ่มเติมสำหรับ test frameworks ยอดนิยม
-    // 🧪 ENHANCED TEST DISCOVERY & ANALYSIS
-    "rust-analyzer.checkOnSave.features": "all", // check ทุก features รวมถึง test-only
-    "rust-analyzer.checkOnSave.targets": "all", // check ทุก targets รวมถึง tests
+    "rust-analyzer.checkOnSave.features": "all",
+    "rust-analyzer.checkOnSave.targets": "all",
     "rust-analyzer.analysis.excludeGlobs": [],
-    "rust-analyzer.analysis.autoImport.enable": true, // auto import ใน test files
-    // ================================================
-    // 🚀 CODE RUNNER CONFIGURATION - สำหรับ RUST ใช้ CARGO RUN เท่านั้น
-    // ================================================
+    "rust-analyzer.analysis.autoImport.enable": true,
     "code-runner.executorMap": {
         "javascript": "node",
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
@@ -1663,7 +1593,7 @@
         "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "php": "php",
-        "python": "python -u",
+        "python": "python3 -u",
         "perl": "perl",
         "perl6": "perl6",
         "ruby": "ruby",
@@ -1709,26 +1639,25 @@
         "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
         "zig": "zig run"
     },
-    "code-runner.runInTerminal": true, // รันใน terminal แทนใน output panel
-    "code-runner.preserveFocus": false, // Focus ไปที่ terminal หลังรัน
-    "code-runner.saveAllFilesBeforeRun": true, // Save ไฟล์ทั้งหมดก่อนรัน
-    "code-runner.saveFileBeforeRun": true, // Save ไฟล์ปัจจุบันก่อนรัน
-    "code-runner.clearPreviousOutput": true, // Clear output ก่อนรันใหม่
-    "code-runner.showExecutionMessage": true, // แสดงข้อความเมื่อเริ่มรัน
-    "code-runner.defaultLanguage": "rust", // Default language เป็น Rust
-    "code-runner.enableAppInsights": false, // ปิด telemetry
-    "code-runner.ignoreSelection": true, // รันทั้งไฟล์แทนที่จะรันเฉพาะ selection
-    "code-runner.respectShebang": false, // ไม่ใช้ shebang
-    "code-runner.terminalRoot": "/", // Root directory สำหรับ terminal
-    "code-runner.temporaryFileName": "temp", // ชื่อ temporary file
-    "code-runner.cwd": "$workspaceRoot", // Working directory เป็น workspace root
-    // Fish shell specific settings
+    "code-runner.runInTerminal": true,
+    "code-runner.preserveFocus": false,
+    "code-runner.saveAllFilesBeforeRun": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.showExecutionMessage": true,
+    "code-runner.defaultLanguage": "rust",
+    "code-runner.enableAppInsights": false,
+    "code-runner.ignoreSelection": true,
+    "code-runner.respectShebang": false,
+    "code-runner.terminalRoot": "/",
+    "code-runner.temporaryFileName": "temp",
+    "code-runner.cwd": "$workspaceRoot",
     "code-runner.executorMapByGlob": {
         "*.rs": "cd $workspaceRoot && cargo run",
         "*.go": "cd $workspaceRoot && nodemon --exec go run main.go --signal SIGTERM"
     },
     "code-runner.executorMapByFileExtension": {
-        ".rs": "cd $workspaceRoot && cargo run", // Alternative Rust configuration
+        ".rs": "cd $workspaceRoot && cargo run",
         "*.go": "cd $workspaceRoot && nodemon --exec go run main.go --signal SIGTERM"
     }
 }
