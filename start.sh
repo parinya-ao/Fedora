@@ -5,8 +5,9 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 # brave install
 sudo dnf install curl -y
-curl -fsS https://dl.brave.com/install.sh | sh
-
+sudo dnf install dnf-plugins-core
+sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo dnf install brave-browser
 
 # compiler
 sudo dnf install watchman cmake make g++ clang neovim -y
