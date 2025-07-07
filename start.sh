@@ -85,11 +85,20 @@ sudo systemctl start docker
 sudo usermod -aG docker $USER
 newgrp docker
 
+# dev
+curl -fsSL https://bun.sh/install | bash
+bun i nodemon
 # wireshark
-sudo apt wireshark -y
+sudo dnf install wireshark -y
 # andorid studio
 flatpak install flathub com.google.AndroidStudio -y
 flatpak install flathub org.signal.Signal -y
 flatpak install flathub com.rustdesk.RustDesk -y
+
+# vscode path
+git clone https://gist.github.com/parinya-ao/12332335e7c7acc1fc99038b5f50f7ca
+cd 12332335e7c7acc1fc99038b5f50f7ca
+mv gistfile1.txt settings.json
+mv settings.json ~/.config/Code/User/settings.json
 
 reboot
