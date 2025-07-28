@@ -1,5 +1,6 @@
 sudo dnf update -y
 sudo dnf upgrade -y
+sudo dnf install fish -y
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
@@ -8,6 +9,9 @@ sudo dnf install curl -y
 sudo dnf install dnf-plugins-core
 sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 sudo dnf install brave-browser
+
+# terminal 
+sudo dnf install alacritty -y
 
 # compiler
 sudo dnf install watchman cmake make g++ clang neovim -y
@@ -100,5 +104,7 @@ git clone https://gist.github.com/parinya-ao/12332335e7c7acc1fc99038b5f50f7ca
 cd 12332335e7c7acc1fc99038b5f50f7ca
 mv gistfile1.txt settings.json
 mv settings.json ~/.config/Code/User/settings.json
+
+chsh -s /usr/bin/fish
 
 reboot
