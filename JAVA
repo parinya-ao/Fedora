@@ -1,0 +1,20 @@
+//// java
+// bash
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+export PATH=$JAVA_HOME/bin:$PATH
+
+// fish
+set -Ux JAVA_HOME (dirname (dirname (readlink -f (which java)))
+set -Ux PATH $JAVA_HOME/bin $PATH
+
+//// gradle
+curl -s "https://get.sdkman.io" | bash
+// bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk install gradle
+// fish
+set -Ux SDKMAN_DIR $HOME/.sdkman
+status --is-interactive; and source $SDKMAN_DIR/bin/sdkman-init.sh
+set -Ux GRADLE_HOME $HOME/.sdkman/candidates/gradle/current
+set -Ux PATH $GRADLE_HOME/bin $PATH
+
