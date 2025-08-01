@@ -18,7 +18,7 @@
     "editor.inlayHints.fontSize": 12,
     "editor.suggest.preview": true,
     "editor.suggest.previewMode": "prefix",
-    "editor.suggest.snippetsPreventQuickSuggestions": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggest.showMethods": true,
     "editor.suggest.showFunctions": true,
     "editor.suggest.showConstructors": true,
@@ -38,25 +38,25 @@
     "editor.suggest.showEnumMembers": true,
     "editor.suggest.showKeywords": true,
     "editor.suggest.showColors": true,
-    "editor.suggest.showFiles": true,
+    "editor.suggest.showFiles": false,
     "editor.suggest.showReferences": true,
     "editor.suggest.showCustomcolors": true,
-    "editor.suggest.showFolders": true,
-    "editor.suggest.showSnippets": false,
+    "editor.suggest.showFolders": false,
+    "editor.suggest.showSnippets": true,
     "editor.suggest.showUsers": false,
-    "editor.suggest.showIssues": true,
+    "editor.suggest.showIssues": false,
     "editor.suggest.filterGraceful": true,
     "editor.suggest.localityBonus": true,
     "editor.suggest.shareSuggestSelections": true,
     "editor.suggest.showStatusBar": true,
     "editor.suggest.selectionMode": "always",
-    "editor.suggest.insertMode": "replace",
+    "editor.suggest.insertMode": "insert",
     "editor.suggest.matchOnWordStartOnly": true,
     "editor.suggest.statusBar.visible": false,
     "editor.suggest.height": 100,
     "editor.wordBasedSuggestions": "off",
-    "editor.wordBasedSuggestionsMode": "currentDocument",
-    "editor.quickSuggestionsDelay": 20,
+    "editor.wordBasedSuggestionsMode": "off",
+    "editor.quickSuggestionsDelay": 5,
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "off",
     "editor.quickSuggestions": {
@@ -103,7 +103,7 @@
     "editor.selectionHighlight": false,
     "editor.semanticHighlighting.enabled": true,
     "editor.showFoldingControls": "always",
-    "editor.snippetSuggestions": "none",
+    "editor.snippetSuggestions": "inline",
     "editor.stickyScroll.enabled": true,
     "editor.stickyScroll.maxLineCount": 5,
     "editor.suggestOnTriggerCharacters": true,
@@ -124,11 +124,9 @@
     "editor.insertSpaces": true,
     "editor.detectIndentation": true,
     "editor.tabSize": 4,
-
     "editor.trimAutoWhitespace": true,
     "editor.renderFinalNewline": "on",
     "editor.autoFixOnSave": true,
-
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
@@ -198,7 +196,7 @@
         "bat": true
     },
     "editor.inlineSuggest.enabled": false,
-    "editor.suggest.showInlineDetails": false,
+    "editor.suggest.showInlineDetails": true,
     "chat.commandCenter.enabled": false,
     "chat.agent.enabled": false,
     "chat.enabled": false,
@@ -262,14 +260,150 @@
     "window.confirmBeforeClose": "always",
     "window.closeWhenEmpty": false,
     "files.watcherExclude": {
+        // Git & Version Control
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
-        "**/node_modules/*/**": true,
-        "**/target/**": true,
-        "**/build/**": true,
+        "**/.svn/**": true,
+        "**/.hg/**": true,
+        "**/CVS/**": true,
+        "**/.bzr/**": true,
+        // Node.js & JavaScript/TypeScript
+        "**/node_modules/**": true,
+        "**/.npm/**": true,
+        "**/.yarn/**": true,
+        "**/yarn.lock": true,
+        "**/package-lock.json": true,
+        "**/.pnpm-store/**": true,
         "**/dist/**": true,
         "**/.next/**": true,
-        "**/__pycache__/**": true
+        "**/.nuxt/**": true,
+        "**/.cache/**": true,
+        "**/.parcel-cache/**": true,
+        "**/coverage/**": true,
+        "**/.nyc_output/**": true,
+        // Python
+        "**/__pycache__/**": true,
+        "**/*.pyc": true,
+        "**/*.pyo": true,
+        "**/*.pyd": true,
+        "**/venv/**": true,
+        "**/env/**": true,
+        "**/.venv/**": true,
+        "**/.env/**": true,
+        "**/site-packages/**": true,
+        "**/.pytest_cache/**": true,
+        "**/.coverage": true,
+        "**/htmlcov/**": true,
+        "**/.tox/**": true,
+        "**/.mypy_cache/**": true,
+        "**/pip-wheel-metadata/**": true,
+        "**/gradle/**": true,
+        "**/gradlew": true,
+        "**/gradlew.bat": true,
+        "**/.mvn/**": true,
+        "**/mvnw": true,
+        "**/mvnw.cmd": true,
+        // C/C++
+        "**/cmake-build-*/**": true,
+        "**/*.o": true,
+        "**/*.obj": true,
+        "**/*.so": true,
+        "**/*.dll": true,
+        "**/*.dylib": true,
+        "**/*.exe": true,
+        "**/*.out": true,
+        "**/*.app": true,
+        // .NET & C#
+        "**/bin/**": true,
+        "**/obj/**": true,
+        "**/.vs/**": true,
+        "**/packages/**": true,
+        "**/*.user": true,
+        "**/*.suo": true,
+        // PHP
+        "**/vendor/**": true,
+        "**/composer.lock": true,
+        // Ruby
+        "**/vendor/bundle/**": true,
+        "**/.bundle/**": true,
+        "**/Gemfile.lock": true,
+        // Swift & iOS
+        "**/DerivedData/**": true,
+        "**/*.xcworkspace/**": true,
+        "**/*.xcodeproj/**": true,
+        "**/Pods/**": true,
+        "**/Podfile.lock": true,
+        // Android
+        "**/.gradle/**": true,
+        "**/local.properties": true,
+        "**/gradle.properties": true,
+        // Flutter & Dart
+        "**/.dart_tool/**": true,
+        "**/build/**": true,
+        "**/.packages": true,
+        "**/pubspec.lock": true,
+        // Unity
+        "**/Library/**": true,
+        "**/Temp/**": true,
+        "**/Obj/**": true,
+        "**/Build/**": true,
+        "**/Builds/**": true,
+        "**/Logs/**": true,
+        "**/UserSettings/**": true,
+        // Docker
+        "**/.dockerignore": true,
+        "**/Dockerfile*": false,
+        // Database
+        "**/*.db": true,
+        "**/*.sqlite": true,
+        "**/*.sqlite3": true,
+        // Logs & Temporary Files
+        "**/logs/**": true,
+        "**/*.log": true,
+        "**/tmp/**": true,
+        "**/temp/**": true,
+        "**/.tmp/**": true,
+        "**/.temp/**": true,
+        // IDE & Editor Files
+        "**/.vscode/**": false,
+        "**/.idea/**": true,
+        "**/*.swp": true,
+        "**/*.swo": true,
+        "**/*~": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/desktop.ini": true,
+        "**/.pip/**": true,
+        "**/.conda/**": true,
+        "**/.cargo/**": true,
+        "**/.rustup/**": true,
+        "**/test-results/**": true,
+        "**/test-reports/**": true,
+        "**/allure-results/**": true,
+        "**/cypress/videos/**": true,
+        "**/cypress/screenshots/**": true,
+        "**/docs/_build/**": true,
+        "**/site/**": true,
+        "**/_site/**": true,
+        "**/*.backup": true,
+        "**/*.bak": true,
+        "**/*.orig": true,
+        "**/.env.local": true,
+        "**/.env.*.local": true,
+        "**/*.aux": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        "**/*.synctex.gz": true,
+        "**/*.toc": true,
+        "**/*.lot": true,
+        "**/*.lof": true,
+        "**/.terraform/**": true,
+        "**/*.tfstate": true,
+        "**/*.tfstate.backup": true,
+        "**/.kube/**": true,
+        "**/.aws/**": true,
+        "**/.gcp/**": true,
+        "**/.azure/**": true
     },
     "files.defaultLanguage": "plaintext",
     "files.enableTrash": true,
@@ -298,6 +432,7 @@
         "*.vue": "vue",
         "*.svelte": "svelte",
         "*.rs": "rust",
+        "*.tex": "xelatex",
         "*.c": "c",
         "*.cpp": "cpp",
         "*.h": "c",
@@ -579,7 +714,7 @@
         "editor.tabSize": 2,
         "editor.insertSpaces": true,
         "editor.formatOnSave": true,
-        "editor.suggest.insertMode": "replace",
+        "editor.suggest.insertMode": "insert",
         "editor.autoClosingTags": true
     },
     "[css]": {
@@ -587,7 +722,7 @@
         "editor.tabSize": 2,
         "editor.insertSpaces": true,
         "editor.formatOnSave": true,
-        "editor.suggest.insertMode": "replace"
+        "editor.suggest.insertMode": "insert"
     },
     "[scss]": {
         "editor.defaultFormatter": "vscode.css-language-features",
@@ -767,11 +902,11 @@
             "comments": "on",
             "strings": "on"
         },
-        "editor.suggest.insertMode": "replace",
+        "editor.suggest.insertMode": "insert",
         "editor.suggest.filterGraceful": true,
         "editor.suggest.localityBonus": true,
         "editor.suggest.showKeywords": true,
-        "editor.suggest.showSnippets": false,
+        "editor.suggest.showSnippets": true,
         "editor.suggest.showMethods": true,
         "editor.suggest.showFunctions": true,
         "editor.suggest.showConstructors": true,
@@ -800,7 +935,7 @@
         "editor.tabCompletion": "off",
         "editor.acceptSuggestionOnEnter": "smart",
         "editor.acceptSuggestionOnCommitCharacter": false,
-        "editor.wordBasedSuggestions": "currentDocument",
+        "editor.wordBasedSuggestions": "off",
         "editor.bracketPairColorization.enabled": true,
         "editor.guides.bracketPairs": "active",
         "editor.guides.bracketPairsHorizontal": "active",
@@ -812,7 +947,7 @@
         "editor.showDeprecated": true,
         "editor.lightbulb.enabled": "on",
         "editor.suggest.preview": true,
-        "editor.quickSuggestionsDelay": 0,
+        "editor.quickSuggestionsDelay": 5,
         "editor.suggestOnTriggerCharacters": true,
         "editor.wordWrap": "on",
         "editor.wordWrapColumn": 100,
@@ -858,7 +993,7 @@
     "[makefile]": {
         "editor.insertSpaces": false,
         "editor.tabSize": 4,
-        "editor.formatOnSave": false
+        "editor.formatOnSave": true
     },
     "[dockerfile]": {
         "editor.tabSize": 4,
@@ -1121,7 +1256,7 @@
     "C_Cpp.formatting": "default",
     "C_Cpp.loggingLevel": "Information",
     "C_Cpp.workspaceParsingPriority": "highest",
-    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnCommitCharacter": true,
     "C_Cpp.workspaceSymbols": "all",
     "C_Cpp.exclusionPolicy": "checkFolders",
     "C_Cpp.preferredPathSeparator": "/",
@@ -1140,7 +1275,7 @@
     "[python]": {
         "editor.tabSize": 4,
         "editor.insertSpaces": true,
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": true,
         "editor.formatOnType": false,
         "editor.formatOnPaste": false,
         "editor.codeActionsOnSave": {
@@ -1155,20 +1290,19 @@
         "editor.suggest.showInlineDetails": true,
         "editor.suggest.preview": true,
         "editor.suggest.previewMode": "prefix",
-        "editor.suggest.insertMode": "replace",
+        "editor.suggest.insertMode": "insert",
         "editor.suggest.filterGraceful": true,
-        "editor.suggest.snippetsPreventQuickSuggestions": false,
         "editor.suggest.localityBonus": true,
         "editor.acceptSuggestionOnEnter": "on",
-        "editor.acceptSuggestionOnCommitCharacter": true,
+        "editor.acceptSuggestionOnCommitCharacter": false,
         "editor.quickSuggestions": {
             "other": "on",
             "comments": "on",
             "strings": "on"
         },
-        "editor.quickSuggestionsDelay": 0,
+        "editor.quickSuggestionsDelay": 5,
         "editor.suggestOnTriggerCharacters": true,
-        "editor.wordBasedSuggestions": "allDocuments",
+        "editor.wordBasedSuggestions": "off",
         "editor.suggest.autoImports": true,
         "editor.hover.enabled": true,
         "editor.hover.delay": 50,
@@ -1190,7 +1324,7 @@
         "editor.foldingStrategy": "indentation",
         "editor.folding": true,
         "editor.foldingHighlight": true,
-        "editor.snippetSuggestions": "none",
+        "editor.snippetSuggestions": "inline",
         "editor.tabCompletion": "off",
         "editor.emptySelectionClipboard": false,
         "editor.renderWhitespace": "none",
@@ -1216,7 +1350,7 @@
         "editor.suggest.showCustomcolors": false,
         "editor.suggest.showFolders": false,
         "editor.suggest.showTypeParameters": false,
-        "editor.suggest.showSnippets": false,
+        "editor.suggest.showSnippets": true,
         "editor.suggest.showUsers": false,
         "editor.suggest.showIssues": false,
         "editor.gotoLocation.multipleReferences": "goto",
@@ -1284,9 +1418,11 @@
     },
     "python.analysis.autoSearchPaths": true,
     "python.analysis.diagnosticMode": "openFilesOnly",
-    "python.analysis.extraPaths": [],
+    "python.analysis.extraPaths": [
+        "./venv/lib/python3.*/site-packages"
+    ],
     "python.analysis.stubPath": "typings",
-    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.typeCheckingMode": "on",
     "python.analysis.useLibraryCodeForTypes": true,
     "python.analysis.autoImportCompletions": true,
     "python.analysis.completeFunctionParens": true,
@@ -1301,9 +1437,36 @@
     "python.analysis.logLevel": "Information",
     "python.analysis.packageIndexDepths": [
         {
+            "name": "sklearn",
+            "depth": 2
+        },
+        {
+            "name": "matplotlib",
+            "depth": 2
+        },
+        {
+            "name": "pandas",
+            "depth": 2
+        },
+        {
+            "name": "numpy",
+            "depth": 2
+        },
+        {
+            "name": "requests",
+            "depth": 2
+        },
+        {
+            "name": "django",
+            "depth": 2
+        },
+        {
+            "name": "flask",
+            "depth": 2
+        },
+        {
             "name": "",
-            "depth": 3,
-            "includeAllSymbols": true
+            "depth": 1
         }
     ],
     "python.analysis.userFileIndexingLimit": -1,
@@ -1326,12 +1489,19 @@
     ],
     "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
     "vsintellicode.features.python.deepLearning": "disabled",
-    "vsintellicode.python.completionsEnabled": false,
+    "vsintellicode.python.completionsEnabled": true,
     "vsintellicode.python.argumentsCompletionEnabled": false,
     "vsintellicode.python.importCompletionEnabled": false,
     "vsintellicode.python.functionSignatureEnabled": false,
     "vsintellicode.supportedLanguages": [],
-    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "python.analysis.include": [
+        "**/*.py"
+    ],
+    "python.analysis.exclude": [
+        "**/node_modules/**",
+        "**/.git/**"
+    ],
+    "python.defaultInterpreterPath": "./venv/bin/python",
     "python.terminal.activateEnvironment": true,
     "python.terminal.activateEnvInCurrentTerminal": true,
     "python.terminal.executeInFileDir": false,
@@ -1437,17 +1607,17 @@
         },
         "editor.suggest.showInlineDetails": true,
         "editor.suggest.preview": false,
-        "editor.suggest.insertMode": "replace",
+        "editor.suggest.insertMode": "insert",
         "editor.suggest.filterGraceful": true,
         "editor.suggest.localityBonus": true,
         "editor.acceptSuggestionOnEnter": "smart",
-        "editor.acceptSuggestionOnCommitCharacter": true,
+        "editor.acceptSuggestionOnCommitCharacter": false,
         "editor.quickSuggestions": {
             "other": "on",
             "comments": "off",
             "strings": "off"
         },
-        "editor.quickSuggestionsDelay": 50,
+        "editor.quickSuggestionsDelay": 5,
         "editor.suggest.autoImports": true,
         "editor.hover.enabled": true,
         "editor.hover.delay": 100,
@@ -1464,7 +1634,7 @@
         "editor.linkedEditing": true,
         "editor.showUnused": false,
         "editor.showDeprecated": false,
-        "editor.snippetSuggestions": "none",
+        "editor.snippetSuggestions": "inline",
         "editor.tabCompletion": "off",
         "editor.lightbulb.enabled": "off",
         "editor.autoClosingTags": true
@@ -1660,28 +1830,34 @@
         "zig": "zig run"
     },
     "code-runner.runInTerminal": true,
-    "code-runner.preserveFocus": false,
+    "code-runner.preserveFocus": true,
     "code-runner.saveAllFilesBeforeRun": true,
     "code-runner.saveFileBeforeRun": true,
     "code-runner.clearPreviousOutput": true,
-    "code-runner.showExecutionMessage": true,
+    "code-runner.showExecutionMessage": false,
     "code-runner.defaultLanguage": "rust",
     "code-runner.enableAppInsights": false,
     "code-runner.ignoreSelection": true,
     "code-runner.respectShebang": false,
     "code-runner.terminalRoot": "/",
+    "editor.suggest.commitCharacters": [
+        "."
+    ],
     "code-runner.temporaryFileName": "temp",
     "code-runner.cwd": "$workspaceRoot",
     "code-runner.executorMapByGlob": {
+        "*.tex": "xelatex -interaction=nonstopmode -synctex=1 \"$fileName\"",
         "*.rs": "cd $workspaceRoot && cargo run",
         "*.go": "cd $workspaceRoot && nodemon --exec go run main.go --signal SIGTERM"
     },
     "code-runner.executorMapByFileExtension": {
+        ".tex": "xelatex -interaction=nonstopmode -synctex=1 \"$fileName\"",
         ".rs": "cd $workspaceRoot && cargo run",
-        "*.go": "cd $workspaceRoot && nodemon --exec go run main.go --signal SIGTERM"
+        ".go": "cd $workspaceRoot && nodemon --exec go run main.go --signal SIGTERM"
     },
     "telemetry.feedback.enabled": false,
     "editor.foldingImportsByDefault": true,
     "javascript.preferences.importModuleSpecifier": "project-relative",
-    "typescript.preferences.importModuleSpecifier": "project-relative"
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "python.createEnvironment.trigger": "off"
 }
