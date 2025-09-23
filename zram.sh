@@ -1,6 +1,6 @@
 sudo dnf install zram -y
 
-sudo tee/usr/bin/systemd/zram-generator.conf << "EOF"
+sudo tee /usr/bin/systemd/zram-generator.conf << "EOF"
 [zram0]
 zram-fraction = 0.75
 compression-algorithm = lz4
