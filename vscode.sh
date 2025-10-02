@@ -7,3 +7,5 @@ sudo dnf install code -y
 # freeze version vscode
 sudo dnf update --exclude=code
 
+# zed
+curl -f https://zed.dev/install.sh | sh
