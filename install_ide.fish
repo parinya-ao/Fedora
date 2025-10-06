@@ -1,3 +1,5 @@
+# ref: https://linux.how2shout.com/how-to-install-jetbrains-toolbox-ubuntu-22-04-lts/
+
 # 1.download from this for linux only
 https://www.jetbrains.com/toolbox-app/download/download-thanks.html?platform=linux
 
@@ -11,4 +13,3 @@ mv ...   ~/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox
 sudo cp ~/.local/share/applications/jetbrains-toolbox.desktop ~/Desktop/
 gio set ~/Desktop/jetbrains-toolbox.desktop metadata::trusted true
 sudo chmod a+x ~/Desktop/jetbrains-toolbox.desktop
-
