@@ -5,7 +5,7 @@ curl -L -o jetbrains-toolbox.tar.gz $download_url
 
 tar -xzf jetbrains-toolbox-*.tar.gz
 
-cd  jetbrains-toolbox*/bin
+cd jetbrains-toolbox*/bin
 ./jetbrains-toolbox
 
 curl -f https://zed.dev/install.sh | sh
