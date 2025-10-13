@@ -1,15 +1,11 @@
-# ref: https://linux.how2shout.com/how-to-install-jetbrains-toolbox-ubuntu-22-04-lts/
 
-# 1.download from this for linux only
-https://www.jetbrains.com/toolbox-app/download/download-thanks.html?platform=linux
+set download_url (curl -fsSL 'https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release' | grep -oP '"linux":\{"link":"https://[^"]+\.tar\.gz"' | grep -oP 'https://[^"]+')
 
-# 2. extract file
-tar -xzf jetbrains-toolbox-*.tar.gz --one-top-level=jetbrains --strip-components 1
+curl -L -o jetbrains-toolbox.tar.gz $download_url
 
-# 3. move file  jetbrains-toolbox to  ~/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox
-mv ...   ~/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox
+tar -xzf jetbrains-toolbox-*.tar.gz
 
-# 4. create destop shortcut
-sudo cp ~/.local/share/applications/jetbrains-toolbox.desktop ~/Desktop/
-gio set ~/Desktop/jetbrains-toolbox.desktop metadata::trusted true
-sudo chmod a+x ~/Desktop/jetbrains-toolbox.desktop
+cd  jetbrains-toolbox*/bin
+./jetbrains-toolbox
+
+curl -f https://zed.dev/install.sh | sh
