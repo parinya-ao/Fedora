@@ -239,6 +239,212 @@ if lspci | grep -i nvidia > /dev/null 2>&1; then
 fi
 
 # ===============================
+#  LAPTOP VENDOR DETECTION & DRIVERS
+# ===============================
+print_header "LAPTOP VENDOR DETECTION & DRIVERS"
+print_step "Detecting laptop manufacturer..."
+
+# Get system vendor information
+VENDOR=$(sudo dmidecode -s system-manufacturer 2>/dev/null | tr '[:upper:]' '[:lower:]')
+PRODUCT=$(sudo dmidecode -s system-product-name 2>/dev/null | tr '[:upper:]' '[:lower:]')
+
+echo -e "${CYAN}Manufacturer:${NC} $VENDOR"
+echo -e "${CYAN}Product:${NC} $PRODUCT"
+echo ""
+
+VENDOR_DETECTED=false
+
+# Acer Detection
+if echo "$VENDOR" | grep -iq "acer"; then
+    print_success "Acer laptop detected!"
+    VENDOR_DETECTED=true
+
+    print_step "Installing Acer-specific drivers and tools..."
+
+    # TLP for better battery management (common for all laptops)
+    print_info "Installing TLP (battery optimization)..."
+    sudo dnf install -y tlp tlp-rdw
+    sudo systemctl enable tlp
+
+    # Acer WMI kernel module support
+    print_info "Installing Acer WMI support..."
+    sudo dnf install -y kernel-modules-extra
+
+    # Thermal management
+    print_info "Installing thermal management tools..."
+    sudo dnf install -y thermald
+    sudo systemctl enable thermald
+
+    # Sensors and monitoring
+    print_info "Installing hardware monitoring tools..."
+    sudo dnf install -y lm_sensors
+
+    print_success "Acer-specific drivers and tools installed!"
+    echo -e "${BLUE}ℹ${NC} Run ${BOLD}sensors-detect${NC} after reboot to detect all sensors"
+fi
+
+# ASUS Detection
+if echo "$VENDOR" | grep -iq "asus\|asustek"; then
+    print_success "ASUS laptop detected!"
+    VENDOR_DETECTED=true
+
+    print_step "Installing ASUS-specific drivers and tools..."
+
+    # TLP for battery
+    print_info "Installing TLP (battery optimization)..."
+    sudo dnf install -y tlp tlp-rdw
+    sudo systemctl enable tlp
+
+    # ASUS WMI support
+    print_info "Installing ASUS WMI and ROG support..."
+    sudo dnf install -y kernel-modules-extra
+
+    # ASUSctl for ROG laptops (if available in repos)
+    print_info "Checking for ASUSctl (ROG laptop control)..."
+    if sudo dnf search asusctl 2>/dev/null | grep -q asusctl; then
+        sudo dnf install -y asusctl supergfxctl
+        sudo systemctl enable power-profiles-daemon.service
+        print_success "ASUSctl installed for ROG features!"
+    else
+        print_warning "ASUSctl not found in repos (not needed for non-ROG models)"
+    fi
+
+    # Thermal and fan control
+    print_info "Installing thermal management..."
+    sudo dnf install -y thermald lm_sensors
+    sudo systemctl enable thermald
+
+    print_success "ASUS-specific drivers and tools installed!"
+    echo -e "${BLUE}ℹ${NC} For ROG laptops: Use ${BOLD}asusctl${NC} for performance profiles"
+fi
+
+# Lenovo/ThinkPad Detection
+if echo "$VENDOR" | grep -iq "lenovo" || echo "$PRODUCT" | grep -iq "thinkpad"; then
+    print_success "Lenovo/ThinkPad laptop detected!"
+    VENDOR_DETECTED=true
+
+    print_step "Installing Lenovo/ThinkPad-specific drivers and tools..."
+
+    # TLP with ThinkPad-specific optimizations
+    print_info "Installing TLP with ThinkPad support..."
+    sudo dnf install -y tlp tlp-rdw
+
+    # ThinkPad-specific kernel modules
+    print_info "Installing ThinkPad ACPI support..."
+    sudo dnf install -y kernel-modules-extra
+
+    # Enable TLP with ThinkPad battery features
+    sudo systemctl enable tlp
+
+    # tp_smapi for older ThinkPads
+    if sudo dnf search tp-smapi 2>/dev/null | grep -q tp-smapi; then
+        print_info "Installing tp_smapi (for older ThinkPad battery control)..."
+        sudo dnf install -y tp_smapi akmod-tp_smapi
+    fi
+
+    # Lenovo throttling fix (throttled)
+    print_info "Installing throttled (Lenovo thermal throttling fix)..."
+    if command -v pip3 &> /dev/null; then
+        sudo pip3 install lenovo-throttling-fix 2>/dev/null || print_warning "Could not install lenovo-throttling-fix"
+    fi
+
+    # Sensors and monitoring
+    print_info "Installing hardware monitoring tools..."
+    sudo dnf install -y lm_sensors thermald
+    sudo systemctl enable thermald
+
+    print_success "Lenovo/ThinkPad-specific drivers and tools installed!"
+    echo -e "${BLUE}ℹ${NC} ThinkPad features:"
+    echo -e "  ${BOLD}tlp-stat${NC}                - Check TLP status and battery features"
+    echo -e "  ${BOLD}sensors${NC}                 - Monitor temperatures"
+fi
+
+# Dell Detection
+if echo "$VENDOR" | grep -iq "dell"; then
+    print_success "Dell laptop detected!"
+    VENDOR_DETECTED=true
+
+    print_step "Installing Dell-specific drivers and tools..."
+
+    # TLP for battery
+    print_info "Installing TLP (battery optimization)..."
+    sudo dnf install -y tlp tlp-rdw
+    sudo systemctl enable tlp
+
+    # Dell-specific tools
+    print_info "Installing Dell command configure tools..."
+    sudo dnf install -y kernel-modules-extra
+
+    # Thermal management
+    print_info "Installing thermal management..."
+    sudo dnf install -y thermald lm_sensors
+    sudo systemctl enable thermald
+
+    # Dell BIOS updates (fwupd)
+    print_info "Installing firmware update support..."
+    sudo dnf install -y fwupd
+    sudo systemctl enable fwupd
+
+    print_success "Dell-specific drivers and tools installed!"
+    echo -e "${BLUE}ℹ${NC} Run ${BOLD}fwupdmgr get-updates${NC} to check for BIOS/firmware updates"
+fi
+
+# HP Detection
+if echo "$VENDOR" | grep -iq "hp\|hewlett"; then
+    print_success "HP laptop detected!"
+    VENDOR_DETECTED=true
+
+    print_step "Installing HP-specific drivers and tools..."
+
+    # TLP for battery
+    print_info "Installing TLP (battery optimization)..."
+    sudo dnf install -y tlp tlp-rdw
+    sudo systemctl enable tlp
+
+    # HP-specific support
+    print_info "Installing HP support tools..."
+    sudo dnf install -y kernel-modules-extra
+
+    # HPLIP for HP printers (if laptop has integrated features)
+    print_info "Installing HPLIP (HP printer/scanner support)..."
+    sudo dnf install -y hplip
+
+    # Thermal management
+    print_info "Installing thermal management..."
+    sudo dnf install -y thermald lm_sensors
+    sudo systemctl enable thermald
+
+    print_success "HP-specific drivers and tools installed!"
+fi
+
+# Generic laptop tools if no specific vendor detected
+if [ "$VENDOR_DETECTED" = false ]; then
+    print_info "Generic or unknown laptop manufacturer detected."
+    print_step "Installing general laptop optimization tools..."
+
+    sudo dnf install -y tlp tlp-rdw thermald lm_sensors
+    sudo systemctl enable tlp
+    sudo systemctl enable thermald
+
+    print_success "General laptop tools installed!"
+fi
+
+# Common laptop utilities for all
+print_step "Installing common laptop utilities..."
+sudo dnf install -y \
+    powertop \
+    acpi \
+    brightnessctl \
+    light
+
+print_success "Laptop vendor-specific drivers installed!"
+echo -e "${BLUE}ℹ${NC} Common commands:"
+echo -e "  ${BOLD}tlp-stat${NC}                - Check power/battery status"
+echo -e "  ${BOLD}powertop${NC}                - Power consumption analyzer"
+echo -e "  ${BOLD}sensors${NC}                 - Show temperature sensors"
+echo -e "  ${BOLD}acpi -V${NC}                 - Show battery info"
+
+# ===============================
 #  ESSENTIAL TOOLS
 # ===============================
 print_header "ESSENTIAL DEVELOPMENT TOOLS"
@@ -263,12 +469,127 @@ sdk install kotlin
 print_success "All compilers and build tools installed!"
 
 # ===============================
-#  GNOME TWEAKS
+#  UBUNTU-STYLE GNOME DESKTOP
 # ===============================
-print_header "DESKTOP ENVIRONMENT"
-print_step "Installing GNOME Tweaks..."
-sudo dnf install gnome-tweaks -y
-print_success "GNOME Tweaks installed!"
+print_header "UBUNTU-STYLE GNOME DESKTOP CUSTOMIZATION"
+
+# Install base GNOME tools
+print_step "Installing GNOME customization tools..."
+sudo dnf install -y gnome-tweaks gnome-extensions-app dconf-editor
+
+# Install GNOME Shell Extensions
+print_step "Installing GNOME Shell Extensions (Ubuntu-style)..."
+sudo dnf install -y \
+    gnome-shell-extension-dash-to-dock \
+    gnome-shell-extension-appindicator \
+    gnome-shell-extension-desktop-icons \
+    gnome-shell-extension-user-theme \
+    gnome-shell-extension-places-menu \
+    gnome-shell-extension-apps-menu
+
+# Install Yaru theme (Official Ubuntu theme)
+print_step "Installing Yaru theme (Ubuntu's official theme)..."
+sudo dnf install -y yaru-theme || {
+    print_warning "Yaru theme not in repos, installing from source..."
+    sudo dnf install -y git meson sassc gtk-murrine-engine
+    git clone https://github.com/ubuntu/yaru.git /tmp/yaru
+    cd /tmp/yaru
+    meson build
+    sudo ninja -C build install
+    cd -
+}
+
+# Install Yaru icon theme
+print_step "Installing Yaru icon theme..."
+sudo dnf install -y yaru-icon-theme || {
+    print_warning "Installing Yaru icons from source..."
+    if [ ! -d "/tmp/yaru" ]; then
+        git clone https://github.com/ubuntu/yaru.git /tmp/yaru
+    fi
+    sudo cp -r /tmp/yaru/icons/Yaru* /usr/share/icons/
+}
+
+# Install Ubuntu fonts
+print_step "Installing Ubuntu fonts..."
+sudo dnf install -y ubuntu-family-fonts || {
+    print_warning "Installing Ubuntu fonts manually..."
+    sudo dnf install -y google-roboto-fonts liberation-fonts
+}
+
+# Install Papirus icon theme (popular alternative)
+print_step "Installing Papirus icon theme..."
+sudo dnf install -y papirus-icon-theme
+
+# Apply Ubuntu GNOME settings
+print_step "Applying Ubuntu-style GNOME settings..."
+
+# Enable extensions
+gnome-extensions enable dash-to-dock@micxgx.gmail.com 2>/dev/null || true
+gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com 2>/dev/null || true
+gnome-extensions enable desktop-icons@csoriano 2>/dev/null || true
+gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com 2>/dev/null || true
+
+# Configure Dash to Dock (Ubuntu-style left dock)
+print_info "Configuring Dash to Dock (Ubuntu-style)..."
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
+gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'DYNAMIC'
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 48
+gsettings set org.gnome.shell.extensions.dash-to-dock show-trash true
+gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts true
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize-or-previews'
+gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows'
+
+# Set window buttons to left (Ubuntu style)
+print_info "Moving window buttons to left (Ubuntu style)..."
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+
+# Set Yaru theme
+print_info "Applying Yaru theme..."
+gsettings set org.gnome.desktop.interface gtk-theme 'Yaru'
+gsettings set org.gnome.desktop.wm.preferences theme 'Yaru'
+gsettings set org.gnome.shell.extensions.user-theme name 'Yaru'
+
+# Set Yaru icons
+print_info "Applying Yaru icons..."
+gsettings set org.gnome.desktop.interface icon-theme 'Yaru'
+
+# Set Ubuntu fonts
+print_info "Applying Ubuntu fonts..."
+gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
+gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 13'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
+
+# Set Ubuntu-style desktop preferences
+print_info "Configuring desktop preferences..."
+gsettings set org.gnome.desktop.interface clock-format '12h'
+gsettings set org.gnome.desktop.interface show-battery-percentage true
+gsettings set org.gnome.desktop.calendar show-weekdate true
+
+# Set file manager preferences (Ubuntu style)
+print_info "Configuring file manager..."
+gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+gsettings set org.gnome.nautilus.list-view use-tree-view true
+
+# Enable hot corner (top-left)
+gsettings set org.gnome.desktop.interface enable-hot-corners true
+
+# Set background color (Ubuntu default purple)
+print_info "Setting Ubuntu-style background..."
+gsettings set org.gnome.desktop.background picture-options 'zoom'
+gsettings set org.gnome.desktop.background primary-color '#2C001E'
+
+print_success "Ubuntu-style GNOME customization complete!"
+echo -e "${GREEN}✓${NC} Your Fedora GNOME now looks like Ubuntu!"
+echo -e "${BLUE}ℹ${NC} Changes applied:"
+echo -e "  • Dash to Dock on left side"
+echo -e "  • Window buttons on left (close, minimize, maximize)"
+echo -e "  • Yaru theme and icons"
+echo -e "  • Ubuntu fonts"
+echo -e "  • Ubuntu-style settings"
+echo -e "${YELLOW}⚠${NC} Log out and log back in for all changes to take effect!"
 
 # ===============================
 #  BROWSER SELECTION
@@ -333,7 +654,8 @@ echo -e "  • Essential tools: fish, neovim, tmux, alacritty, git"
 echo -e "  • Compilers: gcc, g++, clang, rustc"
 echo -e "  • Build tools: make, cmake, watchman, cargo"
 echo -e "  • SDK Manager: SDKMAN"
-echo -e "  • Desktop: GNOME Tweaks"
+echo -e "  • Desktop: Ubuntu-style GNOME (Yaru theme, Dash to Dock, extensions)"
+echo -e "  • Laptop vendor-specific drivers and optimizations"
 case $browser_choice in
     1) echo -e "  • Browser: Firefox" ;;
     2) echo -e "  • Browser: Brave" ;;
