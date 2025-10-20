@@ -466,6 +466,10 @@ print_step "Installing Java/Kotlin/Scala via SDKMAN..."
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install kotlin
+print_step "Installing Android platform tools (adb, fastboot)..."
+sudo dnf install -y android-tools
+print_success "Android platform tools installed!"
+sdk install gradle
 print_success "All compilers and build tools installed!"
 
 # ===============================
@@ -520,26 +524,47 @@ sudo dnf install -y ubuntu-family-fonts || {
 print_step "Installing Papirus icon theme..."
 sudo dnf install -y papirus-icon-theme
 
+# Install style cursor theme
+print_step "Installing style cursor theme (WhiteSur)..."
+if [ ! -d "/tmp/WhiteSur-cursors" ]; then
+    git clone https://github.com/vinceliuice/WhiteSur-cursors.git /tmp/WhiteSur-cursors
+fi
+cd /tmp/WhiteSur-cursors
+sudo ./install.sh
+cd -
+print_success "Style cursor installed!"
+
 # Apply Ubuntu GNOME settings
 print_step "Applying Ubuntu-style GNOME settings..."
 
 # Enable extensions
+print_info "Enabling GNOME extensions..."
 gnome-extensions enable dash-to-dock@micxgx.gmail.com 2>/dev/null || true
 gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com 2>/dev/null || true
 gnome-extensions enable desktop-icons@csoriano 2>/dev/null || true
 gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com 2>/dev/null || true
+gnome-extensions enable places-menu@gnome-shell-extensions.gcampax.github.com 2>/dev/null || true
+gnome-extensions enable apps-menu@gnome-shell-extensions.gcampax.github.com 2>/dev/null || true
 
-# Configure Dash to Dock (Ubuntu-style left dock)
+# Configure Dash to Dock (Ubuntu-style left dock) - EXACT Ubuntu settings
 print_info "Configuring Dash to Dock (Ubuntu-style)..."
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
 gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'DYNAMIC'
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 48
+gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed false
 gsettings set org.gnome.shell.extensions.dash-to-dock show-trash true
 gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts true
+gsettings set org.gnome.shell.extensions.dash-to-dock show-show-apps-button true
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize-or-previews'
 gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action 'cycle-windows'
+gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-shrink true
+gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme true
+gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style 'DOTS'
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide false
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
+gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.8
 
 # Set window buttons to left (Ubuntu style)
 print_info "Moving window buttons to left (Ubuntu style)..."
@@ -550,6 +575,7 @@ print_info "Applying Yaru theme..."
 gsettings set org.gnome.desktop.interface gtk-theme 'Yaru'
 gsettings set org.gnome.desktop.wm.preferences theme 'Yaru'
 gsettings set org.gnome.shell.extensions.user-theme name 'Yaru'
+gsettings set org.gnome.desktop.interface color-scheme 'default'
 
 # Set Yaru icons
 print_info "Applying Yaru icons..."
@@ -561,80 +587,124 @@ gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 13'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
+gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
+gsettings set org.gnome.desktop.interface font-hinting 'slight'
 
 # Set Ubuntu-style desktop preferences
 print_info "Configuring desktop preferences..."
-gsettings set org.gnome.desktop.interface clock-format '12h'
+gsettings set org.gnome.desktop.interface clock-format '24h'
+gsettings set org.gnome.desktop.interface clock-show-seconds false
+gsettings set org.gnome.desktop.interface clock-show-weekday true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 gsettings set org.gnome.desktop.calendar show-weekdate true
+
+# Ubuntu-style window behavior
+print_info "Configuring window behavior..."
+gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
+gsettings set org.gnome.desktop.wm.preferences auto-raise false
+gsettings set org.gnome.desktop.wm.preferences raise-on-click true
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+gsettings set org.gnome.mutter center-new-windows true
+gsettings set org.gnome.mutter attach-modal-dialogs true
 
 # Set file manager preferences (Ubuntu style)
 print_info "Configuring file manager..."
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+gsettings set org.gnome.nautilus.preferences show-delete-permanently true
+gsettings set org.gnome.nautilus.preferences show-create-link true
 gsettings set org.gnome.nautilus.list-view use-tree-view true
+gsettings set org.gnome.nautilus.list-view default-zoom-level 'standard'
+gsettings set org.gtk.Settings.FileChooser sort-directories-first true
 
-# Enable hot corner (top-left)
+# Enable hot corner (top-left) - Ubuntu default
 gsettings set org.gnome.desktop.interface enable-hot-corners true
 
 # Set background color (Ubuntu default purple)
 print_info "Setting Ubuntu-style background..."
 gsettings set org.gnome.desktop.background picture-options 'zoom'
 gsettings set org.gnome.desktop.background primary-color '#2C001E'
+gsettings set org.gnome.desktop.background secondary-color '#2C001E'
+
+# Ubuntu-style interface settings
+print_info "Configuring interface settings..."
+gsettings set org.gnome.desktop.interface enable-animations true
+gsettings set org.gnome.desktop.interface cursor-theme 'WhiteSur-cursors'
+gsettings set org.gnome.desktop.interface cursor-size 24
+gsettings set org.gnome.desktop.interface toolbar-style 'both-horiz'
+gsettings set org.gnome.desktop.interface menubar-accel 'F10'
+
+# Ubuntu-style sound settings
+print_info "Configuring sound settings..."
+gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
+gsettings set org.gnome.desktop.sound event-sounds true
+gsettings set org.gnome.desktop.sound theme-name 'Yaru'
+
+# Ubuntu-style power settings
+print_info "Configuring power settings..."
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 1200
+gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'interactive'
+gsettings set org.gnome.desktop.session idle-delay 300
+
+# Ubuntu-style touchpad settings (for laptops)
+print_info "Configuring touchpad settings..."
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
+
+# Ubuntu-style keyboard settings
+print_info "Configuring keyboard settings..."
+gsettings set org.gnome.desktop.peripherals.keyboard remember-numlock-state true
+
+# Set favorite apps (Ubuntu default)
+print_info "Setting favorite apps..."
+gsettings set org.gnome.shell favorite-apps "['brave-browser.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Software.desktop']"
+
+# Ubuntu screenshot settings
+print_info "Configuring screenshot settings..."
+gsettings set org.gnome.gnome-screenshot auto-save-directory "'~/Pictures'"
+gsettings set org.gnome.gnome-screenshot include-pointer false
+
+# Disable GNOME Software auto-updates (Ubuntu style)
+print_info "Configuring software updates..."
+gsettings set org.gnome.software download-updates false
+gsettings set org.gnome.software download-updates-notify false
 
 print_success "Ubuntu-style GNOME customization complete!"
-echo -e "${GREEN}✓${NC} Your Fedora GNOME now looks like Ubuntu!"
+echo -e "${GREEN}✓${NC} Your Fedora GNOME now looks EXACTLY like Ubuntu!"
 echo -e "${BLUE}ℹ${NC} Changes applied:"
-echo -e "  • Dash to Dock on left side"
+echo -e "  • Dash to Dock on left side (fixed, not auto-hide)"
 echo -e "  • Window buttons on left (close, minimize, maximize)"
-echo -e "  • Yaru theme and icons"
-echo -e "  • Ubuntu fonts"
-echo -e "  • Ubuntu-style settings"
+echo -e "  • Yaru theme and icons with WhiteSur cursor"
+echo -e "  • Ubuntu fonts with proper rendering"
+echo -e "  • Ubuntu-style window behavior and animations"
+echo -e "  • Touchpad settings (tap-to-click, natural scroll)"
+echo -e "  • File manager with list view and tree view"
+echo -e "  • Power management and sound settings"
+echo -e "  • Favorite apps configured"
 echo -e "${YELLOW}⚠${NC} Log out and log back in for all changes to take effect!"
 
 # ===============================
-#  BROWSER SELECTION
+#  BRAVE BROWSER INSTALLATION
 # ===============================
-print_header "WEB BROWSER INSTALLATION"
-echo -e "${BOLD}Select which browser(s) to install:${NC}"
-echo -e "  ${BOLD}1.${NC} Firefox only"
-echo -e "  ${BOLD}2.${NC} Brave only"
-echo -e "  ${BOLD}3.${NC} Both Firefox and Brave"
-echo -e "  ${BOLD}4.${NC} Skip browser installation"
+print_header "BRAVE BROWSER INSTALLATION"
+print_step "Installing Brave Browser..."
+print_info "Adding Brave repository and installing..."
+sudo dnf install dnf-plugins-core -y
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install brave-browser -y
+print_success "Brave Browser installed successfully!"
 
-while true; do
-    echo -ne "${BOLD}Enter your choice (1-4):${NC} "
-    read -r browser_choice
-    case $browser_choice in
-        1)
-            print_step "Installing Firefox..."
-            sudo dnf install firefox -y
-            print_success "Firefox installed!"
-            break
-            ;;
-        2)
-            print_step "Installing Brave..."
-            curl -fsS https://dl.brave.com/install.sh | sh
-            print_success "Brave installed!"
-            break
-            ;;
-        3)
-            print_step "Installing Firefox..."
-            sudo dnf install firefox -y
-            print_success "Firefox installed!"
-            print_step "Installing Brave..."
-            curl -fsS https://dl.brave.com/install.sh | sh
-            print_success "Brave installed!"
-            break
-            ;;
-        4)
-            print_info "Skipping browser installation."
-            break
-            ;;
-        *)
-            echo -e "${RED}✗${NC} Invalid choice. Please enter a number between 1 and 4."
-            ;;
-    esac
-done
+print_step "Removing Firefox (if installed)..."
+if rpm -q firefox &>/dev/null; then
+    print_info "Firefox detected, removing..."
+    sudo dnf remove firefox -y
+    print_success "Firefox removed!"
+else
+    print_info "Firefox not installed, skipping."
+fi
 
 # ===============================
 #  SUMMARY
@@ -653,15 +723,11 @@ echo -e "  • Multimedia tools: HandBrake, Audacity, GIMP, Inkscape"
 echo -e "  • Essential tools: fish, neovim, tmux, alacritty, git"
 echo -e "  • Compilers: gcc, g++, clang, rustc"
 echo -e "  • Build tools: make, cmake, watchman, cargo"
-echo -e "  • SDK Manager: SDKMAN"
+echo -e "  • SDK Manager: SDKMAN (Kotlin, Gradle)"
+echo -e "  • Android tools: adb, fastboot"
 echo -e "  • Desktop: Ubuntu-style GNOME (Yaru theme, Dash to Dock, extensions)"
 echo -e "  • Laptop vendor-specific drivers and optimizations"
-case $browser_choice in
-    1) echo -e "  • Browser: Firefox" ;;
-    2) echo -e "  • Browser: Brave" ;;
-    3) echo -e "  • Browsers: Firefox, Brave" ;;
-    4) echo -e "  • Browser: None (skipped)" ;;
-esac
+echo -e "  • Browser: Brave (Firefox removed)"
 
 echo -e "\n${YELLOW}${BOLD}⚠ IMPORTANT:${NC} ${YELLOW}Reboot your system to apply all changes!${NC}"
 echo -e "${BLUE}ℹ${NC} For Rust: Run ${BOLD}source \$HOME/.cargo/env${NC}"
